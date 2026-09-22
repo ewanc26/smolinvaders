@@ -15,9 +15,9 @@ typedef struct {
 } Game;
 
 void game_init(Game *game);
-void game_tick(Game *game);
 void game_move(Game *game, int direction);
 void game_fire(Game *game);
+void game_step(Game *game);
 
 #ifdef __cplusplus
 }

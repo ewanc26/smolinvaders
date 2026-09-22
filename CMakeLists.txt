@@ -9,10 +9,16 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_library(space_invaders_core STATIC
-  src/core/game.c)
+  src/core/game_state.c
+  src/core/game_step.c)
 target_include_directories(space_invaders_core PUBLIC include)
 
-add_executable(space-invaders src/ui/main.cpp)
+add_executable(space-invaders
+  src/ui/input.cpp
+  src/ui/loop.cpp
+  src/ui/main.cpp
+  src/ui/render.cpp
+  src/ui/terminal.cpp)
 target_link_libraries(space-invaders PRIVATE space_invaders_core)
 
 enable_testing()
