@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
     running = gui_input(&gui, &game);
     Uint32 now = SDL_GetTicks();
     if (now - last >= 70) {
-      game_step(&game);
+      gui_tick(&gui, &game);
       last = now;
     }
     gui_render(&gui, &game);

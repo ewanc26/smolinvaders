@@ -75,9 +75,21 @@ The GUI looks for a system TrueType font. Set `SMOLINVADERS_FONT` to a `.ttf`
 path if none of its default font locations exist. The `gui-smoke` test runs
 with SDL's dummy video driver, so the test suite needs no display.
 
-Use the arrow keys to move, Space to fire, `P` to pause, `R` to replay after
+Hold the arrow keys to move and Space to fire. Input is sampled once per
+simulation tick, independent of OS key-repeat settings. Opposite arrows cancel.
+Losing window focus pauses combat and clears held keys; press `P` to resume.
+Player shots move three cells per tick, checking every cell for collisions;
+enemies and their shots move one. Cover still blocks your own shots.
+
+Use `P` to pause, `R` to replay after
 game over or victory, `1`/`2`/`3`/`4` to buy an upgrade, `0` to skip the shop,
 and Escape to quit. Each shot keeps its launch lane even if you move.
+
+`./build/replay-test` runs 32 deterministic input-only pilots and compares
+every core field on replay. It never places projectiles or grants resources.
+The current simple pilot reaches blind four but wins none of those seeds;
+this is a regression/balance diagnostic, not proof of human difficulty balance.
+The SDL input test injects key-up/down and focus-loss events without a window.
 
 See [AGENTS.md](AGENTS.md) for architecture, development rules, and the
 headless verification command.

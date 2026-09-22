@@ -11,11 +11,13 @@ struct Gui {
   SDL_Window *window{};
   SDL_Renderer *renderer{};
   TTF_Font *font{};
+  bool left{}, right{}, fire{};
 };
 
 bool gui_open(Gui *);
 void gui_close(Gui *);
 bool gui_input(Gui *, Game *);
+void gui_tick(Gui *, Game *);
 void gui_render(const Gui *, const Game *);
 void gui_box(const Gui *, int x, int y, int width, int height, SDL_Color);
 void gui_text(const Gui *, const char *, int x, int y, SDL_Color);

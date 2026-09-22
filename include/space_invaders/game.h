@@ -9,6 +9,7 @@ extern "C" {
 #endif
 
 enum { GAME_WIDTH = 48, GAME_HEIGHT = 20 };
+enum { PLAYER_SHOT_SPEED = 3 };
 enum { SHIELD_COUNT = 3, SHIELD_WIDTH = 6, SHIELD_ROW = 15 };
 enum { ROOM_COMBAT, ROOM_ELITE, ROOM_CACHE };
 enum { RUN_ANTES = 8, RUN_BLINDS = RUN_ANTES * 3 };
@@ -43,6 +44,7 @@ bool game_upgrade_available(const Game *game, int choice);
 void game_move(Game *game, int direction);
 void game_fire(Game *game);
 void game_step(Game *game);
+void game_tick(Game *game, int movement, bool fire);
 void game_ai(Game *game);
 int game_ai_mood(const Game *game);
 bool game_shield_hit(Game *game, int x, int row);

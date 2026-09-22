@@ -57,6 +57,12 @@
   the player skip an unaffordable shop with `game_skip_upgrade`.
 - Projectiles store their own launch columns. Neither SDL nor subsequent
   shooter movement should change a shot's path.
+- `game_tick` applies normalized held movement and fire before simulation.
+  SDL events only update held controls; do not move directly on key-repeat.
+  Clear controls on focus loss, pause, shop entry, and restart. Focus loss
+  pauses rather than letting a hidden run take damage.
+- Player shots use three collision-checked substeps per tick. Never jump over
+  shield or enemy cells. Stop substeps immediately on a room transition.
 - The arena is 48 by 20 cells at 16 pixels per cell and must fit inside the
   960 by 640 window. Keep labels legible and terminal screens restartable.
 - Keep files focused. Prefer a new small module over growing a catch-all file.
@@ -85,3 +91,7 @@ blinds; this verifies progression, not human playability or difficulty balance.
 On the current macOS SDL build, an ASan-linked GUI can enter SDL's startup
 error dialog before `main`. Core ASan/UBSan tests pass; report sanitized GUI
 coverage separately from normal dummy-driver coverage. Keep smoke tests timed.
+
+`replay-test` uses only normal controls/shop APIs across 32 seeds and compares
+all core fields. Its pilot statistics diagnose changes, not human playability.
+`input-test` exercises real SDL event dispatch without creating a window.

@@ -88,8 +88,10 @@ static void step_bonus(Game *g) {
 
 void game_step(Game *g) {
   if (g->over || g->won || g->paused) return;
-  step_player_shot(g);
-  if (g->over || g->won || g->paused) return;
+  for (int cell = 0; cell < PLAYER_SHOT_SPEED; ++cell) {
+    step_player_shot(g);
+    if (g->over || g->won || g->paused) return;
+  }
   step_enemy_shot(g);
   if (g->over) return;
   step_alien(g);
