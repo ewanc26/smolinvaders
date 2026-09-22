@@ -11,6 +11,9 @@ player and enemy shots damage them, so preserving cover is part of the strategy.
 The top bar exposes the AI policy's steering pressure: blue means it is
 tracking left, red means right, and its length is the response strength.
 
+An occasional gold signal saucer crosses the top of the arena. Shoot it for
+three points; missing it lets the opportunity pass.
+
 ## Build
 
 ```sh

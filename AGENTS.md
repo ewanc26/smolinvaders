@@ -19,6 +19,8 @@
   cells and must not mutate them.
 - `ai_mood` is a presentation-safe diagnostic from the core policy. UI may
   visualize it, but must not use it to alter simulation decisions.
+- Bonus entities must use the core's deterministic timer/RNG state and expose
+  their collision behavior to headless tests before being rendered by SDL.
 - Keep files focused. Prefer a new small module over growing a catch-all file.
 - Use C23 for the core and C++23 for the UI. Preserve the `extern "C"` API.
 

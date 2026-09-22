@@ -3,6 +3,9 @@
 static void step_bullet(Game *g) {
   if (g->bullet < 0) return;
   if (game_shield_hit(g, g->player + 1, g->bullet)) { g->bullet = -1; return; }
+  if (g->bonus_active && g->bullet <= 1 && g->player + 1 >= g->bonus_x && g->player <= g->bonus_x + 4) {
+    g->score += 3; g->wave = 1 + g->score / 5; g->bonus_active = false; g->bonus_timer = 0; g->bullet = -1; return;
+  }
   if (g->bullet == g->alien_row) {
     if (g->player + 1 >= g->alien && g->player <= g->alien + 2) {
       g->score++; g->wave = 1 + g->score / 5; g->rng = g->rng * 1103515245 + 12345; g->alien = (g->rng & 0x7fffffff) % (GAME_WIDTH - 3);
@@ -21,6 +24,15 @@ static void step_alien(Game *g) {
   if (g->alien_row > GAME_HEIGHT - 2) g->over = true;
 }
 
+static void step_bonus(Game *g) {
+  if (!g->bonus_active) {
+    if (++g->bonus_timer >= 140) { g->bonus_active = true; g->bonus_timer = 0; g->bonus_x = g->bonus_direction > 0 ? -5 : GAME_WIDTH; }
+    return;
+  }
+  g->bonus_x += g->bonus_direction;
+  if (g->bonus_x < -6 || g->bonus_x > GAME_WIDTH) g->bonus_active = false, g->bonus_timer = 0, g->bonus_direction = -g->bonus_direction;
+}
+
 void game_step(Game *g) {
-  if (!g->over && !g->paused) step_bullet(g), step_enemy_bullet(g), step_alien(g);
+  if (!g->over && !g->paused) step_bullet(g), step_enemy_bullet(g), step_alien(g), step_bonus(g);
 }

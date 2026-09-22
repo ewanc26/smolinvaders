@@ -2,7 +2,8 @@
 
 void game_init(Game *g) {
   *g = (Game){ .player = 22, .alien = 5, .alien_row = 2,
-    .bullet = -1, .enemy_bullet = -1, .direction = 1, .lives = 3, .wave = 1, .rng = 7 };
+    .bullet = -1, .enemy_bullet = -1, .direction = 1, .lives = 3, .wave = 1,
+    .rng = 7, .bonus_x = -3, .bonus_timer = 0, .bonus_direction = 1 };
   game_shields_init(g);
 }
 

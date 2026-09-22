@@ -13,7 +13,8 @@ enum { SHIELD_COUNT = 3, SHIELD_WIDTH = 6, SHIELD_ROW = 15 };
 
 typedef struct {
   int player, alien, alien_row, bullet, enemy_bullet, direction;
-  int score, ai_mood, lives, wave, rng;
+  int score, ai_mood, lives, wave, rng, bonus_x, bonus_timer, bonus_direction;
+  bool bonus_active;
   uint8_t shields[SHIELD_COUNT][SHIELD_WIDTH];
   bool over, paused;
 } Game;
