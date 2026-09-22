@@ -26,6 +26,8 @@
   must never invent progression or mutate run state directly.
 - Room types are generated from the run RNG. Combat, Elite, and Cache behavior
   must differ in the core and remain reproducible for a given seed.
+- Elite room armor is core state (`alien_hp`); rendering may show it but must
+  not bypass hit resolution.
 - Keep files focused. Prefer a new small module over growing a catch-all file.
 - Use C23 for the core and C++23 for the UI. Preserve the `extern "C"` API.
 

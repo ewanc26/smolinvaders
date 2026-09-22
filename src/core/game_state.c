@@ -1,7 +1,7 @@
 #include "space_invaders/game.h"
 
 void game_init_seed(Game *g, uint32_t seed) {
-  *g = (Game){ .player = 22, .alien = 5, .alien_row = 2,
+  *g = (Game){ .player = 22, .alien = 5, .alien_row = 2, .alien_hp = 1,
     .bullet = -1, .enemy_bullet = -1, .direction = 1, .lives = 3, .wave = 1,
     .rng = (int)seed, .seed = seed, .room = 1, .room_type = ROOM_COMBAT, .bonus_x = -3, .bonus_timer = 0, .bonus_direction = 1 };
   game_shields_init(g);
