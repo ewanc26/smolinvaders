@@ -9,7 +9,7 @@ void game_init_seed(Game *g, uint32_t seed) {
 
 void game_init(Game *g) { game_init_seed(g, 0xC0FFEEu); }
 
-void game_restart(Game *g) { game_init(g); }
+void game_restart(Game *g) { uint32_t seed = g->seed; game_init_seed(g, seed ? seed : 0xC0FFEEu); }
 
 void game_toggle_pause(Game *g) { if (!g->over) g->paused = !g->paused; }
 

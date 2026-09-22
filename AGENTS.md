@@ -26,6 +26,8 @@
   must never invent progression or mutate run state directly.
 - Room types are generated from the run RNG. Combat, Elite, and Cache behavior
   must differ in the core and remain reproducible for a given seed.
+- `game_restart` must preserve the current seed; changing the seed is an
+  explicit `game_init_seed` operation and should never happen implicitly.
 - Elite room armor is core state (`alien_hp`); rendering may show it but must
   not bypass hit resolution.
 - Keep files focused. Prefer a new small module over growing a catch-all file.
