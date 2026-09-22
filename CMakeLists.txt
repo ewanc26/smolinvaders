@@ -12,6 +12,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_library(space_invaders_core STATIC
   src/core/game_state.c
+  src/core/ai.c
   src/core/game_step.c)
 target_include_directories(space_invaders_core PUBLIC include)
 

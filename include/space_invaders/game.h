@@ -10,7 +10,7 @@ extern "C" {
 enum { GAME_WIDTH = 48, GAME_HEIGHT = 20 };
 
 typedef struct {
-  int player, alien, alien_row, bullet, direction, score;
+  int player, alien, alien_row, bullet, enemy_bullet, direction, score, ai_mood;
   bool over;
 } Game;
 
@@ -18,6 +18,8 @@ void game_init(Game *game);
 void game_move(Game *game, int direction);
 void game_fire(Game *game);
 void game_step(Game *game);
+void game_ai(Game *game);
+int game_ai_mood(const Game *game);
 
 #ifdef __cplusplus
 }
