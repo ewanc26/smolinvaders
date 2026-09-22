@@ -1,6 +1,6 @@
 #include "space_invaders/game.h"
 
-static void room_progress(Game *g) { int next=1+g->score/5; if(next>g->room) g->room=next,g->wave=next,g->upgrade_offer=true,g->paused=true; }
+static void room_progress(Game *g) { int next=1+g->score/5; if(next>g->room){g->rng=g->rng*1103515245+12345;g->room=next;g->wave=next;g->room_type=(g->rng&0x7fffffff)%3;g->upgrade_offer=true;g->paused=true;} }
 
 static void step_bullet(Game *g) {
   if (g->bullet < 0) return;
@@ -28,7 +28,7 @@ static void step_alien(Game *g) {
 
 static void step_bonus(Game *g) {
   if (!g->bonus_active) {
-    if (++g->bonus_timer >= 140) { g->bonus_active = true; g->bonus_timer = 0; g->bonus_x = g->bonus_direction > 0 ? -5 : GAME_WIDTH; }
+    if (++g->bonus_timer >= (g->room_type == ROOM_CACHE ? 90 : 140)) { g->bonus_active = true; g->bonus_timer = 0; g->bonus_x = g->bonus_direction > 0 ? -5 : GAME_WIDTH; }
     return;
   }
   g->bonus_x += g->bonus_direction;

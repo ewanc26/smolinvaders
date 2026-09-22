@@ -10,12 +10,13 @@ extern "C" {
 
 enum { GAME_WIDTH = 48, GAME_HEIGHT = 20 };
 enum { SHIELD_COUNT = 3, SHIELD_WIDTH = 6, SHIELD_ROW = 15 };
+enum { ROOM_COMBAT, ROOM_ELITE, ROOM_CACHE };
 
 typedef struct {
   int player, alien, alien_row, bullet, enemy_bullet, direction;
   int score, ai_mood, lives, wave, rng, bonus_x, bonus_timer, bonus_direction;
   uint32_t seed;
-  int room, upgrade_level;
+  int room, room_type, upgrade_level;
   bool bonus_active, upgrade_offer;
   uint8_t shields[SHIELD_COUNT][SHIELD_WIDTH];
   bool over, paused;
