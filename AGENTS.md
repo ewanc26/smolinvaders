@@ -55,6 +55,12 @@
 - The arena is 48 by 20 cells at 16 pixels per cell and must fit inside the
   960 by 640 window. Keep labels legible and terminal screens restartable.
 - Keep files focused. Prefer a new small module over growing a catch-all file.
+- Scoring modules live in `modules.c`: additive bonuses precede multipliers,
+  and only kills advance Cadence. Shop offers use their own unsigned seeded
+  RNG, exclude owned modules, and reset on replay. Test through shot resolution.
+- Blind targets are cumulative score plus five on room entry. Surplus points
+  remain in total score, but never pre-clear later blinds. Shop rendering lives
+  separately in `gui_shop.cpp`; core availability is authoritative.
 - Use C23 for the core and C++23 for the UI. Preserve the `extern "C"` API.
 
 ## Verification

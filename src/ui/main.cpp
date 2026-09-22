@@ -41,6 +41,11 @@ int main(int argc, char **argv) {
   Uint32 last = SDL_GetTicks();
   int frames = 0;
   while (running && (!smoke || frames++ < 3)) {
+    if (smoke && frames == 2) {
+      game_score_kill(&game, 5, false);
+      game_room_progress(&game);
+    }
+    if (smoke && frames == 3) game_choose_upgrade(&game, 4);
     running = gui_input(&gui, &game);
     Uint32 now = SDL_GetTicks();
     if (now - last >= 70) {

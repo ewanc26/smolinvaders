@@ -3,7 +3,8 @@
 void game_init_seed(Game *g, uint32_t seed) {
   *g = (Game){ .player = 22, .alien = 5, .alien_row = 2, .alien_hp = 1,
     .bullet = -1, .enemy_bullet = -1, .direction = 1, .lives = 3, .wave = 1,
-    .rng = seed, .seed = seed, .room = 1, .room_type = ROOM_COMBAT,
+    .rng = seed, .seed = seed, .shop_rng = seed ^ 0x9e3779b9u,
+    .room = 1, .room_type = ROOM_COMBAT,
     .ante = 1, .blind_target = 5, .credits = 3, .bonus_x = -3,
     .bonus_direction = 1 };
   game_shields_init(g);
@@ -19,14 +20,16 @@ void game_toggle_pause(Game *g) {
 }
 
 int game_upgrade_cost(int choice) {
-  return choice == 1 ? 1 : choice == 2 ? 3 : choice == 3 ? 4 : -1;
+  return choice == 1 ? 1 : choice == 2 ? 3 : choice == 3 ? 4 :
+         choice == 4 ? 5 : -1;
 }
 
 bool game_upgrade_available(const Game *g, int choice) {
   int cost = game_upgrade_cost(choice);
   return g->upgrade_offer && cost >= 0 && g->credits >= cost &&
          !(choice == 2 && g->lives >= 5) &&
-         !(choice == 3 && g->upgrade_level >= 3);
+         !(choice == 3 && g->upgrade_level >= 3) &&
+         !(choice == 4 && (!g->module_offer || (g->modules & g->module_offer)));
 }
 
 void game_choose_upgrade(Game *g, int choice) {
@@ -35,6 +38,7 @@ void game_choose_upgrade(Game *g, int choice) {
   if (choice == 1) game_shields_init(g);
   if (choice == 2 && g->lives < 5) ++g->lives;
   if (choice == 3) ++g->upgrade_level;
+  if (choice == 4) g->modules |= g->module_offer;
   g->upgrade_offer = false; g->paused = false;
 }
 

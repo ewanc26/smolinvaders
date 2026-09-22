@@ -17,6 +17,7 @@ add_library(space_invaders_core STATIC
   src/core/shields.c
   src/core/random.c
   src/core/room.c
+  src/core/modules.c
   src/core/game_step.c)
 target_include_directories(space_invaders_core PUBLIC include)
 
@@ -26,12 +27,13 @@ add_executable(space-invaders
   src/ui/gui_input.cpp
   src/ui/gui_render.cpp
   src/ui/gui_overlay.cpp
+  src/ui/gui_shop.cpp
   src/ui/main.cpp
   )
 target_link_libraries(space-invaders PRIVATE space_invaders_core PkgConfig::SDL2 PkgConfig::SDL2_TTF)
 
 enable_testing()
-foreach(test_name gameplay room shop)
+foreach(test_name gameplay room shop modules)
   add_executable(${test_name}-test test/${test_name}_test.c)
   target_link_libraries(${test_name}-test PRIVATE space_invaders_core)
   add_test(NAME ${test_name} COMMAND ${test_name}-test)

@@ -1,7 +1,8 @@
 #include "space_invaders/game.h"
 
 void game_room_progress(Game *g) {
-  if (g->room >= 10 || g->score < g->blind_target) return;
+  if (g->over || g->won || g->upgrade_offer ||
+      g->room >= 10 || g->score < g->blind_target) return;
 
   int interest = g->credits / 5;
   if (interest > 3) interest = 3;
@@ -10,7 +11,7 @@ void game_room_progress(Game *g) {
   ++g->room;
   g->wave = g->room;
   g->ante = 1 + (g->room - 1) / 3;
-  g->blind_target = g->room * 5;
+  g->blind_target = g->score + 5;
   g->room_type = g->room == 10 ? ROOM_ELITE : game_random(g) % 3;
   g->alien_hp = g->room == 10 ? 5 : g->room_type == ROOM_ELITE ? 3 : 1;
   g->alien_row = 2;
@@ -20,5 +21,6 @@ void game_room_progress(Game *g) {
   g->bullet = -1;
   g->bonus_active = false;
   g->upgrade_offer = true;
+  game_module_offer(g);
   g->paused = true;
 }

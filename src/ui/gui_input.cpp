@@ -18,6 +18,7 @@ bool gui_input(Gui *, Game *g) {
       case SDLK_1: game_choose_upgrade(g, 1); break;
       case SDLK_2: game_choose_upgrade(g, 2); break;
       case SDLK_3: game_choose_upgrade(g, 3); break;
+      case SDLK_4: game_choose_upgrade(g, 4); break;
       default: break;
     }
   }

@@ -1,5 +1,6 @@
 #include "space_invaders/gui.h"
 #include <cstdio>
+void gui_shop(const Gui *gui, const Game *g);
 
 static constexpr SDL_Color white{225, 232, 245, 255};
 static constexpr SDL_Color muted{150, 164, 190, 255};
@@ -17,35 +18,17 @@ static void hud(const Gui *gui, const Game *g) {
                 g->lives, g->credits,
                 !g->relics ? "NONE" : g->relic_charges ? "READY" : "SPENT");
   gui_text(gui, line, GUI_LEFT, 80, white);
+  for (int i = 0; i < 3; ++i)
+    if (g->modules & (1 << i))
+      gui_text(gui, game_module_name(1 << i), GUI_LEFT + i * 240, 112, gold);
   gui_text(gui, "ARROWS move   SPACE fire   P pause   ESC quit",
            GUI_LEFT, 510, muted);
   gui_text(gui, "R replay after a win or defeat", GUI_LEFT, 540, muted);
 }
 
-static void shop(const Gui *gui, const Game *g) {
-  gui_box(gui, 190, 205, 580, 220, {22, 30, 56, 255});
-  gui_text(gui, "BLIND CLEARED  -  CHOOSE AN UPGRADE", 236, 224, gold);
-  const char *names[] = {"1 REPAIR", "2 EXTRA LIFE", "3 JAMMER"};
-  const char *effects[] = {"Restore shields", "+1 life (max 5)", "Weaken AI"};
-  for (int i = 0; i < 3; ++i) {
-    const int cost = game_upgrade_cost(i + 1);
-    const bool available = game_upgrade_available(g, i + 1);
-    int x = 215 + i * 185;
-    gui_box(gui, x, 275, 170, 102,
-            available ? SDL_Color{53, 73, 110, 255} :
-                        SDL_Color{42, 43, 56, 255});
-    gui_text(gui, names[i], x + 10, 285, available ? white : muted);
-    gui_text(gui, effects[i], x + 10, 312, muted);
-    char price[32];
-    std::snprintf(price, sizeof price, "%d credits", cost);
-    gui_text(gui, price, x + 10, 341, available ? gold : muted);
-  }
-  gui_text(gui, "0 SKIP - bank credits for interest", 290, 389, white);
-}
-
 void gui_overlay(const Gui *gui, const Game *g) {
   hud(gui, g);
-  if (g->upgrade_offer) shop(gui, g);
+  if (g->upgrade_offer) gui_shop(gui, g);
   else if (g->won || g->over || g->paused) {
     gui_box(gui, 310, 250, 340, 120, {22, 30, 56, 255});
     gui_text(gui, g->won ? "RUN COMPLETE" : g->over ? "RUN ENDED" : "PAUSED",

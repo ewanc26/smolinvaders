@@ -5,23 +5,33 @@ run-local relics. The simulation is C23; the windowed UI is C++23 with SDL2
 and SDL2_ttf.
 
 The invader is driven by a tiny deterministic neural policy that reads the
-player's position and shot state. It adapts its movement and fires back. Hits
-advance the wave every five points; the player has three lives.
+player's position and shot state. Its fixed weights react to play; it does not
+train online. Kills advance blinds; the player has three lives.
 
 Three destructible energy shields sit between the player and the invader. Both
 player and enemy shots damage them, so preserving cover is part of the strategy.
-The top bar exposes the AI policy's steering pressure: blue means it is
-tracking left, red means right, and its length is the response strength.
 
 An occasional gold signal saucer crosses the top of the arena. Shoot it for
 three points; missing it lets the opportunity pass.
 
 Runs are seeded (`0xC0FFEE` by default), including the first enemy position,
-and divide into blinds grouped into antes. Each blind has an escalating score
-target. Meeting it opens a shop:
+and divide into blinds grouped into antes. Each blind needs five new points;
+surplus score stays in the run total but cannot pre-clear the next blind.
+Meeting the target opens a shop:
 `1` repairs every shield, `2` grants a life, and `3` weakens the neural
 policy. The jammer stacks up to three times. You can keep your credits by
 skipping the shop with `0`.
+
+`4` buys the seeded scoring module for five credits. Modules last for the run,
+never appear twice once owned, and stack: Amplifier adds one point per kill,
+Cadence adds two on every third kill (including saucers), and Signal doubles
+saucer points after those additions. Armor damage does not count as a kill.
+The HUD lists owned modules. Each shop permits one purchase or a skip.
+Shop randomness is separate from combat randomness.
+
+These original shooter modifiers take inspiration from the shop-acquired,
+score-changing Jokers described in the [official Balatro FAQ](https://www.playbalatro.com/faq).
+This remains a compact ten-room prototype, not Balatro's full eight-ante loop.
 Credits are part of the run economy: signal saucers pay two credits and Elite
 commanders pay three. Shield repair costs one, an extra life costs three, and
 the neural jammer costs four; unaffordable choices do nothing.
@@ -59,7 +69,7 @@ path if none of its default font locations exist. The `gui-smoke` test runs
 with SDL's dummy video driver, so the test suite needs no display.
 
 Use the arrow keys to move, Space to fire, `P` to pause, `R` to replay after
-game over or victory, `1`/`2`/`3` to buy an upgrade, `0` to skip the shop,
+game over or victory, `1`/`2`/`3`/`4` to buy an upgrade, `0` to skip the shop,
 and Escape to quit. Each shot keeps its launch lane even if you move.
 
 See [AGENTS.md](AGENTS.md) for architecture, development rules, and the

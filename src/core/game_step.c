@@ -10,7 +10,7 @@ static void step_player_shot(Game *g) {
   }
   if (g->bonus_active && g->bullet == 0 &&
       g->bullet_x >= g->bonus_x && g->bullet_x < g->bonus_x + 5) {
-    g->score += 3;
+    game_score_kill(g, 3, true);
     g->credits += 2;
     g->bonus_active = false;
     g->bonus_timer = 0;
@@ -24,7 +24,7 @@ static void step_player_shot(Game *g) {
   g->bullet = -1;
   if (--g->alien_hp > 0) return;
   if (g->room == 10) {
-    g->score += 5;
+    game_score_kill(g, 5, false);
     g->won = true;
     return;
   }
@@ -33,7 +33,7 @@ static void step_player_shot(Game *g) {
     g->relic_charges = 1;
     g->credits += 3;
   }
-  ++g->score;
+  game_score_kill(g, 1, false);
   game_room_progress(g);
   if (!g->upgrade_offer) {
     g->alien = game_random(g) % (GAME_WIDTH - 3);
