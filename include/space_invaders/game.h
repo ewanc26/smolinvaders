@@ -24,6 +24,7 @@ typedef struct {
   uint32_t seed;
   uint32_t shop_rng;
   int modules, module_offer, kills;
+  int shop_bought, shop_rerolls;
   int boss_rules;
   int room, room_type, upgrade_level, relics, relic_charges;
   int ante, blind_target, credits;
@@ -41,6 +42,9 @@ void game_choose_upgrade(Game *game, int choice);
 void game_skip_upgrade(Game *game);
 int game_upgrade_cost(int choice);
 bool game_upgrade_available(const Game *game, int choice);
+int game_reroll_cost(const Game *game);
+bool game_reroll_available(const Game *game);
+void game_reroll_shop(Game *game);
 void game_move(Game *game, int direction);
 void game_fire(Game *game);
 void game_step(Game *game);

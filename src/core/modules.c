@@ -3,7 +3,7 @@
 void game_module_offer(Game *g) {
   int pool[3], count = 0;
   for (int bit = 1; bit <= MODULE_CADENCE; bit <<= 1)
-    if (!(g->modules & bit)) pool[count++] = bit;
+    if (!(g->modules & bit) && bit != g->module_offer) pool[count++] = bit;
   g->shop_rng = g->shop_rng * 1664525u + 1013904223u;
   g->module_offer = count ? pool[g->shop_rng % (unsigned)count] : 0;
 }

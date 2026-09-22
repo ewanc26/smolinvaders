@@ -59,6 +59,14 @@ int main() {
   assert(gui_input(&gui, &g));
   gui_tick(&gui, &g);
   assert(g.player == 13 && g.upgrade_offer && !gui.left);
+  g.credits = 20;
+  int offer = g.module_offer;
+  key(SDL_KEYDOWN, SDLK_5);
+  assert(gui_input(&gui, &g));
+  assert(g.module_offer != offer && g.credits == 18 && g.paused);
+  key(SDL_KEYDOWN, SDLK_4);
+  assert(gui_input(&gui, &g));
+  assert(g.modules && g.credits == 13 && g.upgrade_offer && g.paused);
   key(SDL_KEYDOWN, SDLK_0);
   assert(gui_input(&gui, &g));
   assert(!g.paused && !g.upgrade_offer);

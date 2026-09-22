@@ -47,6 +47,7 @@ int main(int argc, char **argv) {
     }
     if (smoke && frames == 3) game_choose_upgrade(&game, 4);
     if (smoke && frames == 4) {
+      game_skip_upgrade(&game);
       game_score_kill(&game, 5, false);
       game_room_progress(&game);
     }

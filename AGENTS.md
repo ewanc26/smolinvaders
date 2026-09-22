@@ -55,6 +55,13 @@
   before the reward. Keep this calculation in `room.c` and test its boundary.
 - Shop cards use `game_upgrade_cost` and `game_upgrade_available`. Always let
   the player skip an unaffordable shop with `game_skip_upgrade`.
+- Shop transactions live in `shop.c`, rerolls in `shop_reroll.c`. Purchases
+  never unpause combat; only leaving closes the shop. Services stock one unit
+  per visit; reject repairs of intact shields. Module purchases empty the slot.
+- Rerolls draw a different unowned module using shop RNG only, and are disabled
+  without an alternative or enough credits. Costs rise from two to ten credits.
+  Room entry resets stock, offer, and reroll count; failed transactions mutate
+  nothing. Cover multi-purchase sessions and stock reset with headless tests.
 - Projectiles store their own launch columns. Neither SDL nor subsequent
   shooter movement should change a shot's path.
 - `game_tick` applies normalized held movement and fire before simulation.
@@ -95,3 +102,4 @@ coverage separately from normal dummy-driver coverage. Keep smoke tests timed.
 `replay-test` uses only normal controls/shop APIs across 32 seeds and compares
 all core fields. Its pilot statistics diagnose changes, not human playability.
 `input-test` exercises real SDL event dispatch without creating a window.
+Keep assertions enabled for all test targets, including Release builds.

@@ -6,7 +6,7 @@ void gui_shop(const Gui *gui, const Game *g) {
   constexpr SDL_Color muted{150, 164, 190, 255};
   constexpr SDL_Color gold{250, 205, 105, 255};
   gui_box(gui, 70, 205, 820, 220, {22, 30, 56, 255});
-  gui_text(gui, "BLIND CLEARED - CHOOSE ONE", 236, 224, gold);
+  gui_text(gui, "BLIND CLEARED - SHOP", 236, 224, gold);
   const char *names[] = {"REPAIR", "EXTRA LIFE", "JAMMER",
                          game_module_name(g->module_offer)};
   const char *effects[] = {"Restore shields", "+1 life (max 5)", "Weaken AI",
@@ -23,5 +23,8 @@ void gui_shop(const Gui *gui, const Game *g) {
     std::snprintf(line, sizeof line, "%d credits", game_upgrade_cost(i + 1));
     gui_text(gui, line, x + 8, 341, available ? gold : muted);
   }
-  gui_text(gui, "0 SKIP - bank credits for interest", 290, 389, white);
+  char reroll[48];
+  std::snprintf(reroll, sizeof reroll, "5 REROLL: %d credits", game_reroll_cost(g));
+  gui_text(gui, reroll, 95, 389, game_reroll_available(g) ? gold : muted);
+  gui_text(gui, "0 LEAVE - keep unspent credits", 475, 389, white);
 }

@@ -28,6 +28,7 @@ void game_room_progress(Game *g) {
   g->bonus_active = false;
   g->bonus_timer = 0;
   g->upgrade_offer = true;
+  g->shop_bought = g->shop_rerolls = g->module_offer = 0;
   game_module_offer(g);
   g->paused = true;
 }

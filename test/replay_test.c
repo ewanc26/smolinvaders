@@ -5,7 +5,7 @@
 
 static void pilot(Game *g) {
   if (g->upgrade_offer) {
-    int choice = g->lives < 3 ? 2 : 4;
+    int choice = g->lives < 3 && game_upgrade_available(g, 2) ? 2 : 4;
     if (game_upgrade_available(g, choice)) game_choose_upgrade(g, choice);
     else game_skip_upgrade(g);
     return;
@@ -29,6 +29,7 @@ static void same_state(const Game *a, const Game *b) {
   SAME(bonus_x); SAME(bonus_timer); SAME(bonus_direction); SAME(bonus_active);
   SAME(rng); SAME(seed); SAME(shop_rng); SAME(modules); SAME(module_offer);
   SAME(kills); SAME(boss_rules); SAME(room); SAME(room_type);
+  SAME(shop_bought); SAME(shop_rerolls);
   SAME(upgrade_level); SAME(relics); SAME(relic_charges); SAME(ante);
   SAME(blind_target); SAME(credits); SAME(upgrade_offer);
   SAME(won); SAME(over); SAME(paused);

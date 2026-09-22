@@ -14,6 +14,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_library(space_invaders_core STATIC
   src/core/game_state.c
   src/core/controls.c
+  src/core/shop.c
+  src/core/shop_reroll.c
   src/core/ai.c
   src/core/shields.c
   src/core/random.c
@@ -35,15 +37,22 @@ add_executable(space-invaders
 target_link_libraries(space-invaders PRIVATE space_invaders_core PkgConfig::SDL2 PkgConfig::SDL2_TTF)
 
 enable_testing()
-foreach(test_name gameplay room shop modules boss replay)
+if(MSVC)
+  set(TEST_ASSERT_FLAG /UNDEBUG)
+else()
+  set(TEST_ASSERT_FLAG -UNDEBUG)
+endif()
+foreach(test_name gameplay room shop shop_session modules boss replay)
   add_executable(${test_name}-test test/${test_name}_test.c)
   target_link_libraries(${test_name}-test PRIVATE space_invaders_core)
+  target_compile_options(${test_name}-test PRIVATE ${TEST_ASSERT_FLAG})
   add_test(NAME ${test_name} COMMAND ${test_name}-test)
 endforeach()
 add_test(NAME gui-smoke COMMAND ${CMAKE_COMMAND} -E env SDL_VIDEODRIVER=dummy
   $<TARGET_FILE:space-invaders> --smoke 42)
 set_tests_properties(gui-smoke PROPERTIES TIMEOUT 15)
 add_executable(input-test test/input_test.cpp src/ui/gui_input.cpp)
+target_compile_options(input-test PRIVATE ${TEST_ASSERT_FLAG})
 target_link_libraries(input-test PRIVATE space_invaders_core PkgConfig::SDL2 PkgConfig::SDL2_TTF)
 add_test(NAME input COMMAND ${CMAKE_COMMAND} -E env SDL_VIDEODRIVER=dummy
   $<TARGET_FILE:input-test>)

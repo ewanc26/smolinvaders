@@ -18,7 +18,7 @@ int main(void) {
       assert(a.credits == 4 && a.upgrade_offer);
       a.credits = 5;
       game_choose_upgrade(&a, 4);
-      assert(a.credits == 0 && !a.paused && !a.upgrade_offer);
+      assert(a.credits == 0 && a.paused && a.upgrade_offer);
       b.modules = a.modules;
     }
     game_module_offer(&a);

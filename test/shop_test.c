@@ -17,9 +17,8 @@ int main(void) {
   g.credits = 4;
   game_choose_upgrade(&g, 3);
   assert(g.upgrade_level == 1 && g.credits == 0);
-  assert(!g.upgrade_offer && !g.paused);
+  assert(g.upgrade_offer && g.paused);
 
-  g.upgrade_offer = g.paused = true;
   g.credits = 3;
   g.lives = 5;
   game_choose_upgrade(&g, 2);

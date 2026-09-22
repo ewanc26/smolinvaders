@@ -41,6 +41,7 @@ bool gui_input(Gui *gui, Game *g) {
       case SDLK_2: game_choose_upgrade(g, 2); break;
       case SDLK_3: game_choose_upgrade(g, 3); break;
       case SDLK_4: game_choose_upgrade(g, 4); break;
+      case SDLK_5: game_reroll_shop(g); break;
       default: break;
     }
     if (g->paused || g->over || g->won) clear_controls(gui);

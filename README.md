@@ -26,7 +26,14 @@ skipping the shop with `0`.
 never appear twice once owned, and stack: Amplifier adds one point per kill,
 Cadence adds two on every third kill (including saucers), and Signal doubles
 saucer points after those additions. Armor damage does not count as a kill.
-The HUD lists owned modules. Each shop permits one purchase or a skip.
+The HUD lists owned modules. Shops remain open until you press `0` to leave.
+Buy several cards if you can afford them; repair, life, and jammer each have
+one unit per visit. Intact shields cannot be repaired for a wasted credit.
+Press `5` to reroll the module slot: two credits initially, rising by one per
+reroll to a cap of ten. Rerolls use only the shop RNG, guarantee a different
+unowned module, and are disabled when no alternative exists. Buying a module
+empties its slot; a paid reroll can restock it. Stock and reroll prices reset
+at the next shop. Leaving preserves unspent credits for interest.
 Shop randomness is separate from combat randomness.
 
 These original shooter modifiers take inspiration from the shop-acquired,
@@ -82,7 +89,7 @@ Player shots move three cells per tick, checking every cell for collisions;
 enemies and their shots move one. Cover still blocks your own shots.
 
 Use `P` to pause, `R` to replay after
-game over or victory, `1`/`2`/`3`/`4` to buy an upgrade, `0` to skip the shop,
+game over or victory, `1`/`2`/`3`/`4` to buy, `5` to reroll, `0` to leave the shop,
 and Escape to quit. Each shot keeps its launch lane even if you move.
 
 `./build/replay-test` runs 32 deterministic input-only pilots and compares
