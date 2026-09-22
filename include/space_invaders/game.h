@@ -10,7 +10,8 @@ extern "C" {
 enum { GAME_WIDTH = 48, GAME_HEIGHT = 20 };
 
 typedef struct {
-  int player, alien, alien_row, bullet, enemy_bullet, direction, score, ai_mood;
+  int player, alien, alien_row, bullet, enemy_bullet, direction;
+  int score, ai_mood, lives, wave, rng;
   bool over;
 } Game;
 
