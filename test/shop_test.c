@@ -29,5 +29,11 @@ int main(void) {
   assert(!game_upgrade_available(&g, 3));
   game_choose_upgrade(&g, 3);
   assert(g.credits == 4 && g.upgrade_offer);
+
+  game_init_seed(&g, 1);
+  g.credits = 15;
+  g.score = g.blind_target;
+  game_room_progress(&g);
+  assert(g.room == 2 && g.credits == 20);
   return 0;
 }

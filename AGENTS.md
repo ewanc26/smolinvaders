@@ -46,6 +46,8 @@
 - Credits and shop prices belong in the core. UI choices must call
   `game_choose_upgrade` and tolerate unaffordable purchases without mutating
   the economy directly.
+- Blind completion pays a base reward plus capped interest on credits held
+  before the reward. Keep this calculation in `room.c` and test its boundary.
 - Shop cards use `game_upgrade_cost` and `game_upgrade_available`. Always let
   the player skip an unaffordable shop with `game_skip_upgrade`.
 - Projectiles store their own launch columns. Neither SDL nor subsequent

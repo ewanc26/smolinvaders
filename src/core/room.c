@@ -3,6 +3,10 @@
 void game_room_progress(Game *g) {
   if (g->room >= 10 || g->score < g->blind_target) return;
 
+  int interest = g->credits / 5;
+  if (interest > 3) interest = 3;
+  g->credits += 2 + interest;
+
   ++g->room;
   g->wave = g->room;
   g->ante = 1 + (g->room - 1) / 3;

@@ -24,6 +24,7 @@ static void step_player_shot(Game *g) {
   g->bullet = -1;
   if (--g->alien_hp > 0) return;
   if (g->room == 10) {
+    g->score += 5;
     g->won = true;
     return;
   }

@@ -19,6 +19,7 @@ int main(void) {
   game_step(&first);
   game_step(&replay);
   assert(first.room == 2 && first.upgrade_offer && first.paused);
+  assert(first.credits == 5);
   assert(first.room_type == replay.room_type && first.alien == replay.alien);
   assert(first.rng == replay.rng && first.blind_target == 10);
 
@@ -32,7 +33,7 @@ int main(void) {
   saucer.bullet = 1;
   game_step(&saucer);
   assert(saucer.score == 7 && saucer.room == 2);
-  assert(saucer.relics == 0 && saucer.credits == 5);
+  assert(saucer.relics == 0 && saucer.credits == 8);
 
   Game elite;
   game_init_seed(&elite, 9);
@@ -61,10 +62,12 @@ int main(void) {
   Game boss;
   game_init_seed(&boss, 0);
   boss.room = 10;
+  boss.blind_target = 50;
+  boss.score = 45;
   boss.alien_hp = 1;
   aim_at_alien(&boss);
   game_step(&boss);
-  assert(boss.won && !boss.over);
+  assert(boss.won && !boss.over && boss.score >= boss.blind_target);
   int position = boss.alien;
   game_step(&boss);
   assert(boss.alien == position);

@@ -40,7 +40,7 @@ static void shop(const Gui *gui, const Game *g) {
     std::snprintf(price, sizeof price, "%d credits", cost);
     gui_text(gui, price, x + 10, 341, available ? gold : muted);
   }
-  gui_text(gui, "Press 0 to skip and keep your credits", 285, 389, white);
+  gui_text(gui, "0 SKIP - bank credits for interest", 290, 389, white);
 }
 
 void gui_overlay(const Gui *gui, const Game *g) {

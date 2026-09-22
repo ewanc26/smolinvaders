@@ -25,6 +25,8 @@ skipping the shop with `0`.
 Credits are part of the run economy: signal saucers pay two credits and Elite
 commanders pay three. Shield repair costs one, an extra life costs three, and
 the neural jammer costs four; unaffordable choices do nothing.
+Clearing a blind pays two credits plus one interest credit per five saved,
+capped at three. Saving through a shop can fund stronger purchases later.
 During the shop phase, labeled cards show those prices and dim when the run
 cannot afford them.
 
@@ -36,7 +38,8 @@ above them.
 Defeating an Elite grants a violet relic that absorbs one enemy hit per blind.
 Its ready/spent state appears in the HUD.
 Room 10 is the final commander: it has five armor points, and defeating it
-wins the seeded run. The window stays open after death or victory so `R` can
+wins the seeded run with a five point finish. The window stays open after death
+or victory so `R` can
 replay the same seed.
 
 ## Build
