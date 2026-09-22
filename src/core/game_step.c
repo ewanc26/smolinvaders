@@ -1,6 +1,6 @@
 #include "space_invaders/game.h"
 
-static void room_progress(Game *g) { int next=1+g->score/5; if(next>g->room){if(g->room_type==ROOM_ELITE)g->relics|=1;g->rng=g->rng*1103515245+12345;g->room=next;g->wave=next;g->room_type=(g->rng&0x7fffffff)%3;g->alien_hp=g->room_type==ROOM_ELITE?3:1;g->upgrade_offer=true;g->paused=true;} }
+static void room_progress(Game *g) { int next=1+g->score/5; if(next>g->room){if(g->room_type==ROOM_ELITE)g->relics|=1;g->rng=g->rng*1103515245+12345;g->room=next;g->ante=1+(next-1)/3;g->blind_target=next*5;g->wave=next;g->room_type=next==10?ROOM_ELITE:(g->rng&0x7fffffff)%3;g->alien_hp=next==10?5:(g->room_type==ROOM_ELITE?3:1);g->upgrade_offer=true;g->paused=true;} }
 
 static void step_bullet(Game *g) {
   if (g->bullet < 0) return;
@@ -11,6 +11,7 @@ static void step_bullet(Game *g) {
   if (g->bullet == g->alien_row) {
     if (g->player + 1 >= g->alien && g->player <= g->alien + 2) {
       if (--g->alien_hp > 0) { g->bullet = -1; return; }
+      if (g->room == 10) { g->won = true; g->paused = true; g->bullet = -1; return; }
       g->score++; room_progress(g); g->rng = g->rng * 1103515245 + 12345; g->alien = (g->rng & 0x7fffffff) % (GAME_WIDTH - 3);
       g->alien_row = 2; g->bullet = -1; return;
     }

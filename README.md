@@ -14,10 +14,12 @@ tracking left, red means right, and its length is the response strength.
 An occasional gold signal saucer crosses the top of the arena. Shoot it for
 three points; missing it lets the opportunity pass.
 
-Runs are seeded (`0xC0FFEE` by default) and divide into rooms. Restarting a
+Runs are seeded (`0xC0FFEE` by default) and divide into rooms grouped into
+antes. Each room is a blind with an escalating score target; restarting a
 run reuses its seed for exact replay. Clearing a room
 pauses the run and offers three choices: `1` repairs every shield, `2` grants a
-life, and `3` jams the neural policy, reducing its steering strength.
+life, and `3` jams the neural policy, reducing its steering strength. This is
+the run's shop phase: choose one reward, then face the next blind.
 
 Each room is also seeded as Combat, Elite, or Cache. Elite rooms amplify the
 invader policy; Cache rooms make the bonus saucer arrive sooner. The room type
@@ -26,6 +28,9 @@ Elite commanders also require three hits, with their remaining armor shown
 above them.
 Defeating an Elite grants a violet relic that clears an incoming enemy shot
 when a room upgrade is selected and remains active for the rest of the run.
+Room 10 is the final commander: it has five armor points, and defeating it
+wins the seeded run. Death and victory are both terminal until `R` starts the
+same seed again.
 
 ## Build
 
@@ -39,7 +44,7 @@ ctest --test-dir build --output-on-failure
 ```
 
 Use the arrow keys to move, Space to fire, `P` to pause, `R` to restart
-after game over, `1`/`2`/`3` to choose a room upgrade, and Escape to quit.
+after game over or victory, `1`/`2`/`3` to choose a room upgrade, and Escape to quit.
 
 See [AGENTS.md](AGENTS.md) for architecture, development rules, and the
 headless verification command.

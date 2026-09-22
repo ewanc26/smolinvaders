@@ -34,6 +34,11 @@
   not bypass hit resolution.
 - Relics are run-local state, never global state. Elite rewards must be granted
   exactly when the Elite dies and remain deterministic across replay.
+- Room 10 is the terminal boss room. `won` is distinct from `over`, and restart
+  must clear both while preserving the seed.
+- Progression follows a Balatro-inspired run loop: rooms are blinds, every
+  three blinds form an ante, and the upgrade offer is the shop phase. Keep
+  `blind_target` and `ante` in core state so SDL stays presentational.
 - Keep files focused. Prefer a new small module over growing a catch-all file.
 - Use C23 for the core and C++23 for the UI. Preserve the `extern "C"` API.
 

@@ -16,8 +16,8 @@ typedef struct {
   int player, alien, alien_row, alien_hp, bullet, enemy_bullet, direction;
   int score, ai_mood, lives, wave, rng, bonus_x, bonus_timer, bonus_direction;
   uint32_t seed;
-  int room, room_type, upgrade_level, relics;
-  bool bonus_active, upgrade_offer;
+  int room, room_type, upgrade_level, relics, ante, blind_target;
+  bool bonus_active, upgrade_offer, won;
   uint8_t shields[SHIELD_COUNT][SHIELD_WIDTH];
   bool over, paused;
 } Game;
