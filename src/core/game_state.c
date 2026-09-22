@@ -5,6 +5,10 @@ void game_init(Game *g) {
     .bullet = -1, .enemy_bullet = -1, .direction = 1, .lives = 3, .wave = 1, .rng = 7 };
 }
 
+void game_restart(Game *g) { game_init(g); }
+
+void game_toggle_pause(Game *g) { if (!g->over) g->paused = !g->paused; }
+
 void game_move(Game *g, int d) {
   if (!g->over && g->player + d >= 0 && g->player + d < GAME_WIDTH - 3)
     g->player += d;

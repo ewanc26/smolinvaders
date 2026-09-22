@@ -15,7 +15,8 @@ ctest --test-dir build --output-on-failure
 ./build/space-invaders
 ```
 
-Use the arrow keys to move, Space to fire, and Escape to quit.
+Use the arrow keys to move, Space to fire, `P` to pause, `R` to restart
+after game over, and Escape to quit.
 
 See [AGENTS.md](AGENTS.md) for architecture, development rules, and the
 headless verification command.

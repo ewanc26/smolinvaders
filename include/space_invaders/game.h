@@ -12,10 +12,12 @@ enum { GAME_WIDTH = 48, GAME_HEIGHT = 20 };
 typedef struct {
   int player, alien, alien_row, bullet, enemy_bullet, direction;
   int score, ai_mood, lives, wave, rng;
-  bool over;
+  bool over, paused;
 } Game;
 
 void game_init(Game *game);
+void game_restart(Game *game);
+void game_toggle_pause(Game *game);
 void game_move(Game *game, int direction);
 void game_fire(Game *game);
 void game_step(Game *game);

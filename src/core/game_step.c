@@ -21,5 +21,5 @@ static void step_alien(Game *g) {
 }
 
 void game_step(Game *g) {
-  if (!g->over) step_bullet(g), step_enemy_bullet(g), step_alien(g);
+  if (!g->over && !g->paused) step_bullet(g), step_enemy_bullet(g), step_alien(g);
 }
