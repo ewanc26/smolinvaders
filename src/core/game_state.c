@@ -18,6 +18,7 @@ void game_choose_upgrade(Game *g, int choice) {
   if (choice == 1) game_shields_init(g);
   if (choice == 2 && g->lives < 5) ++g->lives;
   if (choice == 3) ++g->upgrade_level;
+  if (g->relics & 1) g->enemy_bullet = -1;
   g->upgrade_offer = false; g->paused = false;
 }
 

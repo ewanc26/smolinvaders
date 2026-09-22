@@ -32,6 +32,8 @@
   keep this as a thin UI entry point over `game_init_seed`.
 - Elite room armor is core state (`alien_hp`); rendering may show it but must
   not bypass hit resolution.
+- Relics are run-local state, never global state. Elite rewards must be granted
+  exactly when the Elite dies and remain deterministic across replay.
 - Keep files focused. Prefer a new small module over growing a catch-all file.
 - Use C23 for the core and C++23 for the UI. Preserve the `extern "C"` API.
 
