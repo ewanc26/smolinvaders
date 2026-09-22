@@ -17,6 +17,8 @@
   SDL layer does not own game state transitions.
 - Shield geometry and damage belong in the core; the UI only visualizes shield
   cells and must not mutate them.
+- `ai_mood` is a presentation-safe diagnostic from the core policy. UI may
+  visualize it, but must not use it to alter simulation decisions.
 - Keep files focused. Prefer a new small module over growing a catch-all file.
 - Use C23 for the core and C++23 for the UI. Preserve the `extern "C"` API.
 

@@ -8,6 +8,8 @@ advance the wave every five points; the player has three lives.
 
 Three destructible energy shields sit between the player and the invader. Both
 player and enemy shots damage them, so preserving cover is part of the strategy.
+The top bar exposes the AI policy's steering pressure: blue means it is
+tracking left, red means right, and its length is the response strength.
 
 ## Build
 
