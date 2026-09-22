@@ -42,6 +42,8 @@
 - Credits and shop prices belong in the core. UI choices must call
   `game_choose_upgrade` and tolerate unaffordable purchases without mutating
   the economy directly.
+- Shop cards are a visualization of core prices only; keep their costs in one
+  documented core contract if prices change.
 - Keep files focused. Prefer a new small module over growing a catch-all file.
 - Use C23 for the core and C++23 for the UI. Preserve the `extern "C"` API.
 
