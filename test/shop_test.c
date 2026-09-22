@@ -1,0 +1,33 @@
+#include "space_invaders/game.h"
+#include <assert.h>
+
+int main(void) {
+  Game g;
+  game_init_seed(&g, 1);
+  g.paused = g.upgrade_offer = true;
+  g.credits = 0;
+  game_choose_upgrade(&g, 1);
+  assert(g.upgrade_offer && g.credits == 0);
+  game_toggle_pause(&g);
+  assert(g.paused);
+  game_skip_upgrade(&g);
+  assert(!g.upgrade_offer && !g.paused);
+
+  g.upgrade_offer = g.paused = true;
+  g.credits = 4;
+  game_choose_upgrade(&g, 3);
+  assert(g.upgrade_level == 1 && g.credits == 0);
+  assert(!g.upgrade_offer && !g.paused);
+
+  g.upgrade_offer = g.paused = true;
+  g.credits = 3;
+  g.lives = 5;
+  game_choose_upgrade(&g, 2);
+  assert(g.credits == 3 && g.upgrade_offer);
+  g.credits = 4;
+  g.upgrade_level = 3;
+  assert(!game_upgrade_available(&g, 3));
+  game_choose_upgrade(&g, 3);
+  assert(g.credits == 4 && g.upgrade_offer);
+  return 0;
+}

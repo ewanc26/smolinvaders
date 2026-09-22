@@ -1,5 +1,51 @@
 #include "space_invaders/gui.h"
-#include <SDL.h>
-static void block(SDL_Renderer*r,int x,int y,int w,int h,SDL_Color c){SDL_SetRenderDrawColor(r,c.r,c.g,c.b,255);SDL_Rect q{x,y,w,h};SDL_RenderFillRect(r,&q);}
-static SDL_Color price(int credits,int cost){return credits>=cost?SDL_Color{250,235,120,255}:SDL_Color{70,75,100,255};}
-void gui_render(const Gui*g,const Game*x){SDL_SetRenderDrawColor(g->renderer,8,12,30,255);SDL_RenderClear(g->renderer);constexpr int c=24,l=192,t=72;for(int i=0;i<GAME_WIDTH;i++)for(int j=0;j<GAME_HEIGHT;j++)if((i+j)%7==0)block(g->renderer,l+i*c,t+j*c,2,2,{40,55,90,255});for(int s=0;s<SHIELD_COUNT;s++)for(int k=0;k<SHIELD_WIDTH;k++)if(x->shields[s][k])block(g->renderer,l+(s*16+k*2)*c,t+SHIELD_ROW*c,c*2-3,c-4,{90,190,150,255});if(x->bonus_active)block(g->renderer,l+x->bonus_x*c,t+8,c*5-4,c-4,{250,190,70,255});SDL_Color enemy=x->room_type==ROOM_ELITE?SDL_Color{255,80,180,255}:x->room_type==ROOM_CACHE?SDL_Color{120,180,255,255}:SDL_Color{235,75,110,255};block(g->renderer,l+x->alien*c,t+x->alien_row*c,c*3-4,c-4,enemy);for(int i=0;i<x->alien_hp;i++)block(g->renderer,l+x->alien*c+i*7,t-10,5,4,{255,235,120,255});block(g->renderer,l+x->player*c,t+(GAME_HEIGHT-1)*c,c*3-4,c-4,{65,220,180,255});if(x->bullet>=0)block(g->renderer,l+(x->player+1)*c+8,t+x->bullet*c,4,c-4,{250,235,120,255});if(x->enemy_bullet>=0)block(g->renderer,l+(x->alien+1)*c+8,t+x->enemy_bullet*c,4,c-4,{255,110,80,255});for(int i=0;i<x->lives;i++)block(g->renderer,24+i*20,24,12,8,{65,220,180,255});for(int i=0;i<x->wave;i++)block(g->renderer,800+i*10,24,6,8,{235,75,110,255});for(int i=0;i<x->credits;i++)block(g->renderer,24+i*8,42,6,5,{250,190,70,255});if(x->relics&1)block(g->renderer,720,24,12,8,{180,120,255,255});int m=x->ai_mood<0?-x->ai_mood:x->ai_mood;block(g->renderer,420,24,m>100?100:m,8,x->ai_mood<0?SDL_Color{80,150,255,255}:SDL_Color{255,100,130,255});if(x->upgrade_offer){block(g->renderer,300,250,360,120,{25,30,60,255});block(g->renderer,320,275,80,50,price(x->credits,1));block(g->renderer,440,275,80,50,price(x->credits,3));block(g->renderer,560,275,80,50,price(x->credits,4));}if(x->paused||x->over||x->won)block(g->renderer,430,300,100,20,x->won?SDL_Color{120,220,180,255}:x->over?SDL_Color{235,75,110,255}:SDL_Color{250,235,120,255});SDL_RenderPresent(g->renderer);}
+
+void gui_overlay(const Gui *, const Game *);
+
+void gui_render(const Gui *gui, const Game *g) {
+  constexpr SDL_Color background{8, 12, 30, 255};
+  SDL_SetRenderDrawColor(gui->renderer, background.r, background.g,
+                         background.b, background.a);
+  SDL_RenderClear(gui->renderer);
+
+  for (int y = 0; y < GAME_HEIGHT; ++y)
+    for (int x = 0; x < GAME_WIDTH; ++x)
+      if ((x + y) % 11 == 0)
+        gui_box(gui, GUI_LEFT + x * GUI_CELL, GUI_TOP + y * GUI_CELL,
+                2, 2, {36, 48, 78, 255});
+
+  for (int s = 0; s < SHIELD_COUNT; ++s)
+    for (int cell = 0; cell < SHIELD_WIDTH; ++cell)
+      if (g->shields[s][cell])
+        gui_box(gui, GUI_LEFT + (s * 16 + cell * 2) * GUI_CELL,
+                GUI_TOP + static_cast<int>(SHIELD_ROW) * GUI_CELL, GUI_CELL * 2 - 2,
+                GUI_CELL - 2, {70, (Uint8)(110 + g->shields[s][cell] * 30), 150, 255});
+
+  if (g->bonus_active)
+    gui_box(gui, GUI_LEFT + g->bonus_x * GUI_CELL, GUI_TOP,
+            GUI_CELL * 5 - 2, GUI_CELL - 2, {250, 190, 70, 255});
+  SDL_Color enemy = g->room_type == ROOM_ELITE ? SDL_Color{255, 80, 180, 255} :
+                    g->room_type == ROOM_CACHE ? SDL_Color{120, 180, 255, 255} :
+                    SDL_Color{235, 75, 110, 255};
+  gui_box(gui, GUI_LEFT + g->alien * GUI_CELL,
+          GUI_TOP + g->alien_row * GUI_CELL,
+          GUI_CELL * 3 - 2, GUI_CELL - 2, enemy);
+  for (int hp = 0; hp < g->alien_hp; ++hp)
+    gui_box(gui, GUI_LEFT + g->alien * GUI_CELL + hp * 9,
+            GUI_TOP + g->alien_row * GUI_CELL - 7, 6, 4,
+            {255, 235, 120, 255});
+  gui_box(gui, GUI_LEFT + g->player * GUI_CELL,
+          GUI_TOP + (GAME_HEIGHT - 1) * GUI_CELL,
+          GUI_CELL * 3 - 2, GUI_CELL - 2, {65, 220, 180, 255});
+  if (g->bullet >= 0)
+    gui_box(gui, GUI_LEFT + g->bullet_x * GUI_CELL + 6,
+            GUI_TOP + g->bullet * GUI_CELL, 4, GUI_CELL - 2,
+            {250, 235, 120, 255});
+  if (g->enemy_bullet >= 0)
+    gui_box(gui, GUI_LEFT + g->enemy_bullet_x * GUI_CELL + 6,
+            GUI_TOP + g->enemy_bullet * GUI_CELL, 4, GUI_CELL - 2,
+            {255, 110, 80, 255});
+
+  gui_overlay(gui, g);
+  SDL_RenderPresent(gui->renderer);
+}

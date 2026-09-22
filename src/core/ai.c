@@ -1,3 +1,35 @@
 #include "space_invaders/game.h"
-static float a(float x){return x/(1.0f+(x<0?-x:x));}
-void game_ai(Game*g){const float n[3]={(float)(g->player-g->alien)/GAME_WIDTH,(float)g->alien_row/GAME_HEIGHT,g->bullet<0?0.f:1.f};const float w[4][3]={{2.4f,-.4f,-.8f},{-.9f,.2f,.4f},{1.2f,.8f,-.3f},{-1.4f,.5f,.6f}};float h[4];for(int i=0;i<4;i++)h[i]=a(w[i][0]*n[0]+w[i][1]*n[1]+w[i][2]*n[2]);float s=(1.4f*h[0]-1.1f*h[1]+.5f*h[2]-.8f*h[3])*(1.0f+g->wave*.04f+(g->room_type==ROOM_ELITE?.2f:0));if(g->upgrade_level)s*=.75f;g->ai_mood=(int)(s*100);if(s>.12f)g->direction=1;if(s<-.12f)g->direction=-1;if(g->enemy_bullet<0&&h[2]+h[3]>.2f)g->enemy_bullet=g->alien_row+1;}
+
+static float squash(float value) {
+  float magnitude = value < 0 ? -value : value;
+  return value / (1.0f + magnitude);
+}
+
+void game_ai(Game *g) {
+  const float input[3] = {
+    (float)(g->player - g->alien) / GAME_WIDTH,
+    (float)g->alien_row / GAME_HEIGHT,
+    g->bullet < 0 ? 0.0f : 1.0f
+  };
+  const float weights[4][3] = {
+    {2.4f, -.4f, -.8f}, {-.9f, .2f, .4f},
+    {1.2f, .8f, -.3f}, {-1.4f, .5f, .6f}
+  };
+  float hidden[4];
+  for (int i = 0; i < 4; ++i)
+    hidden[i] = squash(weights[i][0] * input[0] +
+                       weights[i][1] * input[1] + weights[i][2] * input[2]);
+
+  float steer = (1.4f * hidden[0] - 1.1f * hidden[1] +
+                 .5f * hidden[2] - .8f * hidden[3]) *
+                (1.0f + g->wave * .04f +
+                 (g->room_type == ROOM_ELITE ? .2f : 0.0f));
+  for (int level = 0; level < g->upgrade_level; ++level) steer *= .75f;
+  g->ai_mood = (int)(steer * 100);
+  if (steer > .12f) g->direction = 1;
+  if (steer < -.12f) g->direction = -1;
+  if (g->enemy_bullet < 0 && hidden[2] + hidden[3] > .2f) {
+    g->enemy_bullet = g->alien_row + 1;
+    g->enemy_bullet_x = g->alien + 1;
+  }
+}
