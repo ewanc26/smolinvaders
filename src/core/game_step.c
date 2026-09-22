@@ -23,9 +23,9 @@ static void step_player_shot(Game *g) {
 
   g->bullet = -1;
   if (--g->alien_hp > 0) return;
-  if (g->room == 10) {
-    game_score_kill(g, 5, false);
-    g->won = true;
+  if (game_is_boss(g)) {
+    game_score_kill(g, 4 + g->ante, false);
+    game_room_progress(g);
     return;
   }
   if (g->room_type == ROOM_ELITE) {
@@ -45,7 +45,8 @@ static void step_player_shot(Game *g) {
 static void step_enemy_shot(Game *g) {
   if (g->enemy_bullet < 0) return;
   ++g->enemy_bullet;
-  if (game_shield_hit(g, g->enemy_bullet_x, g->enemy_bullet)) {
+  if (!(g->boss_rules & BOSS_BREACH) &&
+      game_shield_hit(g, g->enemy_bullet_x, g->enemy_bullet)) {
     g->enemy_bullet = -1;
     return;
   }
@@ -69,6 +70,7 @@ static void step_alien(Game *g) {
 }
 
 static void step_bonus(Game *g) {
+  if (g->boss_rules & BOSS_BLACKOUT) return;
   if (!g->bonus_active) {
     if (++g->bonus_timer >= (g->room_type == ROOM_CACHE ? 90 : 140)) {
       g->bonus_active = true;

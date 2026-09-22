@@ -10,9 +10,10 @@ void game_module_offer(Game *g) {
 
 void game_score_kill(Game *g, int base, bool saucer) {
   ++g->kills;
-  if (g->modules & MODULE_AMPLIFIER) ++base;
-  if ((g->modules & MODULE_CADENCE) && g->kills % 3 == 0) base += 2;
-  if ((g->modules & MODULE_SIGNAL) && saucer) base *= 2;
+  int active = g->boss_rules & BOSS_STATIC ? 0 : g->modules;
+  if (active & MODULE_AMPLIFIER) ++base;
+  if ((active & MODULE_CADENCE) && g->kills % 3 == 0) base += 2;
+  if ((active & MODULE_SIGNAL) && saucer) base *= 2;
   g->score += base;
 }
 

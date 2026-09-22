@@ -15,7 +15,7 @@ An occasional gold signal saucer crosses the top of the arena. Shoot it for
 three points; missing it lets the opportunity pass.
 
 Runs are seeded (`0xC0FFEE` by default), including the first enemy position,
-and divide into blinds grouped into antes. Each blind needs five new points;
+and divide into eight antes of three blinds. Each blind needs `4 + ante` new points;
 surplus score stays in the run total but cannot pre-clear the next blind.
 Meeting the target opens a shop:
 `1` repairs every shield, `2` grants a life, and `3` weakens the neural
@@ -31,7 +31,7 @@ Shop randomness is separate from combat randomness.
 
 These original shooter modifiers take inspiration from the shop-acquired,
 score-changing Jokers described in the [official Balatro FAQ](https://www.playbalatro.com/faq).
-This remains a compact ten-room prototype, not Balatro's full eight-ante loop.
+The run follows the FAQ's eight-ante structure, with original shooter bosses.
 Credits are part of the run economy: signal saucers pay two credits and Elite
 commanders pay three. Shield repair costs one, an extra life costs three, and
 the neural jammer costs four; unaffordable choices do nothing.
@@ -47,8 +47,15 @@ Elite commanders also require three hits, with their remaining armor shown
 above them.
 Defeating an Elite grants a violet relic that absorbs one enemy hit per blind.
 Its ready/spent state appears in the HUD.
-Room 10 is the final commander: it has five armor points, and defeating it
-wins the seeded run with a five point finish. The window stays open after death
+Every third blind is a boss with `2 + ante` armor. Its seed-derived restriction
+is announced beneath the arena and visible while shopping before that fight:
+Static suppresses scoring modules (you keep them), Breach makes enemy shots
+bypass shields, and Blackout prevents signal saucers. Boss identity depends
+only on seed and ante, not how many shots you fired. Killing the boss awards
+`4 + ante` base points; reaching the score target alone never skips a living boss.
+Room 24 is the Eclipse commander, combining all three restrictions. Defeating
+it wins the run. Restrictions end when leaving their blind.
+The window stays open after death
 or victory so `R` can
 replay the same seed.
 

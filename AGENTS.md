@@ -38,8 +38,13 @@
 - Relics are run-local state, never global state. Elite rewards must be granted
   exactly when the Elite dies and remain deterministic across replay. The
   relic absorbs one player hit per blind; restore its charge on room entry.
-- Room 10 is the terminal boss room. `won` is distinct from `over`, and restart
-  must clear both while preserving the seed.
+- Runs have eight antes of three blinds. Every third blind requires a boss
+  kill, even if saucers meet the score target. Only room `RUN_BLINDS` wins.
+  `won` is distinct from `over`; restart clears both while preserving seed.
+- Boss rules are seed/ante-derived in `boss.c`, independent of combat draws.
+  Static suppresses module effects without deleting inventory; Breach bypasses
+  shields for enemy shots only; Blackout stops saucers. The final boss combines
+  all three. Restrictions expire on room transition and are shown in the HUD.
 - Progression follows a Balatro-inspired run loop: rooms are blinds, every
   three blinds form an ante, and the upgrade offer is the shop phase. Keep
   `blind_target` and `ante` in core state so SDL stays presentational.
@@ -58,7 +63,7 @@
 - Scoring modules live in `modules.c`: additive bonuses precede multipliers,
   and only kills advance Cadence. Shop offers use their own unsigned seeded
   RNG, exclude owned modules, and reset on replay. Test through shot resolution.
-- Blind targets are cumulative score plus five on room entry. Surplus points
+- Blind targets are cumulative score plus four plus ante on room entry. Surplus points
   remain in total score, but never pre-clear later blinds. Shop rendering lives
   separately in `gui_shop.cpp`; core availability is authoritative.
 - Use C23 for the core and C++23 for the UI. Preserve the `extern "C"` API.
@@ -74,3 +79,9 @@ ctest --test-dir build --output-on-failure
 The suite checks gameplay, rooms, shops, and a GUI render with SDL's dummy
 video driver. Use focused tests for new mechanics rather than expanding one
 large assertion chain.
+
+The boss suite checks 100 seeded, controlled-collision runs through all 24
+blinds; this verifies progression, not human playability or difficulty balance.
+On the current macOS SDL build, an ASan-linked GUI can enter SDL's startup
+error dialog before `main`. Core ASan/UBSan tests pass; report sanitized GUI
+coverage separately from normal dummy-driver coverage. Keep smoke tests timed.

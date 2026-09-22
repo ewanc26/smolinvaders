@@ -8,8 +8,8 @@ static constexpr SDL_Color gold{250, 205, 105, 255};
 
 static void hud(const Gui *gui, const Game *g) {
   char line[128];
-  std::snprintf(line, sizeof line, "ANTE %d  BLIND %d  %s", g->ante, g->room,
-                g->room == 10 ? "BOSS" : g->room_type == ROOM_ELITE ? "ELITE" :
+  std::snprintf(line, sizeof line, "ANTE %d/8  BLIND %d/24  %s", g->ante, g->room,
+                game_is_boss(g) ? "BOSS" : g->room_type == ROOM_ELITE ? "ELITE" :
                 g->room_type == ROOM_CACHE ? "CACHE" : "COMBAT");
   gui_text(gui, line, GUI_LEFT, 20, white);
   std::snprintf(line, sizeof line, "SCORE %d / %d", g->score, g->blind_target);
@@ -24,6 +24,7 @@ static void hud(const Gui *gui, const Game *g) {
   gui_text(gui, "ARROWS move   SPACE fire   P pause   ESC quit",
            GUI_LEFT, 510, muted);
   gui_text(gui, "R replay after a win or defeat", GUI_LEFT, 540, muted);
+  gui_text(gui, game_boss_description(g), GUI_LEFT, 570, gold);
 }
 
 void gui_overlay(const Gui *gui, const Game *g) {

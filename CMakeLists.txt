@@ -18,6 +18,7 @@ add_library(space_invaders_core STATIC
   src/core/random.c
   src/core/room.c
   src/core/modules.c
+  src/core/boss.c
   src/core/game_step.c)
 target_include_directories(space_invaders_core PUBLIC include)
 
@@ -33,10 +34,11 @@ add_executable(space-invaders
 target_link_libraries(space-invaders PRIVATE space_invaders_core PkgConfig::SDL2 PkgConfig::SDL2_TTF)
 
 enable_testing()
-foreach(test_name gameplay room shop modules)
+foreach(test_name gameplay room shop modules boss)
   add_executable(${test_name}-test test/${test_name}_test.c)
   target_link_libraries(${test_name}-test PRIVATE space_invaders_core)
   add_test(NAME ${test_name} COMMAND ${test_name}-test)
 endforeach()
 add_test(NAME gui-smoke COMMAND ${CMAKE_COMMAND} -E env SDL_VIDEODRIVER=dummy
   $<TARGET_FILE:space-invaders> --smoke 42)
+set_tests_properties(gui-smoke PROPERTIES TIMEOUT 15)

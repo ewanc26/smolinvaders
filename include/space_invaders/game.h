@@ -11,6 +11,8 @@ extern "C" {
 enum { GAME_WIDTH = 48, GAME_HEIGHT = 20 };
 enum { SHIELD_COUNT = 3, SHIELD_WIDTH = 6, SHIELD_ROW = 15 };
 enum { ROOM_COMBAT, ROOM_ELITE, ROOM_CACHE };
+enum { RUN_ANTES = 8, RUN_BLINDS = RUN_ANTES * 3 };
+enum { BOSS_STATIC = 1, BOSS_BREACH = 2, BOSS_BLACKOUT = 4 };
 enum { MODULE_AMPLIFIER = 1, MODULE_SIGNAL = 2, MODULE_CADENCE = 4 };
 
 typedef struct {
@@ -21,6 +23,7 @@ typedef struct {
   uint32_t seed;
   uint32_t shop_rng;
   int modules, module_offer, kills;
+  int boss_rules;
   int room, room_type, upgrade_level, relics, relic_charges;
   int ante, blind_target, credits;
   bool bonus_active, upgrade_offer, won;
@@ -45,6 +48,9 @@ int game_ai_mood(const Game *game);
 bool game_shield_hit(Game *game, int x, int row);
 uint32_t game_random(Game *game);
 void game_room_progress(Game *game);
+bool game_is_boss(const Game *game);
+void game_boss_prepare(Game *game);
+const char *game_boss_description(const Game *game);
 void game_module_offer(Game *game);
 void game_score_kill(Game *game, int base, bool saucer);
 const char *game_module_name(int module);

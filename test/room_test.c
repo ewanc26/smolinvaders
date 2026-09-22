@@ -61,7 +61,8 @@ int main(void) {
 
   Game boss;
   game_init_seed(&boss, 0);
-  boss.room = 10;
+  boss.room = RUN_BLINDS;
+  boss.ante = RUN_ANTES;
   boss.blind_target = 50;
   boss.score = 45;
   boss.alien_hp = 1;
