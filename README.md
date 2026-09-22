@@ -20,6 +20,9 @@ run reuses its seed for exact replay. Clearing a room
 pauses the run and offers three choices: `1` repairs every shield, `2` grants a
 life, and `3` jams the neural policy, reducing its steering strength. This is
 the run's shop phase: choose one reward, then face the next blind.
+Credits are part of the run economy: signal saucers pay two credits and Elite
+commanders pay three. Shield repair costs one, an extra life costs three, and
+the neural jammer costs four; unaffordable choices do nothing.
 
 Each room is also seeded as Combat, Elite, or Cache. Elite rooms amplify the
 invader policy; Cache rooms make the bonus saucer arrive sooner. The room type

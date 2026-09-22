@@ -3,7 +3,7 @@
 void game_init_seed(Game *g, uint32_t seed) {
   *g = (Game){ .player = 22, .alien = 5, .alien_row = 2, .alien_hp = 1,
     .bullet = -1, .enemy_bullet = -1, .direction = 1, .lives = 3, .wave = 1,
-    .rng = (int)seed, .seed = seed, .room = 1, .room_type = ROOM_COMBAT, .ante = 1, .blind_target = 5, .bonus_x = -3, .bonus_timer = 0, .bonus_direction = 1 };
+    .rng = (int)seed, .seed = seed, .room = 1, .room_type = ROOM_COMBAT, .ante = 1, .blind_target = 5, .credits = 3, .bonus_x = -3, .bonus_timer = 0, .bonus_direction = 1 };
   game_shields_init(g);
 }
 
@@ -15,6 +15,9 @@ void game_toggle_pause(Game *g) { if (!g->over) g->paused = !g->paused; }
 
 void game_choose_upgrade(Game *g, int choice) {
   if (!g->upgrade_offer || choice < 1 || choice > 3) return;
+  int cost = choice == 1 ? 1 : choice == 2 ? 3 : 4;
+  if (g->credits < cost) return;
+  g->credits -= cost;
   if (choice == 1) game_shields_init(g);
   if (choice == 2 && g->lives < 5) ++g->lives;
   if (choice == 3) ++g->upgrade_level;

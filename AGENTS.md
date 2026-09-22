@@ -39,6 +39,9 @@
 - Progression follows a Balatro-inspired run loop: rooms are blinds, every
   three blinds form an ante, and the upgrade offer is the shop phase. Keep
   `blind_target` and `ante` in core state so SDL stays presentational.
+- Credits and shop prices belong in the core. UI choices must call
+  `game_choose_upgrade` and tolerate unaffordable purchases without mutating
+  the economy directly.
 - Keep files focused. Prefer a new small module over growing a catch-all file.
 - Use C23 for the core and C++23 for the UI. Preserve the `extern "C"` API.
 
