@@ -21,6 +21,9 @@
   visualize it, but must not use it to alter simulation decisions.
 - Bonus entities must use the core's deterministic timer/RNG state and expose
   their collision behavior to headless tests before being rendered by SDL.
+- Roguelike state must be seedable through `game_init_seed`. Room transitions
+  pause in the core and upgrades are selected through `game_choose_upgrade`; UI
+  must never invent progression or mutate run state directly.
 - Keep files focused. Prefer a new small module over growing a catch-all file.
 - Use C23 for the core and C++23 for the UI. Preserve the `extern "C"` API.
 

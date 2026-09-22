@@ -14,6 +14,10 @@ tracking left, red means right, and its length is the response strength.
 An occasional gold signal saucer crosses the top of the arena. Shoot it for
 three points; missing it lets the opportunity pass.
 
+Runs are seeded (`0xC0FFEE` by default) and divide into rooms. Clearing a room
+pauses the run and offers three choices: `1` repairs every shield, `2` grants a
+life, and `3` jams the neural policy, reducing its steering strength.
+
 ## Build
 
 ```sh
@@ -24,7 +28,7 @@ ctest --test-dir build --output-on-failure
 ```
 
 Use the arrow keys to move, Space to fire, `P` to pause, `R` to restart
-after game over, and Escape to quit.
+after game over, `1`/`2`/`3` to choose a room upgrade, and Escape to quit.
 
 See [AGENTS.md](AGENTS.md) for architecture, development rules, and the
 headless verification command.

@@ -14,15 +14,19 @@ enum { SHIELD_COUNT = 3, SHIELD_WIDTH = 6, SHIELD_ROW = 15 };
 typedef struct {
   int player, alien, alien_row, bullet, enemy_bullet, direction;
   int score, ai_mood, lives, wave, rng, bonus_x, bonus_timer, bonus_direction;
-  bool bonus_active;
+  uint32_t seed;
+  int room, upgrade_level;
+  bool bonus_active, upgrade_offer;
   uint8_t shields[SHIELD_COUNT][SHIELD_WIDTH];
   bool over, paused;
 } Game;
 
 void game_init(Game *game);
+void game_init_seed(Game *game, uint32_t seed);
 void game_shields_init(Game *game);
 void game_restart(Game *game);
 void game_toggle_pause(Game *game);
+void game_choose_upgrade(Game *game, int choice);
 void game_move(Game *game, int direction);
 void game_fire(Game *game);
 void game_step(Game *game);
