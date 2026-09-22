@@ -1,6 +1,6 @@
 # Space Invaders
 
-Minimal terminal Space Invaders: a C23 game core with a C++23 terminal UI.
+Minimal windowed Space Invaders: a C23 game core with a C++23 SDL2 GUI.
 
 ## Build
 
@@ -11,4 +11,4 @@ ctest --test-dir build --output-on-failure
 ./build/space-invaders
 ```
 
-Use `a`/`d` to move, Space to fire, and `q` to quit.
+Use the arrow keys to move, Space to fire, and Escape to quit.
