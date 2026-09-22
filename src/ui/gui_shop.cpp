@@ -5,7 +5,7 @@ void gui_shop(const Gui *gui, const Game *g) {
   constexpr SDL_Color white{225, 232, 245, 255};
   constexpr SDL_Color muted{150, 164, 190, 255};
   constexpr SDL_Color gold{250, 205, 105, 255};
-  gui_box(gui, 70, 205, 820, 220, {22, 30, 56, 255});
+  gui_box(gui, 70, 205, 820, 260, {22, 30, 56, 255});
   gui_text(gui, "BLIND CLEARED - SHOP", 236, 224, gold);
   const char *names[] = {"REPAIR", "EXTRA LIFE", "JAMMER",
                          game_module_name(g->module_offer)};
@@ -27,4 +27,8 @@ void gui_shop(const Gui *gui, const Game *g) {
   std::snprintf(reroll, sizeof reroll, "5 REROLL: %d credits", game_reroll_cost(g));
   gui_text(gui, reroll, 95, 389, game_reroll_available(g) ? gold : muted);
   gui_text(gui, "0 LEAVE - keep unspent credits", 475, 389, white);
+  char emp[80];
+  std::snprintf(emp, sizeof emp, "6 EMP: %d credits - clear shot + freeze enemies (carry %d)",
+                game_upgrade_cost(6), EMP_CAPACITY);
+  gui_text(gui, emp, 95, 430, game_upgrade_available(g, 6) ? gold : muted);
 }

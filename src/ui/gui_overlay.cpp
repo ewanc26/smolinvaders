@@ -23,7 +23,10 @@ static void hud(const Gui *gui, const Game *g) {
       gui_text(gui, game_module_name(1 << i), GUI_LEFT + i * 240, 112, gold);
   gui_text(gui, "ARROWS move   SPACE fire   P pause   ESC quit",
            GUI_LEFT, 510, muted);
-  gui_text(gui, "R replay after a win or defeat", GUI_LEFT, 540, muted);
+  std::snprintf(line, sizeof line, "X EMP %d/%d  %s   R replay after run",
+                g->emp_charges, EMP_CAPACITY,
+                g->emp_ticks ? "ACTIVE" : g->emp_charges ? "READY" : "EMPTY");
+  gui_text(gui, line, GUI_LEFT, 540, g->emp_ticks ? gold : muted);
   gui_text(gui, game_boss_description(g), GUI_LEFT, 570, gold);
 }
 

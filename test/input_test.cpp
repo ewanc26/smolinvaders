@@ -70,5 +70,11 @@ int main() {
   key(SDL_KEYDOWN, SDLK_0);
   assert(gui_input(&gui, &g));
   assert(!g.paused && !g.upgrade_offer);
+  key(SDL_KEYDOWN, SDLK_x, true);
+  assert(gui_input(&gui, &g));
+  assert(g.emp_charges == 1 && g.emp_ticks == 0);
+  key(SDL_KEYDOWN, SDLK_x);
+  assert(gui_input(&gui, &g));
+  assert(g.emp_charges == 0 && g.emp_ticks == EMP_DURATION);
   SDL_Quit();
 }

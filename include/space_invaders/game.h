@@ -10,6 +10,7 @@ extern "C" {
 
 enum { GAME_WIDTH = 48, GAME_HEIGHT = 20 };
 enum { PLAYER_SHOT_SPEED = 3 };
+enum { EMP_DURATION = 12, EMP_CAPACITY = 2 };
 enum { SHIELD_COUNT = 3, SHIELD_WIDTH = 6, SHIELD_ROW = 15 };
 enum { ROOM_COMBAT, ROOM_ELITE, ROOM_CACHE };
 enum { RUN_ANTES = 8, RUN_BLINDS = RUN_ANTES * 3 };
@@ -25,6 +26,7 @@ typedef struct {
   uint32_t shop_rng;
   int modules, module_offer, kills;
   int shop_bought, shop_rerolls;
+  int emp_charges, emp_ticks;
   int boss_rules;
   int room, room_type, upgrade_level, relics, relic_charges;
   int ante, blind_target, credits;
@@ -49,6 +51,7 @@ void game_move(Game *game, int direction);
 void game_fire(Game *game);
 void game_step(Game *game);
 void game_tick(Game *game, int movement, bool fire);
+bool game_use_emp(Game *game);
 void game_ai(Game *game);
 int game_ai_mood(const Game *game);
 bool game_shield_hit(Game *game, int x, int row);

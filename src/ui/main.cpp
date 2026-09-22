@@ -41,6 +41,7 @@ int main(int argc, char **argv) {
   Uint32 last = SDL_GetTicks();
   int frames = 0;
   while (running && (!smoke || frames++ < 4)) {
+    if (smoke && frames == 1) game_use_emp(&game);
     if (smoke && frames == 2) {
       game_score_kill(&game, 5, false);
       game_room_progress(&game);

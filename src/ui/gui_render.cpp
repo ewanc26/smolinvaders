@@ -27,6 +27,7 @@ void gui_render(const Gui *gui, const Game *g) {
   SDL_Color enemy = g->room_type == ROOM_ELITE ? SDL_Color{255, 80, 180, 255} :
                     g->room_type == ROOM_CACHE ? SDL_Color{120, 180, 255, 255} :
                     SDL_Color{235, 75, 110, 255};
+  if (g->emp_ticks) enemy = {100, 240, 255, 255};
   gui_box(gui, GUI_LEFT + g->alien * GUI_CELL,
           GUI_TOP + g->alien_row * GUI_CELL,
           GUI_CELL * 3 - 2, GUI_CELL - 2, enemy);

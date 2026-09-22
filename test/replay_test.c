@@ -6,11 +6,15 @@
 static void pilot(Game *g) {
   if (g->upgrade_offer) {
     int choice = g->lives < 3 && game_upgrade_available(g, 2) ? 2 : 4;
+    if (choice == 4 && !g->emp_charges && game_upgrade_available(g, 6)) choice = 6;
     if (game_upgrade_available(g, choice)) game_choose_upgrade(g, choice);
     else game_skip_upgrade(g);
     return;
   }
-  int travel = (GAME_HEIGHT - 2 - g->alien_row) / PLAYER_SHOT_SPEED;
+  if (g->enemy_bullet >= SHIELD_ROW &&
+      g->enemy_bullet_x >= g->player && g->enemy_bullet_x < g->player + 3)
+    game_use_emp(g);
+  int travel = g->emp_ticks ? 0 : (GAME_HEIGHT - 2 - g->alien_row) / PLAYER_SHOT_SPEED;
   int target = g->alien + g->direction * travel;
   if (target < 0) target = 0;
   if (target > GAME_WIDTH - 3) target = GAME_WIDTH - 3;
@@ -30,6 +34,7 @@ static void same_state(const Game *a, const Game *b) {
   SAME(rng); SAME(seed); SAME(shop_rng); SAME(modules); SAME(module_offer);
   SAME(kills); SAME(boss_rules); SAME(room); SAME(room_type);
   SAME(shop_bought); SAME(shop_rerolls);
+  SAME(emp_charges); SAME(emp_ticks);
   SAME(upgrade_level); SAME(relics); SAME(relic_charges); SAME(ante);
   SAME(blind_target); SAME(credits); SAME(upgrade_offer);
   SAME(won); SAME(over); SAME(paused);

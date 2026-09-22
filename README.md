@@ -36,6 +36,15 @@ empties its slot; a paid reroll can restock it. Stock and reroll prices reset
 at the next shop. Leaving preserves unspent credits for interest.
 Shop randomness is separate from combat randomness.
 
+Each run starts with one EMP charge; carry up to two. Press `X` during combat
+to erase the incoming enemy shot and freeze enemy movement, neural firing,
+and saucer timers for 12 simulation ticks (about 0.84 seconds at normal speed).
+You can still move and fire. Frozen enemies turn cyan and the HUD says ACTIVE.
+The EMP works against bosses too, but does not damage them or bypass armor.
+`6` buys one charge for three credits, once per shop. Unused charges carry
+between blinds; an active freeze ends when a new blind starts. You cannot
+stack active pulses or spend charges while paused, shopping, or after a run.
+
 These original shooter modifiers take inspiration from the shop-acquired,
 score-changing Jokers described in the [official Balatro FAQ](https://www.playbalatro.com/faq).
 The run follows the FAQ's eight-ante structure, with original shooter bosses.
@@ -89,12 +98,13 @@ Player shots move three cells per tick, checking every cell for collisions;
 enemies and their shots move one. Cover still blocks your own shots.
 
 Use `P` to pause, `R` to replay after
-game over or victory, `1`/`2`/`3`/`4` to buy, `5` to reroll, `0` to leave the shop,
+game over or victory, `X` to use EMP, `1`/`2`/`3`/`4`/`6` to buy,
+`5` to reroll, `0` to leave the shop,
 and Escape to quit. Each shot keeps its launch lane even if you move.
 
 `./build/replay-test` runs 32 deterministic input-only pilots and compares
 every core field on replay. It never places projectiles or grants resources.
-The current simple pilot reaches blind four but wins none of those seeds;
+The pilot uses and restocks EMPs, and prints wins, losses, and the furthest blind;
 this is a regression/balance diagnostic, not proof of human difficulty balance.
 The SDL input test injects key-up/down and focus-loss events without a window.
 

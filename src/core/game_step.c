@@ -92,6 +92,10 @@ void game_step(Game *g) {
     step_player_shot(g);
     if (g->over || g->won || g->paused) return;
   }
+  if (g->emp_ticks > 0) {
+    --g->emp_ticks;
+    return;
+  }
   step_enemy_shot(g);
   if (g->over) return;
   step_alien(g);

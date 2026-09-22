@@ -73,6 +73,13 @@
 - The arena is 48 by 20 cells at 16 pixels per cell and must fit inside the
   960 by 640 window. Keep labels legible and terminal screens restartable.
 - Keep files focused. Prefer a new small module over growing a catch-all file.
+- EMP activation lives in `consumables.c`: start with one charge, carry two,
+  and buy one per shop for three credits. Reject activation during pause,
+  shop, terminal state, or an existing pulse without spending a charge.
+  Clear the enemy shot, then freeze enemies and saucers for 12 ticks while
+  player movement and collision-checked shots continue. Pause preserves the
+  countdown; room entry clears the effect but not unused charges. Boss rules
+  do not disable consumables. Test timing and state boundaries headlessly.
 - Scoring modules live in `modules.c`: additive bonuses precede multipliers,
   and only kills advance Cadence. Shop offers use their own unsigned seeded
   RNG, exclude owned modules, and reset on replay. Test through shot resolution.
