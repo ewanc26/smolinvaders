@@ -32,6 +32,8 @@ cmake -S . -B build
 cmake --build build
 ctest --test-dir build --output-on-failure
 ./build/space-invaders
+# Shareable deterministic run
+./build/space-invaders 42
 ```
 
 Use the arrow keys to move, Space to fire, `P` to pause, `R` to restart

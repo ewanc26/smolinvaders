@@ -28,6 +28,8 @@
   must differ in the core and remain reproducible for a given seed.
 - `game_restart` must preserve the current seed; changing the seed is an
   explicit `game_init_seed` operation and should never happen implicitly.
+- The SDL executable accepts an optional unsigned integer seed as `argv[1]`;
+  keep this as a thin UI entry point over `game_init_seed`.
 - Elite room armor is core state (`alien_hp`); rendering may show it but must
   not bypass hit resolution.
 - Keep files focused. Prefer a new small module over growing a catch-all file.
