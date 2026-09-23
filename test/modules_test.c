@@ -40,8 +40,8 @@ int main(void) {
   g.bullet_x = 21;
   g.bullet = 1;
   game_step(&g);
-  assert(g.score == 12 && g.kills == 3); /* (3 + 1 + 2) * 2 */
-  assert(g.room == 2 && g.blind_target == 17 && g.upgrade_offer);
+  assert(g.score == 13 && g.kills == 3); /* ((3 + 1 + 2) * 2) + 1 */
+  assert(g.room == 2 && g.blind_target == 18 && g.upgrade_offer);
   game_room_progress(&g);
   assert(g.room == 2);
   game_skip_upgrade(&g);
@@ -49,15 +49,15 @@ int main(void) {
   g.bullet_x = g.alien + 1;
   g.bullet = g.alien_row + 1;
   game_step(&g);
-  assert(g.score == 12 && g.kills == 3); /* Armor hits are not kills. */
+  assert(g.score == 13 && g.kills == 3); /* Armor hits are not kills. */
   g.bullet_x = g.alien + 1;
   g.bullet = g.alien_row + 1;
   game_step(&g);
-  assert(g.score == 16 && g.kills == 4 && g.room == 2);
+  assert(g.score == 17 && g.kills == 4 && g.room == 2);
   game_score_kill(&g, 1, false);
   game_score_kill(&g, 1, false);
   game_score_kill(&g, 1, false);
-  assert(g.combo == 4 && g.score == 26); /* four-kill combo reaches 2x */
+  assert(g.combo == 4 && g.score == 27); /* four-kill combo reaches 2x */
   g.modules = MODULE_AMPLIFIER | MODULE_CADENCE;
   g.kills = 3;
   g.combo = g.combo_timer = 0;

@@ -57,6 +57,8 @@ Build pairs have extra identities: Amplifier plus Cadence adds two points on
 every fourth kill, while Signal plus Scavenger pays one bonus credit whenever a
 saucer is destroyed. These synergies are deterministic and remain suppressed
 by the Static boss restriction.
+Amplifier plus Signal adds one extra saucer point before Signal's multiplier,
+making bonus-target hunting a distinct scoring build.
 The HUD lists owned modules. Shops remain open until you press `0` to leave.
 Buy several cards if you can afford them; repair, life, and jammer each have
 one unit per visit. Intact shields cannot be repaired for a wasted credit.

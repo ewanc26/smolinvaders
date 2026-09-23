@@ -124,6 +124,8 @@
 - Module synergies live in `modules.c`: Amplifier+Cadence adds two points on
   fourth kills; Signal+Scavenger pays one credit per saucer. Boss Static
   suppresses both with other module effects.
+- Amplifier+Signal adds one saucer point before Signal's multiplier; Static
+  suppresses it with the other module effects.
 - `shop_hold.c` lets the player pay two credits once per shop to carry the
   current module offer into the next shop; held offers bypass module RNG.
 - Module inventory starts at three slots and caps at six. `module_slots.c`

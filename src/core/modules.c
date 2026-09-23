@@ -22,6 +22,9 @@ void game_score_kill(Game *g, int base, bool saucer) {
   if (active & MODULE_AMPLIFIER) ++base;
   if ((active & MODULE_CADENCE) && g->kills % 3 == 0) base += 2;
   if ((active & MODULE_SIGNAL) && saucer) base *= 2;
+  if ((active & (MODULE_AMPLIFIER | MODULE_SIGNAL)) ==
+      (MODULE_AMPLIFIER | MODULE_SIGNAL) && saucer)
+    base += 1;
   if ((active & (MODULE_AMPLIFIER | MODULE_CADENCE)) ==
       (MODULE_AMPLIFIER | MODULE_CADENCE) && g->kills % 4 == 0)
     base += 2;
