@@ -15,10 +15,13 @@ int main(void) {
     }
     assert(game_choose_route(&g, ROOM_ELITE));
     assert(g.room_type == ROOM_ELITE && g.alien_hp == 3 && g.paused);
-    g.emp_charges = 0;
-    assert(game_choose_route(&g, ROOM_CACHE));
-    assert(g.room_type == ROOM_CACHE && g.alien_hp == 1);
-    assert(g.emp_charges == 1);
+    Game cache = g;
+    cache.route_chosen = false;
+    cache.emp_charges = 0;
+    assert(game_choose_route(&cache, ROOM_CACHE));
+    assert(cache.room_type == ROOM_CACHE && cache.alien_hp == 1);
+    assert(cache.emp_charges == 1);
+    assert(!game_choose_route(&cache, ROOM_CACHE) && cache.emp_charges == 1);
     assert(!game_choose_route(&g, -1) && !game_choose_route(&g, 99));
   }
   Game boss;

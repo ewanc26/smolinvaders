@@ -24,7 +24,7 @@ int main(void) {
   assert(first.rng == replay.rng && first.blind_target == 10);
   assert(game_choose_route(&first, ROOM_ELITE));
   assert(first.room_type == ROOM_ELITE && first.alien_hp == 3);
-  assert(game_choose_route(&first, ROOM_CACHE));
+  assert(!game_choose_route(&first, ROOM_CACHE));
   game_skip_upgrade(&first);
 
   Game saucer;

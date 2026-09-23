@@ -28,6 +28,8 @@ While the shop is open, the next non-boss blind can be routed deliberately:
 `7` selects Combat (baseline), `8` selects Elite (three armor and a relic),
 or `9` selects Cache (earlier saucer and one EMP charge on entry). Route selection is free, deterministic,
 and remains locked on every third blind because that blind is always a boss.
+Only the first route key in a shop takes effect, so Cache rewards cannot be
+duplicated by changing your mind.
 This adds replayable risk/reward path planning to the seeded run.
 
 `4` buys the seeded scoring module for five credits. Modules last for the run,

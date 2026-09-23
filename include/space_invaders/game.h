@@ -27,6 +27,7 @@ typedef struct {
   uint32_t shop_rng;
   int modules, module_offer, kills;
   int shop_bought, shop_rerolls;
+  bool route_chosen;
   int emp_charges, emp_ticks;
   int boss_rules;
   int room, room_type, upgrade_level, relics, relic_charges;

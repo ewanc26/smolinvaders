@@ -109,6 +109,8 @@ int main() {
   key(SDL_KEYDOWN, SDLK_9);
   assert(gui_input(&gui, &g));
   assert(g.room_type == ROOM_CACHE && g.emp_charges == 1 && g.paused);
+  key(SDL_KEYDOWN, SDLK_9);
+  assert(gui_input(&gui, &g) && g.emp_charges == 1);
   g.room = 3;
   g.room_type = ROOM_ELITE;
   g.alien_hp = 4;
