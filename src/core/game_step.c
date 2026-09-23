@@ -54,9 +54,14 @@ static void step_enemy_shot(Game *g) {
     return;
   }
   if (g->enemy_bullet < GAME_HEIGHT - 1) return;
-  if (g->enemy_bullet_x >= g->player && g->enemy_bullet_x < g->player + 3) {
-    if (g->relic_charges) --g->relic_charges;
-    else if (--g->lives == 0) g->over = true;
+  if (g->damage_grace == 0 && g->enemy_bullet_x >= g->player &&
+      g->enemy_bullet_x < g->player + 3) {
+    if (g->relic_charges) {
+      --g->relic_charges;
+    } else {
+      if (--g->lives == 0) g->over = true;
+      g->damage_grace = DAMAGE_GRACE;
+    }
   }
   g->enemy_bullet = -1;
 }
@@ -93,6 +98,7 @@ static void step_bonus(Game *g) {
 
 void game_step(Game *g) {
   if (g->over || g->won || g->paused) return;
+  if (g->damage_grace > 0) --g->damage_grace;
   for (int cell = 0; cell < game_player_shot_speed(g); ++cell) {
     step_player_shot(g);
     if (g->over || g->won || g->paused) return;

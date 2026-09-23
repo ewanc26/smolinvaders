@@ -117,6 +117,9 @@ simulation tick, independent of OS key-repeat settings. Opposite arrows cancel.
 Left Shift dashes four cells in the held/facing direction and starts an
 18-tick cooldown; dashes clamp at arena edges and do not change shot lanes.
 Use it to evade a firing lane or buy time while an EMP is unavailable.
+
+An enemy hit grants an 8-tick damage-grace window, preventing rapid shot chains
+while keeping the seeded simulation deterministic. The HUD shows when grace is active.
 Losing window focus pauses combat and clears held keys; press `P` to resume.
 Player shots move three cells per tick, checking every cell for collisions;
 enemies and their shots move one. Cover still blocks your own shots.

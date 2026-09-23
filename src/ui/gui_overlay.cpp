@@ -18,10 +18,11 @@ static void hud(const Gui *gui, const Game *g) {
                 g->lives, g->credits,
                 g->relics);
   gui_text(gui, line, GUI_LEFT, 80, white);
-  std::snprintf(line, sizeof line, "THREAT %dx   DASH %s   EMP %d/%d %s",
+  std::snprintf(line, sizeof line, "THREAT %dx   DASH %s   EMP %d/%d %s   GRACE %s",
                 game_enemy_speed(g), g->dash_cooldown ? "COOL" : "READY",
                 g->emp_charges, EMP_CAPACITY,
-                g->emp_ticks ? "ACTIVE" : "READY");
+                g->emp_ticks ? "ACTIVE" : "READY",
+                g->damage_grace ? "ACTIVE" : "READY");
   gui_text(gui, line, GUI_LEFT + 430, 80, g->emp_ticks ? gold : muted);
   for (int i = 0; i < 4; ++i)
     if (g->modules & (1 << i))

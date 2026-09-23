@@ -107,6 +107,8 @@
   pause/shop/terminal states, at an edge, or while cooling down without
   mutation. Cooldown decreases through `game_tick`, including during EMP,
   while player movement and fire remain independent. Test core and SDL input.
+- Enemy hits grant an 8-tick damage-grace window; later shots during that window
+  are harmless and the UI exposes the state.
 - Scoring modules live in `modules.c`: additive bonuses precede multipliers,
   and only kills advance Cadence. Afterburner is a non-scoring module that
   increases player shot substeps by one. Shop offers use their own unsigned

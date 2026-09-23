@@ -16,6 +16,15 @@ int main(void) {
   g.alien = 30;
   game_step(&g);
   assert(g.shields[0][0] == 2);
+  g.enemy_bullet = GAME_HEIGHT - 2;
+  g.enemy_bullet_x = g.player + 1;
+  g.lives = 3;
+  g.damage_grace = 0;
+  game_step(&g);
+  assert(g.lives == 2 && g.damage_grace == DAMAGE_GRACE);
+  g.enemy_bullet = GAME_HEIGHT - 2;
+  game_step(&g);
+  assert(g.lives == 2);
   g.kills = 0;
   assert(game_enemy_speed(&g) == 1);
   g.kills = 16;

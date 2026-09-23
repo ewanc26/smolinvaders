@@ -31,6 +31,7 @@ void game_room_progress(Game *g) {
   g->bonus_timer = 0;
   g->emp_ticks = 0;
   g->dash_cooldown = 0;
+  g->damage_grace = 0;
   g->upgrade_offer = true;
   g->shop_bought = g->shop_rerolls = g->module_offer = 0;
   g->route_chosen = false;
