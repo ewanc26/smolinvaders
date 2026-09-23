@@ -43,7 +43,7 @@ static void pilot(Game *g) {
 static void same_state(const Game *a, const Game *b) {
   /* Compare fields, not padding bytes in the struct. */
 #define SAME(field) assert(a->field == b->field)
-  SAME(player); SAME(alien); SAME(alien_row); SAME(alien_hp);
+  SAME(player); SAME(player_velocity); SAME(alien); SAME(alien_row); SAME(alien_hp);
   SAME(bullet); SAME(bullet_x); SAME(enemy_bullet); SAME(enemy_bullet_x);
   SAME(direction); SAME(score); SAME(ai_mood); SAME(lives); SAME(wave);
   SAME(bonus_x); SAME(bonus_timer); SAME(bonus_direction); SAME(bonus_active);

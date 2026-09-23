@@ -190,8 +190,8 @@ edits it, Enter starts the run, and Escape cancels. This resets the complete
 run state and updates the replay seed without restarting the process.
 
 `./build/replay-test` runs 32 deterministic input-only pilots and compares
-every core field on replay, including clean-clear streak state. It never places
-projectiles or grants resources.
+every core field on replay, including movement input used by the neural policy
+and clean-clear streak state. It never places projectiles or grants resources.
 The pilot uses and restocks EMPs, and prints wins, losses, and the furthest blind;
 this is a regression/balance diagnostic, not proof of human difficulty balance.
 The SDL input test injects key-up/down and focus-loss events without a window.

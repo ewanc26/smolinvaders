@@ -192,8 +192,8 @@ error dialog before `main`. Core ASan/UBSan tests pass; report sanitized GUI
 coverage separately from normal dummy-driver coverage. Keep smoke tests timed.
 
 `replay-test` uses only normal controls/shop APIs across 32 seeds and compares
-all core fields, including `flawless_streak`. Its pilot statistics diagnose
-changes, not human playability.
+all core fields, including `player_velocity` and `flawless_streak`. Its pilot
+statistics diagnose changes, not human playability.
 `input-test` exercises real SDL event dispatch without creating a window.
 It also covers relic-scaled Dash cooldown and EMP duration through the UI action
 path.
