@@ -28,6 +28,8 @@ void game_room_progress(Game *g) {
   g->alien_row = 2;
   g->alien = game_seed_hash(g->seed, (uint32_t)g->room * 3u + 1u) %
              (GAME_WIDTH - 3);
+  g->bonus_direction = game_seed_hash(g->seed, (uint32_t)g->room * 3u + 3u) & 1
+                           ? 1 : -1;
   g->enemy_bullet = -1;
   g->player_velocity = 0;
   g->relic_charges = g->relics;

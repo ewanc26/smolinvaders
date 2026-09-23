@@ -4,6 +4,7 @@
 int main(void) {
   Game g;
   game_init_seed(&g, 42);
+  assert(g.bonus_direction == (game_seed_hash(g.seed, 2) & 1 ? 1 : -1));
   assert(game_bonus_interval(&g) >= 140 && game_bonus_interval(&g) < 170);
   g.room_type = ROOM_CACHE;
   assert(game_bonus_interval(&g) >= 90 && game_bonus_interval(&g) < 110);
