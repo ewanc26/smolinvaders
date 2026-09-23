@@ -70,7 +70,8 @@
   EMP charge on entry up to the carry cap. Route choice never
   consumes RNG, money, or shop stock; `route_chosen` makes it one-shot per
   shop so Cache rewards cannot be duplicated. Every third blind is a fixed boss and
-  rejects route changes. Test route decisions across seeded non-boss blinds.
+  rejects route changes. UI must show the selected route as locked. Test route
+  decisions across seeded non-boss blinds.
 - Projectiles store their own launch columns. Neither SDL nor subsequent
   shooter movement should change a shot's path.
 - `game_tick` applies normalized held movement and fire before simulation.
