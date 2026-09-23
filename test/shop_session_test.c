@@ -7,7 +7,7 @@ int main(void) {
     game_init_seed(&g, seed);
     g.score = g.blind_target;
     game_room_progress(&g);
-    g.credits = 50;
+    g.credits = 70;
     replay = g;
     uint32_t combat_rng = g.rng;
     int first_offer = g.module_offer;
@@ -15,7 +15,7 @@ int main(void) {
     game_reroll_shop(&replay);
     assert(g.module_offer != first_offer && g.module_offer != 0);
     assert(g.module_offer == replay.module_offer && g.shop_rng == replay.shop_rng);
-    assert(g.credits == 48 && game_reroll_cost(&g) == 3);
+    assert(g.credits == 68 && game_reroll_cost(&g) == 3);
     assert(g.rng == combat_rng && g.paused && g.upgrade_offer);
 
     assert(!game_upgrade_available(&g, 1)); /* Don't charge for intact cover. */
@@ -24,14 +24,14 @@ int main(void) {
     game_choose_upgrade(&g, 2);
     game_choose_upgrade(&g, 3);
     game_choose_upgrade(&g, 4);
-    assert(g.credits == 35 && g.lives == 4 && g.upgrade_level == 1);
+    assert(g.credits == 55 && g.lives == 4 && g.upgrade_level == 1);
     assert(g.shields[0][0] == 3 && !g.module_offer);
     assert(g.paused && g.upgrade_offer);
     for (int choice = 1; choice <= 4; ++choice) {
       assert(!game_upgrade_available(&g, choice));
       game_choose_upgrade(&g, choice);
     }
-    assert(g.credits == 35);
+    assert(g.credits == 55);
     int alien = g.alien, player = g.player;
     game_tick(&g, 1, true);
     game_step(&g);

@@ -7,7 +7,7 @@ int main(void) {
     game_init_seed(&a, seed);
     game_init_seed(&b, seed);
     uint32_t combat_rng = a.rng;
-    for (int i = 0; i < 4; ++i) {
+    for (int i = 0; i < 5; ++i) {
       game_module_offer(&a);
       game_module_offer(&b);
       assert(a.module_offer == b.module_offer && a.module_offer);
@@ -53,5 +53,12 @@ int main(void) {
   g.bullet = g.alien_row + 1;
   game_step(&g);
   assert(g.score == 14 && g.kills == 4 && g.room == 2);
+  g.modules = MODULE_SCAVENGER;
+  g.emp_charges = 0;
+  game_score_kill(&g, 3, true);
+  assert(g.emp_charges == 1);
+  g.emp_charges = EMP_CAPACITY;
+  game_score_kill(&g, 3, true);
+  assert(g.emp_charges == EMP_CAPACITY);
   return 0;
 }
