@@ -133,3 +133,5 @@ coverage separately from normal dummy-driver coverage. Keep smoke tests timed.
 all core fields. Its pilot statistics diagnose changes, not human playability.
 `input-test` exercises real SDL event dispatch without creating a window.
 Keep assertions enabled for all test targets, including Release builds.
+The C23 core and headless C tests build with `-Wall -Wextra -Wpedantic` on
+non-MSVC toolchains; keep new core code warning-clean.

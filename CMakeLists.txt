@@ -27,6 +27,9 @@ add_library(space_invaders_core STATIC
   src/core/boss.c
   src/core/game_step.c)
 target_include_directories(space_invaders_core PUBLIC include)
+if(NOT MSVC)
+  target_compile_options(space_invaders_core PRIVATE -Wall -Wextra -Wpedantic)
+endif()
 
 add_executable(space-invaders
   src/ui/gui.cpp
@@ -49,6 +52,9 @@ foreach(test_name gameplay room shop shop_session modules boss replay consumable
   add_executable(${test_name}-test test/${test_name}_test.c)
   target_link_libraries(${test_name}-test PRIVATE space_invaders_core)
   target_compile_options(${test_name}-test PRIVATE ${TEST_ASSERT_FLAG})
+  if(NOT MSVC)
+    target_compile_options(${test_name}-test PRIVATE -Wall -Wextra -Wpedantic)
+  endif()
   add_test(NAME ${test_name} COMMAND ${test_name}-test)
 endforeach()
 add_test(NAME gui-smoke COMMAND ${CMAKE_COMMAND} -E env SDL_VIDEODRIVER=dummy
