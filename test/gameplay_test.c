@@ -9,6 +9,10 @@ int main(void) {
   g.room_type = ROOM_CACHE;
   assert(game_bonus_interval(&g) >= 90 && game_bonus_interval(&g) < 110);
   g.room_type = ROOM_COMBAT;
+  Game noisy_bonus = g;
+  for (int draw = 0; draw < 40; ++draw) game_random(&noisy_bonus);
+  assert(game_bonus_interval(&g) == game_bonus_interval(&noisy_bonus));
+  assert(g.bonus_direction == noisy_bonus.bonus_direction);
   game_fire(&g);
   int lane = g.bullet_x;
   game_move(&g, 1);
