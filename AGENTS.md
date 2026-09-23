@@ -81,6 +81,9 @@
   shield or enemy cells. Stop substeps immediately on a room transition.
 - The arena is 48 by 20 cells at 16 pixels per cell and must fit inside the
   960 by 640 window. Keep labels legible and terminal screens restartable.
+- `best_room` is core run state, initialized and restarted to one, and updated
+  only on successful blind transitions. Terminal UI may report it with seed
+  and score; it must not infer progression from rendering state.
 - Keep files focused. Prefer a new small module over growing a catch-all file.
 - `N` opens UI-only seed entry. Digits and Backspace edit an unsigned 32-bit
   decimal seed; Enter calls `game_init_seed`, Escape cancels. While editing,

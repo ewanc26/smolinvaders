@@ -83,7 +83,7 @@ static void complete_run(uint32_t seed) {
   game_step(&g);
   assert(g.score == score);
   game_restart(&g);
-  assert(g.seed == seed && !g.boss_rules && !g.won && g.room == 1);
+  assert(g.seed == seed && !g.boss_rules && !g.won && g.room == 1 && g.best_room == 1);
 }
 
 int main(void) {

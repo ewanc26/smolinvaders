@@ -44,7 +44,14 @@ void gui_overlay(const Gui *gui, const Game *g) {
     gui_box(gui, 310, 250, 340, 120, {22, 30, 56, 255});
     gui_text(gui, g->won ? "RUN COMPLETE" : g->over ? "RUN ENDED" : "PAUSED",
              390, 270, g->won ? gold : white);
-    gui_text(gui, g->paused && !g->won ? "P to resume" : "R to replay seed",
-             390, 310, muted);
+    if (g->over || g->won) {
+      char summary[96];
+      std::snprintf(summary, sizeof summary, "SEED %u  SCORE %d  BEST BLIND %d",
+                    g->seed, g->score, g->best_room);
+      gui_text(gui, summary, 330, 310, muted);
+      gui_text(gui, "R replay seed   N new seed", 370, 340, white);
+    } else {
+      gui_text(gui, "P to resume", 390, 310, muted);
+    }
   }
 }

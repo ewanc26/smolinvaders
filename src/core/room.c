@@ -15,6 +15,7 @@ void game_room_progress(Game *g) {
   g->credits += 2 + interest;
 
   ++g->room;
+  if (g->room > g->best_room) g->best_room = g->room;
   g->wave = g->room;
   g->ante = 1 + (g->room - 1) / 3;
   g->blind_target = g->score + 4 + g->ante;

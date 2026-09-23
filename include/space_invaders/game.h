@@ -30,7 +30,7 @@ typedef struct {
   bool route_chosen;
   int emp_charges, emp_ticks;
   int boss_rules;
-  int room, room_type, upgrade_level, relics, relic_charges;
+  int room, best_room, room_type, upgrade_level, relics, relic_charges;
   int ante, blind_target, credits;
   bool bonus_active, upgrade_offer, won;
   uint8_t shields[SHIELD_COUNT][SHIELD_WIDTH];
