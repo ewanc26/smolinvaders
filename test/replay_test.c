@@ -13,6 +13,13 @@ static void pilot(Game *g) {
       game_buy_module_slot(g);
       return;
     }
+    if (game_modules_full(g)) {
+      for (int module = MODULE_AMPLIFIER; module <= MODULE_BARRIER; module <<= 1)
+        if (game_sell_module_available(g, module)) {
+          game_sell_module(g, module);
+          return;
+        }
+    }
     int choice = g->lives < 3 && game_upgrade_available(g, 2) ? 2 : 4;
     if (choice == 4 && !g->emp_charges && game_upgrade_available(g, 6)) choice = 6;
     if (game_upgrade_available(g, choice)) game_choose_upgrade(g, choice);
