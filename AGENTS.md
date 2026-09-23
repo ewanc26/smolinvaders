@@ -182,7 +182,8 @@ error dialog before `main`. Core ASan/UBSan tests pass; report sanitized GUI
 coverage separately from normal dummy-driver coverage. Keep smoke tests timed.
 
 `replay-test` uses only normal controls/shop APIs across 32 seeds and compares
-all core fields. Its pilot statistics diagnose changes, not human playability.
+all core fields, including `flawless_streak`. Its pilot statistics diagnose
+changes, not human playability.
 `input-test` exercises real SDL event dispatch without creating a window.
 Keep assertions enabled for all test targets, including Release builds.
 The C23 core and headless C tests build with `-Wall -Wextra -Wpedantic` on
