@@ -103,5 +103,17 @@ int main() {
   key(SDL_KEYDOWN, SDLK_n);
   key(SDL_KEYDOWN, SDLK_ESCAPE);
   assert(gui_input(&gui, &g) && !gui.seed_entry && g.seed == 123);
+  g.upgrade_offer = g.paused = true;
+  g.room = 1;
+  g.emp_charges = 0;
+  key(SDL_KEYDOWN, SDLK_9);
+  assert(gui_input(&gui, &g));
+  assert(g.room_type == ROOM_CACHE && g.emp_charges == 1 && g.paused);
+  g.room = 3;
+  g.room_type = ROOM_ELITE;
+  g.alien_hp = 4;
+  key(SDL_KEYDOWN, SDLK_7);
+  assert(gui_input(&gui, &g));
+  assert(g.room_type == ROOM_ELITE && g.alien_hp == 4);
   SDL_Quit();
 }
