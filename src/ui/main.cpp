@@ -57,6 +57,7 @@ int main(int argc, char **argv) {
       game_room_progress(&game);
     }
     running = gui_input(&gui, &game);
+    if (!smoke && game.upgrade_offer) game_save(&game);
     Uint32 now = SDL_GetTicks();
     if (now - last >= 70) {
       gui_tick(&gui, &game);

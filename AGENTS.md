@@ -224,7 +224,8 @@ non-MSVC toolchains; keep new core code warning-clean.
   them in a disposable prefix before publishing build changes.
 - GUI persistence belongs in `src/ui/save.cpp`, not the C23 core. Saves are
   generic JSON at `~/.ewanc26/smolinvaders/save/run.json`; explicit seeds take
-  precedence and smoke tests must never touch the user's save.
+  precedence, shop input must persist while paused, and smoke tests must never
+  touch the user's save.
 - `.github/workflows/ci.yml` is the clean Linux gate: install SDL dependencies,
   configure with Ninja, build Release, run all CTest targets, and verify the
   executable and reusable core library in the install tree. New tests must
