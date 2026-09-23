@@ -60,7 +60,8 @@
   credit reward.
 - `flawless_streak` counts consecutive no-relic-hit Elite/boss clears. Every
   second clean clear grants one `free_rerolls` charge; consuming a relic resets
-  the streak. Keep this reward in the core so route risk has deterministic value.
+  the streak, and a life-loss hit resets it too. Keep this reward in the core
+  so route risk has deterministic value.
 - HUD/shop text must expose both clean-clear progress and banked rerolls; do not
   leave this route incentive implicit in the simulation.
 - Terminal summaries should retain the seed and report clean streak/reroll state

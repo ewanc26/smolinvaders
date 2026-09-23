@@ -121,7 +121,7 @@ future survivability. The HUD shows the permanent tier and current charges.
 Relics also improve the run rhythm: each tier shortens Dash cooldown, extends
 EMP duration, and widens the scoring-combo window.
 Two consecutive no-relic-hit Elite or boss clears also earn a free shop reroll;
-the streak resets when a relic is consumed, rewarding pressure without making
+the streak resets when any damage is taken, rewarding pressure without making
 flawless play an automatic win.
 Every third blind is a boss with `2 + ante` armor. Its seed-derived restriction
 is announced beneath the arena and visible while shopping before that fight:

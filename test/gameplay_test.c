@@ -23,8 +23,10 @@ int main(void) {
   g.enemy_bullet_x = g.player + 1;
   g.lives = 3;
   g.damage_grace = 0;
+  g.flawless_streak = 2;
   game_step(&g);
-  assert(g.lives == 2 && g.damage_grace == DAMAGE_GRACE);
+  assert(g.lives == 2 && g.damage_grace == DAMAGE_GRACE &&
+         g.flawless_streak == 0);
   g.enemy_bullet = GAME_HEIGHT - 2;
   game_step(&g);
   assert(g.lives == 2);

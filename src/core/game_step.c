@@ -83,6 +83,7 @@ static void step_enemy_shot(Game *g) {
       if (--g->lives == 0) g->over = true;
       g->damage_grace = DAMAGE_GRACE;
       g->combo = g->combo_timer = 0;
+      g->flawless_streak = 0;
     }
   }
   g->enemy_bullet = -1;
