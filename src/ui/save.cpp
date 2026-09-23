@@ -95,10 +95,15 @@ bool game_save(const Game *game) {
   auto path = save_file();
   std::filesystem::create_directories(path.parent_path(), error);
   if (error) return false;
-  std::ofstream file(path, std::ios::trunc);
+  auto temporary = path;
+  temporary += ".tmp";
+  std::ofstream file(temporary, std::ios::trunc);
   if (!file) return false;
   write_game(file, game);
-  return file.good();
+  if (!file.good()) return false;
+  file.close();
+  std::filesystem::rename(temporary, path, error);
+  return !error;
 }
 
 bool game_load(Game *game) {

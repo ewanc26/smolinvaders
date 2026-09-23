@@ -168,7 +168,8 @@ without linking SDL.
 The GUI automatically resumes and updates the generic JSON save at
 `~/.ewanc26/smolinvaders/save/run.json`. Passing an explicit seed starts that
 seed instead of loading the saved run; shop decisions are saved while the shop
-is open, and `--smoke` never reads or writes saves.
+is open, writes replace the JSON atomically, and `--smoke` never reads or writes
+saves.
 
 The GUI looks for a system TrueType font. Set `SMOLINVADERS_FONT` to a `.ttf`
 path if none of its default font locations exist. The `gui-smoke` test runs
