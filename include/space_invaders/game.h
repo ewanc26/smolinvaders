@@ -38,6 +38,7 @@ typedef struct {
   int dash_cooldown;
   int damage_grace;
   int combo, combo_timer;
+  int flawless_streak;
   int boss_rules;
   int room, best_room, room_type, upgrade_level, relics, relic_charges;
   int ante, blind_target, credits;

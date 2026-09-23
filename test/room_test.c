@@ -54,6 +54,7 @@ int main(void) {
   aim_at_alien(&elite);
   game_step(&elite);
   assert(elite.relics == 1 && elite.relic_charges == 1 && elite.credits == 7);
+  assert(elite.flawless_streak == 1);
   Game worn = elite;
   worn.room_type = ROOM_ELITE;
   worn.alien_hp = 1;
@@ -68,6 +69,7 @@ int main(void) {
   elite.enemy_bullet_x = elite.player + 1;
   game_step(&elite);
   assert(elite.relic_charges == 0 && elite.lives == 3);
+  assert(elite.flawless_streak == 0);
   elite.enemy_bullet = GAME_HEIGHT - 2;
   elite.enemy_bullet_x = elite.player + 1;
   game_step(&elite);

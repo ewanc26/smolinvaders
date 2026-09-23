@@ -25,6 +25,9 @@ static void step_player_shot(Game *g) {
   if (--g->alien_hp > 0) return;
   if (game_is_boss(g)) {
     bool flawless = g->relic_charges == g->relics;
+    if (flawless) ++g->flawless_streak;
+    else g->flawless_streak = 0;
+    if (flawless && g->flawless_streak % 2 == 0) ++g->free_rerolls;
     if (g->relics < 3) ++g->relics;
     if (g->module_slots < MODULE_MAX_SLOTS) ++g->module_slots;
     if (g->emp_charges < EMP_CAPACITY) ++g->emp_charges;
@@ -36,6 +39,9 @@ static void step_player_shot(Game *g) {
   }
   if (g->room_type == ROOM_ELITE) {
     bool flawless = g->relic_charges == g->relics;
+    if (flawless) ++g->flawless_streak;
+    else g->flawless_streak = 0;
+    if (flawless && g->flawless_streak % 2 == 0) ++g->free_rerolls;
     if (g->relics < 3) ++g->relics;
     g->relic_charges = g->relics;
     g->credits += 3 + (flawless ? 1 : 0);
@@ -72,6 +78,7 @@ static void step_enemy_shot(Game *g) {
       g->enemy_bullet_x < g->player + 3) {
     if (g->relic_charges) {
       --g->relic_charges;
+      g->flawless_streak = 0;
     } else {
       if (--g->lives == 0) g->over = true;
       g->damage_grace = DAMAGE_GRACE;

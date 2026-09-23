@@ -110,6 +110,9 @@ Defeating an Elite grants a violet relic tier, capped at three. A no-relic-hit
 Elite clear also pays one bonus credit. Each tier
 absorbs one enemy hit per blind, so repeated Elite and boss victories improve
 future survivability. The HUD shows the permanent tier and current charges.
+Two consecutive no-relic-hit Elite or boss clears also earn a free shop reroll;
+the streak resets when a relic is consumed, rewarding pressure without making
+flawless play an automatic win.
 Every third blind is a boss with `2 + ante` armor. Its seed-derived restriction
 is announced beneath the arena and visible while shopping before that fight:
 Static suppresses scoring modules (you keep them), Breach makes enemy shots
