@@ -14,6 +14,7 @@ int main(void) {
   game_init_seed(&other_seed, 43);
   assert(first.alien == replay.alien && first.alien != other_seed.alien);
   first.score = replay.score = 4;
+  int first_clear_tag = game_room_tag(&first);
   first.player_velocity = replay.player_velocity = 1;
   aim_at_alien(&first);
   aim_at_alien(&replay);
@@ -21,7 +22,7 @@ int main(void) {
   game_step(&replay);
   assert(first.room == 2 && first.upgrade_offer && first.paused);
   assert(first.player_velocity == 0);
-  assert(first.credits == 5);
+  assert(first.credits == 5 + (first_clear_tag == ROOM_TAG_RICH));
   assert(first.room_type == replay.room_type && first.alien == replay.alien);
   assert(first.rng == replay.rng);
   assert(first.rng == replay.rng && first.blind_target == 10);
@@ -36,12 +37,15 @@ int main(void) {
          next.boss_rules == noisy.boss_rules);
   Game streak;
   game_init_seed(&streak, 44);
+  int streak_clear_tag = game_room_tag(&streak);
   streak.score = streak.blind_target - 1;
   streak.combo = COMBO_CAP;
   streak.combo_timer = COMBO_WINDOW;
   aim_at_alien(&streak);
   game_step(&streak);
-  assert(streak.upgrade_offer && streak.credits == 7 && streak.combo == 0);
+  assert(streak.upgrade_offer &&
+         streak.credits == 7 + (streak_clear_tag == ROOM_TAG_RICH) &&
+         streak.combo == 0);
   assert(game_choose_route(&first, ROOM_ELITE));
   assert(first.room_type == ROOM_ELITE && first.alien_hp == 3);
   assert(!game_choose_route(&first, ROOM_CACHE));

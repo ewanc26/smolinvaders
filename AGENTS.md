@@ -59,6 +59,9 @@
 - `game_seed_hash` is the pure procedural-generation primitive. Use stable
   seed coordinates for room type, enemy placement, respawn placement, and boss rules; do not use
   mutable combat RNG for content that should remain fixed across replays.
+- `room_tag.c` derives each blind's STANDARD/FRENZY/RICH tag from coordinate
+  `0x4000 + room`. FRENZY changes core enemy speed and RICH changes core clear
+  payout; keep both effects out of SDL and test noisy-RNG invariance.
 - Module offers use the same seed-hash contract at a room/reroll coordinate;
   held offers bypass generation, while `shop_rng` records the derived offer for
   replay diagnostics.

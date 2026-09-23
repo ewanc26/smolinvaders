@@ -29,6 +29,7 @@ add_library(space_invaders_core STATIC
   src/core/shields.c
   src/core/random.c
   src/core/room.c
+  src/core/room_tag.c
   src/core/modules.c
   src/core/boss.c
   src/core/bonus.c
@@ -62,7 +63,7 @@ if(MSVC)
 else()
   set(TEST_ASSERT_FLAG -UNDEBUG)
 endif()
-foreach(test_name gameplay room shop shop_session modules boss replay consumables routes overclock bounty)
+foreach(test_name gameplay room shop shop_session modules boss replay consumables routes overclock bounty room_tag)
   add_executable(${test_name}-test test/${test_name}_test.c)
   target_link_libraries(${test_name}-test PRIVATE space_invaders_core)
   target_compile_options(${test_name}-test PRIVATE ${TEST_ASSERT_FLAG})

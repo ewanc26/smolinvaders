@@ -15,6 +15,7 @@ void game_room_progress(Game *g) {
   int combo_reward = g->combo / 4;
   if (combo_reward > 2) combo_reward = 2;
   g->credits += 2 + interest + combo_reward;
+  if (game_room_tag(g) == ROOM_TAG_RICH) ++g->credits;
 
   ++g->room;
   if (cache_clear) ++g->free_rerolls;

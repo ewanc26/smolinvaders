@@ -34,10 +34,12 @@ int main(void) {
   assert(g.credits == 4 && g.upgrade_offer);
 
   game_init_seed(&g, 1);
+  int clear_tag = game_room_tag(&g);
   g.credits = 15;
   g.score = g.blind_target;
   game_room_progress(&g);
-  assert(g.room == 2 && g.credits == 20);
+  assert(g.room == 2 &&
+         g.credits == 20 + (clear_tag == ROOM_TAG_RICH));
   game_init_seed(&g, 9);
   g.upgrade_offer = g.paused = true;
   g.module_offer = MODULE_SIGNAL;
