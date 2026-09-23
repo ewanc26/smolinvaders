@@ -54,6 +54,15 @@ int main(void) {
   aim_at_alien(&elite);
   game_step(&elite);
   assert(elite.relics == 1 && elite.relic_charges == 1 && elite.credits == 7);
+  Game worn = elite;
+  worn.room_type = ROOM_ELITE;
+  worn.alien_hp = 1;
+  worn.relics = 1;
+  worn.relic_charges = 0;
+  worn.credits = 3;
+  aim_at_alien(&worn);
+  game_step(&worn);
+  assert(worn.relics == 2 && worn.relic_charges == 2 && worn.credits == 6);
 
   elite.enemy_bullet = GAME_HEIGHT - 2;
   elite.enemy_bullet_x = elite.player + 1;
