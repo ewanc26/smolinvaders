@@ -27,7 +27,11 @@ static void timing(void) {
   assert(g.emp_ticks == 0 && g.player == 22 - EMP_DURATION);
   game_step(&g);
   assert(g.alien != alien || g.alien_row != row);
-  assert(game_use_emp(&g) && g.emp_charges == 0);
+  g.emp_ticks = 0;
+  g.emp_charges = 1;
+  g.relics = 3;
+  assert(game_use_emp(&g) && g.emp_ticks == EMP_DURATION + 6 && g.emp_charges == 0);
+  assert(!game_use_emp(&g));
   game_restart(&g);
   assert(g.emp_charges == 1 && g.emp_ticks == 0 && g.seed == 42);
 }
