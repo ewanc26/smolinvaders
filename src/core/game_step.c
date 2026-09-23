@@ -24,16 +24,16 @@ static void step_player_shot(Game *g) {
   g->bullet = -1;
   if (--g->alien_hp > 0) return;
   if (game_is_boss(g)) {
-    g->relics |= 1;
-    g->relic_charges = 1;
+    if (g->relics < 3) ++g->relics;
+    g->relic_charges = g->relics;
     g->credits += 3;
     game_score_kill(g, 4 + g->ante, false);
     game_room_progress(g);
     return;
   }
   if (g->room_type == ROOM_ELITE) {
-    g->relics |= 1;
-    g->relic_charges = 1;
+    if (g->relics < 3) ++g->relics;
+    g->relic_charges = g->relics;
     g->credits += 3;
   }
   game_score_kill(g, 1, false);

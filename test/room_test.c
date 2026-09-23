@@ -61,7 +61,16 @@ int main(void) {
   elite.bullet = elite.alien_row + 1;
   elite.alien_hp = 1;
   game_step(&elite);
-  assert(elite.upgrade_offer && elite.relic_charges == 1);
+  assert(elite.upgrade_offer && elite.relic_charges == 2);
+  elite.upgrade_offer = false;
+  elite.room = 2;
+  elite.score = 0;
+  elite.room_type = ROOM_ELITE;
+  elite.alien_hp = 1;
+  elite.bullet_x = elite.alien + 1;
+  elite.bullet = elite.alien_row + 1;
+  game_step(&elite);
+  assert(elite.relics == 2 && elite.relic_charges == 2);
 
   Game boss;
   game_init_seed(&boss, 0);

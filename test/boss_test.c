@@ -59,7 +59,8 @@ static void complete_run(uint32_t seed) {
         g.bullet_x = g.alien + 1;
         game_step(&g);
       }
-      assert(g.relics && g.relic_charges == 1 && g.credits >= credits + 3);
+      assert(g.relics >= 1 && g.relics <= 3 &&
+             g.relic_charges == g.relics && g.credits >= credits + 3);
       if (room < RUN_BLINDS) {
         assert(g.upgrade_offer && g.paused);
         game_skip_upgrade(&g);

@@ -14,9 +14,9 @@ static void hud(const Gui *gui, const Game *g) {
   gui_text(gui, line, GUI_LEFT, 20, white);
   std::snprintf(line, sizeof line, "SCORE %d / %d", g->score, g->blind_target);
   gui_text(gui, line, GUI_LEFT, 50, gold);
-  std::snprintf(line, sizeof line, "LIVES %d    CREDITS %d    RELIC %s",
+  std::snprintf(line, sizeof line, "LIVES %d    CREDITS %d    RELIC %d/3",
                 g->lives, g->credits,
-                !g->relics ? "NONE" : g->relic_charges ? "READY" : "SPENT");
+                g->relics);
   gui_text(gui, line, GUI_LEFT, 80, white);
   for (int i = 0; i < 4; ++i)
     if (g->modules & (1 << i))

@@ -39,7 +39,8 @@
   not bypass hit resolution.
 - Relics are run-local state, never global state. Elite rewards must be granted
   exactly when the Elite dies and remain deterministic across replay. The
-  relic absorbs one player hit per blind; restore its charge on room entry.
+  relic has up to three permanent tiers; each tier absorbs one player hit per
+  blind. Restore charges to the tier count on room entry and cap the tier.
 - Runs have eight antes of three blinds. Every third blind requires a boss
   kill; killing it clears that blind even if saucers did not meet the score
   target. Only room `RUN_BLINDS` wins.
