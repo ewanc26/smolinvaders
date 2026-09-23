@@ -122,6 +122,8 @@
   handles the escalating six/eight/ten-credit, once-per-shop slot purchase; module purchases must
   reject offers when the inventory is full. UI capacity is reported as
   occupied slots over total slots.
+- `module_sell.c` permits one deterministic two-credit sale per shop through
+  Shift+1..6, clearing the selected owned module without consuming RNG.
 - Scoring modules live in `modules.c`: additive bonuses precede multipliers,
   and only kills advance Cadence. Afterburner is a non-scoring module that
   increases player shot substeps by one. Shop offers use their own unsigned

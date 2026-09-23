@@ -27,6 +27,11 @@ bool gui_input(Gui *gui, Game *g) {
       if (event.key.keysym.sym == SDLK_SPACE) gui->fire = false;
     }
     if (event.type != SDL_KEYDOWN || event.key.repeat) continue;
+    if (event.key.keysym.mod & KMOD_SHIFT &&
+        event.key.keysym.sym >= SDLK_1 && event.key.keysym.sym <= SDLK_6) {
+      game_sell_module(g, 1 << (event.key.keysym.sym - SDLK_1));
+      continue;
+    }
     if (gui->seed_entry) {
       if (event.key.keysym.sym == SDLK_ESCAPE) {
         gui->seed_entry = false;

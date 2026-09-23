@@ -28,6 +28,7 @@ void gui_shop(const Gui *gui, const Game *g) {
   gui_text(gui, reroll, 95, 389, game_reroll_available(g) ? gold : muted);
   gui_text(gui, "H HOLD MODULE: 2 credits", 475, 405,
            game_hold_available(g) ? gold : muted);
+  gui_text(gui, "SHIFT+1..6 SELL MODULE: +2 credits", 475, 420, muted);
   char slots[64];
   std::snprintf(slots, sizeof slots, "M MODULE SLOT: %d credits (%d/%d)",
                 game_module_slot_cost(g), game_module_count(g),

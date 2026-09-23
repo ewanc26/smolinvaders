@@ -36,6 +36,8 @@ This adds replayable risk/reward path planning to the seeded run.
 slots; press `M` in a shop to buy one additional slot for six credits. Later
 slots cost eight and ten credits, up to six total.
 The shop shows occupied slots over total capacity.
+Sell an owned module with `Shift+1` through `Shift+6` for two credits; selling is
+available once per shop and does not consume any RNG.
 Modules last for the run,
 never appear twice once owned, and stack: Amplifier adds one point per kill,
 Cadence adds two on every third kill (including saucers), and Signal doubles
