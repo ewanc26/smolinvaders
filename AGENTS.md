@@ -60,6 +60,8 @@
 - `flawless_streak` counts consecutive no-relic-hit Elite/boss clears. Every
   second clean clear grants one `free_rerolls` charge; consuming a relic resets
   the streak. Keep this reward in the core so route risk has deterministic value.
+- HUD/shop text must expose both clean-clear progress and banked rerolls; do not
+  leave this route incentive implicit in the simulation.
 - Progression follows a Balatro-inspired run loop: rooms are blinds, every
   three blinds form an ante, and the upgrade offer is the shop phase. Keep
   `blind_target` and `ante` in core state so SDL stays presentational.

@@ -26,13 +26,18 @@ void gui_shop(const Gui *gui, const Game *g) {
   }
   char reroll[48];
   if (g->free_rerolls)
-    std::snprintf(reroll, sizeof reroll, "5 REROLL: FREE CACHE REWARD");
+    std::snprintf(reroll, sizeof reroll, "5 REROLL: FREE (%d BANKED)",
+                  g->free_rerolls);
   else if (g->skip_rerolls)
     std::snprintf(reroll, sizeof reroll, "5 REROLL: FREE SKIP TAG");
   else
     std::snprintf(reroll, sizeof reroll, "5 REROLL: %d credits",
                   game_reroll_cost(g));
   gui_text(gui, reroll, 95, 389, game_reroll_available(g) ? gold : muted);
+  char streak[72];
+  std::snprintf(streak, sizeof streak, "CLEAN STREAK %d/2 -> FREE REROLL",
+                g->flawless_streak % 2);
+  gui_text(gui, streak, 95, 448, g->flawless_streak ? gold : muted);
   gui_text(gui, "H HOLD MODULE: 2 credits", 475, 405,
            game_hold_available(g) ? gold : muted);
   gui_text(gui, "SHIFT+1..6 SELL MODULE: +2 credits", 475, 420, muted);
