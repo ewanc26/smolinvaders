@@ -83,7 +83,8 @@
   shield or enemy cells. Stop substeps immediately on a room transition.
 - Enemy movement is deterministic and ramps from one to three cells per tick
   at eight-kill intervals, capped at three. Keep the ramp in `enemy_profile.c`
-  and test its thresholds independently of rendering.
+  and test its thresholds independently of rendering. HUD may expose the
+  read-only multiplier but must not calculate or mutate it.
 - The arena is 48 by 20 cells at 16 pixels per cell and must fit inside the
   960 by 640 window. Keep labels legible and terminal screens restartable.
 - `best_room` is core run state, initialized and restarted to one, and updated
