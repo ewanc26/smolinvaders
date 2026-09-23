@@ -41,7 +41,8 @@
   exactly when the Elite dies and remain deterministic across replay. The
   relic absorbs one player hit per blind; restore its charge on room entry.
 - Runs have eight antes of three blinds. Every third blind requires a boss
-  kill, even if saucers meet the score target. Only room `RUN_BLINDS` wins.
+  kill; killing it clears that blind even if saucers did not meet the score
+  target. Only room `RUN_BLINDS` wins.
   `won` is distinct from `over`; restart clears both while preserving seed.
 - Boss rules are seed/ante-derived in `boss.c`, independent of combat draws.
   Static suppresses module effects without deleting inventory; Breach bypasses

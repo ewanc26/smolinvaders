@@ -53,7 +53,19 @@ static void complete_run(uint32_t seed) {
       assert(replay.boss_rules == g.boss_rules);
       assert(g.alien_hp == 2 + g.ante);
       assert(g.boss_rules != 0);
-      if (room == RUN_BLINDS) assert(g.boss_rules == 7);
+      int credits = g.credits;
+      while (g.room == room && g.alien_hp > 0) {
+        g.bullet = g.alien_row + 1;
+        g.bullet_x = g.alien + 1;
+        game_step(&g);
+      }
+      assert(g.relics && g.relic_charges == 1 && g.credits >= credits + 3);
+      if (room < RUN_BLINDS) {
+        assert(g.upgrade_offer && g.paused);
+        game_skip_upgrade(&g);
+      }
+      if (room == RUN_BLINDS) assert(g.boss_rules == 7 && g.won);
+      continue;
     } else assert(g.boss_rules == 0);
     /* Controlled collisions test the entire progression, not bot skill. */
     for (int shots = 0; g.room == room && !g.won && shots < 100; ++shots) {

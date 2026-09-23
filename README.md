@@ -81,7 +81,9 @@ is announced beneath the arena and visible while shopping before that fight:
 Static suppresses scoring modules (you keep them), Breach makes enemy shots
 bypass shields, and Blackout prevents signal saucers. Boss identity depends
 only on seed and ante, not how many shots you fired. Killing the boss awards
-`4 + ante` base points; reaching the score target alone never skips a living boss.
+`4 + ante` base points, a relic charge, and three credits; reaching the score
+target alone never skips a living boss. A boss kill itself clears the blind,
+so a low-scoring but skillful fight cannot soft-lock the run.
 Room 24 is the Eclipse commander, combining all three restrictions. Defeating
 it wins the run. Restrictions end when leaving their blind.
 The window stays open after death

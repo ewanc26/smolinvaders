@@ -2,7 +2,8 @@
 
 void game_room_progress(Game *g) {
   if (g->over || g->won || g->upgrade_offer ||
-      g->score < g->blind_target ||
+      (g->score < g->blind_target &&
+       !(game_is_boss(g) && g->alien_hp <= 0)) ||
       (game_is_boss(g) && g->alien_hp > 0)) return;
   if (g->room == RUN_BLINDS) {
     g->won = true;
