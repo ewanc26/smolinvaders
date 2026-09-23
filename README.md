@@ -163,7 +163,8 @@ with SDL's dummy video driver, so the test suite needs no display.
 Hold the arrow keys to move and Space to fire. Input is sampled once per
 simulation tick, independent of OS key-repeat settings. Opposite arrows cancel.
 Left Shift dashes four cells in the held/facing direction and starts an
-18-tick cooldown; dashes clamp at arena edges and do not change shot lanes.
+18-tick cooldown. Each relic tier reduces that cooldown by two ticks, down to
+12; dashes clamp at arena edges and do not change shot lanes.
 Use it to evade a firing lane or buy time while an EMP is unavailable.
 
 An enemy hit grants an 8-tick damage-grace window, preventing rapid shot chains

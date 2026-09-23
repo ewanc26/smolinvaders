@@ -18,9 +18,9 @@ static void hud(const Gui *gui, const Game *g) {
                 g->lives, g->credits,
                 g->relics, g->upgrade_level, g->flawless_streak % 2);
   gui_text(gui, line, GUI_LEFT, 80, white);
-  std::snprintf(line, sizeof line, "THREAT %dx   COMBO %d (%dx)   DASH %s   EMP %d/%d %s   GRACE %s",
+  std::snprintf(line, sizeof line, "THREAT %dx   COMBO %d (%dx)   DASH %s/%d   EMP %d/%d %s   GRACE %s",
                 game_enemy_speed(g), g->combo, game_combo_multiplier(g),
-                g->dash_cooldown ? "COOL" : "READY",
+                g->dash_cooldown ? "COOL" : "READY", game_dash_cooldown(g),
                 g->emp_charges, EMP_CAPACITY,
                 g->emp_ticks ? "ACTIVE" : "READY",
                 g->damage_grace ? "ACTIVE" : "READY");

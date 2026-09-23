@@ -168,6 +168,8 @@
   remain in total score, but never pre-clear later blinds. Shop rendering lives
   separately in `gui_shop.cpp`; core availability is authoritative.
 - Use C23 for the core and C++23 for the UI. Preserve the `extern "C"` API.
+- `game_dash_cooldown` derives the 18-tick baseline from relic tiers, reducing
+  it by two per tier down to 12; UI must display the derived value.
 
 ## Verification
 

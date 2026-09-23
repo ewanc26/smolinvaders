@@ -34,6 +34,8 @@ int main(void) {
   assert(game_enemy_speed(&g) == 3);
   g.player = 10;
   assert(game_dash(&g, 1) && g.player == 14 && g.dash_cooldown == DASH_COOLDOWN);
+  g.relics = 3;
+  assert(game_dash_cooldown(&g) == DASH_COOLDOWN - 6);
   assert(!game_dash(&g, 1) && g.player == 14);
   for (int tick = 0; tick < DASH_COOLDOWN; ++tick) game_tick(&g, 0, false);
   assert(g.dash_cooldown == 0 && game_dash(&g, -1) && g.player == 10);

@@ -77,6 +77,7 @@ void game_fire(Game *game);
 void game_step(Game *game);
 void game_tick(Game *game, int movement, bool fire);
 bool game_dash(Game *game, int direction);
+int game_dash_cooldown(const Game *game);
 int game_player_shot_speed(const Game *game);
 int game_enemy_speed(const Game *game);
 bool game_use_emp(Game *game);
