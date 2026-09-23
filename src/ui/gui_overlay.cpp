@@ -57,8 +57,10 @@ void gui_overlay(const Gui *gui, const Game *g) {
              390, 270, g->won ? gold : white);
     if (g->over || g->won) {
       char summary[96];
-      std::snprintf(summary, sizeof summary, "SEED %u  SCORE %d  BEST BLIND %d",
-                    g->seed, g->score, g->best_room);
+      std::snprintf(summary, sizeof summary,
+                    "SEED %u  SCORE %d  BEST BLIND %d  CLEAN %d  REROLLS %d",
+                    g->seed, g->score, g->best_room,
+                    g->flawless_streak, g->free_rerolls);
       gui_text(gui, summary, 330, 310, muted);
       gui_text(gui, "R replay seed   N new seed", 370, 340, white);
     } else {

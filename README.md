@@ -135,8 +135,9 @@ one additional credit.
 The window stays open after death
 or victory so `R` can
 replay the same seed.
-Terminal screens show the seed, score, and furthest blind reached, making a
-failed build easy to compare against a later route or module combination.
+Terminal screens show the seed, score, furthest blind, clean-clear streak, and
+banked rerolls, making a failed build easy to compare against a later route or
+module combination.
 
 ## Build
 

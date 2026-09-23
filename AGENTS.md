@@ -62,6 +62,8 @@
   the streak. Keep this reward in the core so route risk has deterministic value.
 - HUD/shop text must expose both clean-clear progress and banked rerolls; do not
   leave this route incentive implicit in the simulation.
+- Terminal summaries should retain the seed and report clean streak/reroll state
+  so seeded build comparisons remain useful after a run ends.
 - Shop rendering should preview the core interest rule (one credit per five
   saved, capped at three) without duplicating or mutating economy logic.
 - Progression follows a Balatro-inspired run loop: rooms are blinds, every
