@@ -33,7 +33,8 @@ duplicated by changing your mind; the shop then displays the locked route.
 This adds replayable risk/reward path planning to the seeded run.
 
 `4` buys the seeded scoring module for five credits. Runs begin with three module
-slots; press `M` in a shop to buy one additional slot for six credits, up to six.
+slots; press `M` in a shop to buy one additional slot for six credits. Later
+slots cost eight and ten credits, up to six total.
 The shop shows occupied slots over total capacity.
 Modules last for the run,
 never appear twice once owned, and stack: Amplifier adds one point per kill,

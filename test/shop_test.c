@@ -47,9 +47,12 @@ int main(void) {
   assert(g.module_offer == MODULE_SIGNAL && g.held_module == 0);
   g.credits = MODULE_SLOT_COST;
   assert(game_module_slot_available(&g));
+  assert(game_module_slot_cost(&g) == MODULE_SLOT_COST);
   game_buy_module_slot(&g);
   assert(g.module_slots == MODULE_START_SLOTS + 1 &&
          g.credits == 0 && !game_module_slot_available(&g));
+  g.credits = 8;
+  assert(game_module_slot_cost(&g) == MODULE_SLOT_COST + 2);
   assert(game_module_count(&g) == 0);
   return 0;
 }

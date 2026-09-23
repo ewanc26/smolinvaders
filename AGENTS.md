@@ -119,7 +119,7 @@
 - `shop_hold.c` lets the player pay two credits once per shop to carry the
   current module offer into the next shop; held offers bypass module RNG.
 - Module inventory starts at three slots and caps at six. `module_slots.c`
-  handles the six-credit, once-per-shop slot purchase; module purchases must
+  handles the escalating six/eight/ten-credit, once-per-shop slot purchase; module purchases must
   reject offers when the inventory is full. UI capacity is reported as
   occupied slots over total slots.
 - Scoring modules live in `modules.c`: additive bonuses precede multipliers,

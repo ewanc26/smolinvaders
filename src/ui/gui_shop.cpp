@@ -30,7 +30,7 @@ void gui_shop(const Gui *gui, const Game *g) {
            game_hold_available(g) ? gold : muted);
   char slots[64];
   std::snprintf(slots, sizeof slots, "M MODULE SLOT: %d credits (%d/%d)",
-                MODULE_SLOT_COST, game_module_count(g),
+                game_module_slot_cost(g), game_module_count(g),
                 MODULE_MAX_SLOTS);
   gui_text(gui, slots, 95, 405,
            game_module_slot_available(g) ? gold : muted);
