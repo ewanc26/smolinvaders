@@ -46,7 +46,7 @@ slots; press `M` in a shop to buy one additional slot for six credits. Later
 slots cost eight and ten credits, up to six total.
 The shop shows occupied slots over total capacity and explains when the module
 card is blocked by a full build.
-Sell an owned module with `Shift+1` through `Shift+6` for two credits; selling is
+Sell an owned module with `Shift+1` through `Shift+7` for two credits; selling is
 available once per shop and does not consume any RNG.
 Modules last for the run,
 never appear twice once owned, and stack: Amplifier adds one point per kill,
@@ -62,6 +62,8 @@ refreshes when the next blind begins. Static and Breach bosses suppress that
 protection; Breach shots bypass cover and cannot consume it.
 Barrier plus Scavenger also restores one EMP charge when the barrier triggers,
 up to the normal carry cap.
+Overclock adds three points to every fifth kill before combo multipliers, creating
+a cadence build that rewards lining up a saucer or boss hit with the payoff kill.
 Build pairs have extra identities: Amplifier plus Cadence adds two points on
 every fourth kill, while Signal plus Scavenger pays one bonus credit whenever a
 saucer is destroyed. These synergies are deterministic and remain suppressed

@@ -20,7 +20,7 @@ int main(void) {
     game_score_kill(&a, 1, false);
     assert(a.combo_timer == COMBO_WINDOW + 6);
     uint32_t combat_rng = a.rng;
-    for (int i = 0; i < 6; ++i) {
+    for (int i = 0; i < MODULE_MAX_SLOTS; ++i) {
       game_module_offer(&a);
       game_module_offer(&b);
       assert(a.module_offer == b.module_offer && a.module_offer);
@@ -36,7 +36,8 @@ int main(void) {
       b.modules = a.modules;
     }
     game_module_offer(&a);
-    assert(a.module_offer == 0 && a.modules == MODULE_MASK && a.rng == combat_rng);
+    assert(a.module_offer && !(a.modules & a.module_offer) &&
+           game_module_count(&a) == MODULE_MAX_SLOTS && a.rng == combat_rng);
     a.upgrade_offer = true;
     a.credits = 100;
     assert(!game_upgrade_available(&a, 4));

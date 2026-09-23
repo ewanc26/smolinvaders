@@ -52,7 +52,7 @@ int main(void) {
       game_reroll_shop(&g);
       game_choose_upgrade(&g, 4);
     }
-    assert(g.modules == MODULE_MASK && !game_reroll_available(&g));
+    assert(game_module_count(&g) == MODULE_MAX_SLOTS && !game_upgrade_available(&g, 4));
     uint32_t shop_rng = g.shop_rng;
     game_skip_upgrade(&g);
     assert(!g.paused && !g.upgrade_offer);
@@ -61,7 +61,8 @@ int main(void) {
     g.score = g.blind_target;
     game_room_progress(&g);
     assert(g.shop_bought == 0 && g.shop_rerolls == 0);
-    assert(!g.module_offer && game_reroll_cost(&g) == 2);
+    assert(g.module_offer && game_module_count(&g) == MODULE_MAX_SLOTS &&
+           !game_upgrade_available(&g, 4) && game_reroll_cost(&g) == 2);
     game_restart(&g);
     assert(!g.modules && !g.shop_bought && !g.shop_rerolls && g.seed == seed);
   }

@@ -6,8 +6,8 @@ void game_module_offer(Game *g) {
     g->held_module = 0;
     return;
   }
-  int pool[6], count = 0;
-  for (int bit = 1; bit <= MODULE_BARRIER; bit <<= 1)
+  int pool[7], count = 0;
+  for (int bit = 1; bit <= MODULE_OVERCLOCK; bit <<= 1)
     if (!(g->modules & bit) && bit != g->module_offer) pool[count++] = bit;
   g->shop_rng = game_seed_hash(g->seed,
                                0x1000u + (uint32_t)g->room * 16u +
@@ -30,6 +30,7 @@ void game_score_kill(Game *g, int base, bool saucer) {
   if ((active & (MODULE_AMPLIFIER | MODULE_CADENCE)) ==
       (MODULE_AMPLIFIER | MODULE_CADENCE) && g->kills % 4 == 0)
     base += 2;
+  if ((active & MODULE_OVERCLOCK) && g->kills % 5 == 0) base += 3;
   base *= game_combo_multiplier(g);
   g->score += base;
   if (saucer && (active & MODULE_SCAVENGER) && g->emp_charges < EMP_CAPACITY)
@@ -56,6 +57,7 @@ const char *game_module_name(int module) {
     case MODULE_AFTERBURNER: return "AFTERBURNER";
     case MODULE_SCAVENGER: return "SCAVENGER";
     case MODULE_BARRIER: return "BARRIER";
+    case MODULE_OVERCLOCK: return "OVERCLOCK";
     default: return "SOLD OUT";
   }
 }
@@ -68,6 +70,7 @@ const char *game_module_effect(int module) {
     case MODULE_AFTERBURNER: return "+1 shot speed";
     case MODULE_SCAVENGER: return "saucers refill EMP";
     case MODULE_BARRIER: return "negate first shield hit";
+    case MODULE_OVERCLOCK: return "+3 every 5 kills";
     default: return "All collected";
   }
 }
