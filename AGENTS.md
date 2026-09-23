@@ -53,6 +53,8 @@
 - Boss clears grant one permanent module slot up to `MODULE_MAX_SLOTS`, in
   addition to relic and credit rewards, plus one EMP charge up to capacity. A
   no-relic-hit boss clear adds one bonus credit.
+- A no-relic-hit Elite clear also adds one bonus credit to its normal relic and
+  credit reward.
 - Progression follows a Balatro-inspired run loop: rooms are blinds, every
   three blinds form an ante, and the upgrade offer is the shop phase. Keep
   `blind_target` and `ante` in core state so SDL stays presentational.

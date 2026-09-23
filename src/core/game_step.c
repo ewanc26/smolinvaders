@@ -35,9 +35,10 @@ static void step_player_shot(Game *g) {
     return;
   }
   if (g->room_type == ROOM_ELITE) {
+    bool flawless = g->relic_charges == g->relics;
     if (g->relics < 3) ++g->relics;
     g->relic_charges = g->relics;
-    g->credits += 3;
+    g->credits += 3 + (flawless ? 1 : 0);
   }
   game_score_kill(g, 1, false);
   game_room_progress(g);

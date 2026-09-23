@@ -53,7 +53,7 @@ int main(void) {
   elite.alien_hp = 1;
   aim_at_alien(&elite);
   game_step(&elite);
-  assert(elite.relics == 1 && elite.relic_charges == 1 && elite.credits == 6);
+  assert(elite.relics == 1 && elite.relic_charges == 1 && elite.credits == 7);
 
   elite.enemy_bullet = GAME_HEIGHT - 2;
   elite.enemy_bullet_x = elite.player + 1;
