@@ -195,7 +195,8 @@ coverage separately from normal dummy-driver coverage. Keep smoke tests timed.
 all core fields, including `flawless_streak`. Its pilot statistics diagnose
 changes, not human playability.
 `input-test` exercises real SDL event dispatch without creating a window.
-It also covers relic-scaled Dash cooldown through the UI action path.
+It also covers relic-scaled Dash cooldown and EMP duration through the UI action
+path.
 Keep assertions enabled for all test targets, including Release builds.
 The C23 core and headless C tests build with `-Wall -Wextra -Wpedantic` on
 non-MSVC toolchains; keep new core code warning-clean.

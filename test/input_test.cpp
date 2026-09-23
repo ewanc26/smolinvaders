@@ -85,6 +85,12 @@ int main() {
   key(SDL_KEYDOWN, SDLK_x);
   assert(gui_input(&gui, &g));
   assert(g.emp_charges == 0 && g.emp_ticks == EMP_DURATION);
+  g.emp_charges = 1;
+  g.emp_ticks = 0;
+  g.relics = 3;
+  key(SDL_KEYDOWN, SDLK_x);
+  assert(gui_input(&gui, &g));
+  assert(g.emp_charges == 0 && g.emp_ticks == EMP_DURATION + 6);
   key(SDL_KEYDOWN, SDLK_n);
   assert(gui_input(&gui, &g) && gui.seed_entry && g.seed == 42);
   key(SDL_KEYDOWN, SDLK_1);
