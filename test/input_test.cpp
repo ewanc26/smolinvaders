@@ -64,9 +64,12 @@ int main() {
   key(SDL_KEYDOWN, SDLK_5);
   assert(gui_input(&gui, &g));
   assert(g.module_offer != offer && g.credits == 18 && g.paused);
+  key(SDL_KEYDOWN, SDLK_m);
+  assert(gui_input(&gui, &g));
+  assert(g.module_slots == MODULE_START_SLOTS + 1 && g.credits == 12);
   key(SDL_KEYDOWN, SDLK_4);
   assert(gui_input(&gui, &g));
-  assert(g.modules && g.credits == 13 && g.upgrade_offer && g.paused);
+  assert(g.modules && g.credits == 7 && g.upgrade_offer && g.paused);
   key(SDL_KEYDOWN, SDLK_0);
   assert(gui_input(&gui, &g));
   assert(!g.paused && !g.upgrade_offer);
