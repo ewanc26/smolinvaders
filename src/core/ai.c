@@ -40,7 +40,8 @@ void game_ai(Game *g) {
   if (steer > .12f) g->direction = 1;
   if (steer < -.12f) g->direction = -1;
   float fire_pressure = hidden[2] + hidden[3] - g->upgrade_level * .12f;
-  if (!g->emp_ticks && g->enemy_bullet < 0 && fire_pressure > .2f) {
+  float threshold = g->enemy_abilities & ENEMY_VOLLEY ? .1f : .2f;
+  if (!g->emp_ticks && g->enemy_bullet < 0 && fire_pressure > threshold) {
     g->enemy_bullet = g->alien_row + 1;
     g->enemy_bullet_x = g->alien + 1;
   }

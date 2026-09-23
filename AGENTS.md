@@ -69,6 +69,10 @@
 - `room_tag.c` derives each blind's STANDARD/FRENZY/RICH tag from coordinate
   `0x4000 + room`. FRENZY changes core enemy speed and RICH changes core clear
   payout; keep both effects out of SDL and test noisy-RNG invariance.
+- `enemy_abilities.c` derives the HASTE/PIERCING/VOLLEY bitmask from coordinate
+  `0x7000 + room`. HASTE changes `game_enemy_speed`, PIERCING bypasses shield
+  collision for enemy shots, and VOLLEY changes the core AI fire threshold.
+  Keep abilities in `Game`, save them as JSON, and test each bit across seeds.
 - Module offers use the same seed-hash contract at a room/reroll coordinate;
   held offers bypass generation, while `shop_rng` records the derived offer for
   replay diagnostics.

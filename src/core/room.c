@@ -25,6 +25,7 @@ void game_room_progress(Game *g) {
   g->blind_target = g->score + 4 + g->ante;
   g->room_type = game_seed_hash(g->seed, (uint32_t)g->room * 3u) % 3;
   g->alien_hp = g->room_type == ROOM_ELITE ? 3 : 1;
+  g->enemy_abilities = game_enemy_abilities(g);
   game_boss_prepare(g);
   g->alien_row = 2;
   g->alien = game_seed_hash(g->seed, (uint32_t)g->room * 3u + 1u) %

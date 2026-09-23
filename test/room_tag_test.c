@@ -12,6 +12,7 @@ int main(void) {
   for (uint32_t seed = 0; seed < 1000; ++seed) {
     Game g;
     game_init_seed(&g, seed);
+    g.enemy_abilities = 0;
     int tag = game_room_tag(&g);
     g.kills = 0;
     assert(game_enemy_speed(&g) == (tag == ROOM_TAG_FRENZY ? 2 : 1));

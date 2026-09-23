@@ -15,6 +15,7 @@ static void hud(const Gui *gui, const Game *g) {
   std::snprintf(line, sizeof line, "SCORE %d / %d", g->score, g->blind_target);
   gui_text(gui, line, GUI_LEFT, 50, gold);
   gui_text(gui, game_room_tag_description(g), GUI_LEFT, 65, muted);
+  gui_text(gui, game_enemy_ability_description(g), GUI_LEFT + 250, 65, muted);
   std::snprintf(line, sizeof line, "LIVES %d    CREDITS %d    RELIC %d/3    JAMMER %d/3    CLEAN %d (next %d)",
                 g->lives, g->credits,
                 g->relics, g->upgrade_level, g->flawless_streak,

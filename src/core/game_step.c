@@ -71,6 +71,7 @@ static void step_enemy_shot(Game *g) {
     return;
   }
   if (!(g->boss_rules & BOSS_BREACH) &&
+      !(g->enemy_abilities & ENEMY_PIERCING) &&
       game_shield_hit(g, g->enemy_bullet_x, g->enemy_bullet)) {
     g->enemy_bullet = -1;
     return;

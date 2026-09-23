@@ -12,6 +12,7 @@ void game_init_seed(Game *g, uint32_t seed) {
   g->player = 12 + game_seed_hash(seed, 0x5000u) % (GAME_WIDTH - 3 - 24);
   g->alien = game_seed_hash(seed, 1) % (GAME_WIDTH - 3);
   g->bonus_direction = game_seed_hash(seed, 2) & 1 ? 1 : -1;
+  g->enemy_abilities = game_enemy_abilities(g);
 }
 
 void game_init(Game *g) { game_init_seed(g, 0xC0FFEEu); }

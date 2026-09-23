@@ -31,6 +31,9 @@ tag: FRENZY raises enemy pressure by one, RICH adds one credit to its clear
 payout, and STANDARD has neither modifier. The tag is shown in the HUD and is
 reproducible without consuming combat RNG. Runs divide into eight antes of three
 blinds. Each blind needs `4 + ante` new points;
+Enemies also receive a procedural ability set per blind: HASTE increases movement
+pressure, PIERCING bypasses shields, and VOLLEY makes the neural policy fire more
+readily. Abilities can stack, are shown in the HUD, and never consume combat RNG.
 surplus score stays in the run total but cannot pre-clear the next blind.
 Meeting the target opens a shop:
 `1` repairs every shield, `2` grants a life, and `3` weakens the neural

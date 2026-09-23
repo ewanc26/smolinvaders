@@ -29,7 +29,7 @@ bool read_game(const std::string &json, Game *g) {
 #define LOAD_BOOL(field) do { long long value; if (!number(json, #field, value)) return false; g->field = value != 0; } while (0)
   LOAD_INT(player); LOAD_INT(player_velocity); LOAD_INT(alien); LOAD_INT(alien_row);
   LOAD_INT(alien_hp); LOAD_INT(bullet); LOAD_INT(bullet_x); LOAD_INT(enemy_bullet);
-  LOAD_INT(enemy_bullet_x); LOAD_INT(direction); LOAD_INT(score); LOAD_INT(ai_mood);
+  LOAD_INT(enemy_bullet_x); LOAD_INT(direction); LOAD_INT(enemy_abilities); LOAD_INT(score); LOAD_INT(ai_mood);
   LOAD_INT(lives); LOAD_INT(wave); LOAD_INT(bonus_x); LOAD_INT(bonus_timer);
   LOAD_INT(bonus_direction); LOAD_INT(rng); LOAD_INT(seed); LOAD_INT(shop_rng);
   LOAD_INT(modules); LOAD_INT(module_offer); LOAD_INT(module_slots); LOAD_INT(kills);
@@ -71,7 +71,7 @@ void write_game(std::ofstream &file, const Game *g) {
 #define SAVE_BOOL(field) write_number(file, #field, g->field ? 1 : 0, first)
   SAVE_INT(player); SAVE_INT(player_velocity); SAVE_INT(alien); SAVE_INT(alien_row);
   SAVE_INT(alien_hp); SAVE_INT(bullet); SAVE_INT(bullet_x); SAVE_INT(enemy_bullet);
-  SAVE_INT(enemy_bullet_x); SAVE_INT(direction); SAVE_INT(score); SAVE_INT(ai_mood);
+  SAVE_INT(enemy_bullet_x); SAVE_INT(direction); SAVE_INT(enemy_abilities); SAVE_INT(score); SAVE_INT(ai_mood);
   SAVE_INT(lives); SAVE_INT(wave); SAVE_INT(bonus_x); SAVE_INT(bonus_timer);
   SAVE_INT(bonus_direction); SAVE_INT(rng); SAVE_INT(seed); SAVE_INT(shop_rng);
   SAVE_INT(modules); SAVE_INT(module_offer); SAVE_INT(module_slots); SAVE_INT(kills);

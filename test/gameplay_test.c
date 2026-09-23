@@ -4,6 +4,7 @@
 int main(void) {
   Game g;
   game_init_seed(&g, 42);
+  g.enemy_abilities = 0; /* isolate baseline movement/collision assertions */
   Game noisy = g;
   for (int draw = 0; draw < 40; ++draw) game_random(&noisy);
   assert(g.player == noisy.player);

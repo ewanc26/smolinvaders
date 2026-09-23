@@ -18,6 +18,7 @@ enum { MODULE_SLOT_COST = 6, MODULE_START_SLOTS = 3, MODULE_MAX_SLOTS = 6 };
 enum { SHIELD_COUNT = 3, SHIELD_WIDTH = 6, SHIELD_ROW = 15 };
 enum { ROOM_COMBAT, ROOM_ELITE, ROOM_CACHE };
 enum { ROOM_TAG_NONE, ROOM_TAG_FRENZY, ROOM_TAG_RICH };
+enum { ENEMY_HASTE = 1, ENEMY_PIERCING = 2, ENEMY_VOLLEY = 4 };
 enum { RUN_ANTES = 8, RUN_BLINDS = RUN_ANTES * 3 };
 enum { BOSS_STATIC = 1, BOSS_BREACH = 2, BOSS_BLACKOUT = 4 };
 enum { MODULE_AMPLIFIER = 1, MODULE_SIGNAL = 2, MODULE_CADENCE = 4,
@@ -28,6 +29,7 @@ enum { MODULE_AMPLIFIER = 1, MODULE_SIGNAL = 2, MODULE_CADENCE = 4,
 typedef struct {
   int player, player_velocity, alien, alien_row, alien_hp, bullet, bullet_x;
   int enemy_bullet, enemy_bullet_x, direction;
+  int enemy_abilities;
   int score, ai_mood, lives, wave, bonus_x, bonus_timer, bonus_direction;
   uint32_t rng;
   uint32_t seed;
@@ -84,6 +86,8 @@ bool game_dash(Game *game, int direction);
 int game_dash_cooldown(const Game *game);
 int game_player_shot_speed(const Game *game);
 int game_enemy_speed(const Game *game);
+int game_enemy_abilities(const Game *game);
+const char *game_enemy_ability_description(const Game *game);
 int game_room_tag(const Game *game);
 const char *game_room_tag_description(const Game *game);
 bool game_use_emp(Game *game);
