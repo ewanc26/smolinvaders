@@ -13,5 +13,9 @@ int main(void) {
   assert(game_interest(&static_banker) == 3);
   banker.credits = 100;
   assert(game_interest(&banker) == 4);
+  banker.modules |= MODULE_BOUNTY;
+  assert(game_interest(&banker) == 5);
+  banker.boss_rules = BOSS_STATIC;
+  assert(game_interest(&banker) == 3);
   return 0;
 }

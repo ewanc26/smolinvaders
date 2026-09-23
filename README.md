@@ -62,6 +62,8 @@ suppressed by Static. It turns dangerous routes into an intentional investment
 and can finance later module slots or EMP charges.
 Banker raises the normal three-credit interest cap to four while owned, rewarding
 players who preserve credits through a shop; Static suppresses the extra cap.
+Banker plus Bounty raises it again to five, making the paired build a patient
+high-risk economy engine rather than two unrelated cash effects.
 Afterburner adds one collision-checked substep to every player shot, letting a
 build trade shop credits for faster interception rather than raw score.
 Scavenger restores one EMP charge when you shoot a signal saucer, up to the
