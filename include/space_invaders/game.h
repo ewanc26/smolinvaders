@@ -65,6 +65,7 @@ void game_hold_module(Game *game);
 bool game_module_slot_available(const Game *game);
 void game_buy_module_slot(Game *game);
 bool game_modules_full(const Game *game);
+int game_module_count(const Game *game);
 void game_move(Game *game, int direction);
 void game_fire(Game *game);
 void game_step(Game *game);

@@ -50,5 +50,6 @@ int main(void) {
   game_buy_module_slot(&g);
   assert(g.module_slots == MODULE_START_SLOTS + 1 &&
          g.credits == 0 && !game_module_slot_available(&g));
+  assert(game_module_count(&g) == 0);
   return 0;
 }

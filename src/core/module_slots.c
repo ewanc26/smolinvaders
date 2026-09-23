@@ -1,6 +1,6 @@
 #include "space_invaders/game.h"
 
-static int module_count(const Game *g) {
+int game_module_count(const Game *g) {
   int count = 0;
   for (int bit = 1; bit <= MODULE_BARRIER; bit <<= 1)
     if (g->modules & bit) ++count;
@@ -20,5 +20,5 @@ void game_buy_module_slot(Game *g) {
 }
 
 bool game_modules_full(const Game *g) {
-  return module_count(g) >= g->module_slots;
+  return game_module_count(g) >= g->module_slots;
 }
