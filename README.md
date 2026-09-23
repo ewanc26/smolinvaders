@@ -165,7 +165,7 @@ Installation includes the `space_invaders_core` static library and public C23
 headers, so another C23/C++23 front end can reuse the deterministic simulation
 without linking SDL.
 
-The GUI automatically resumes and updates the generic JSON save at
+The GUI automatically resumes and updates the versioned generic JSON save at
 `~/.ewanc26/smolinvaders/save/run.json`. Passing an explicit seed starts that
 seed instead of loading the saved run; shop decisions are saved while the shop
 is open, writes replace the JSON atomically, and `--smoke` never reads or writes

@@ -7,6 +7,7 @@
 #include <string>
 
 namespace {
+constexpr long long SAVE_FORMAT = 1;
 std::filesystem::path save_file() {
   const char *home = std::getenv("HOME");
   return (home ? std::filesystem::path(home) : std::filesystem::path(".")) /
@@ -22,6 +23,8 @@ bool number(const std::string &json, const char *key, long long &out) {
 }
 
 bool read_game(const std::string &json, Game *g) {
+  long long format;
+  if (!number(json, "format", format) || format != SAVE_FORMAT) return false;
 #define LOAD_INT(field) do { long long value; if (!number(json, #field, value)) return false; g->field = decltype(g->field)(value); } while (0)
 #define LOAD_BOOL(field) do { long long value; if (!number(json, #field, value)) return false; g->field = value != 0; } while (0)
   LOAD_INT(player); LOAD_INT(player_velocity); LOAD_INT(alien); LOAD_INT(alien_row);
@@ -63,6 +66,7 @@ void write_number(std::ofstream &file, const char *key, long long value,
 void write_game(std::ofstream &file, const Game *g) {
   bool first = true;
   file << "{\n";
+  write_number(file, "format", SAVE_FORMAT, first);
 #define SAVE_INT(field) write_number(file, #field, static_cast<long long>(g->field), first)
 #define SAVE_BOOL(field) write_number(file, #field, g->field ? 1 : 0, first)
   SAVE_INT(player); SAVE_INT(player_velocity); SAVE_INT(alien); SAVE_INT(alien_row);

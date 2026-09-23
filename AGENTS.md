@@ -226,7 +226,8 @@ non-MSVC toolchains; keep new core code warning-clean.
   generic JSON at `~/.ewanc26/smolinvaders/save/run.json`; explicit seeds take
   precedence, shop input must persist while paused, and smoke tests must never
   touch the user's save. Write through a temporary JSON and atomically replace
-  the destination so interrupted writes cannot corrupt the last run.
+  the destination so interrupted writes cannot corrupt the last run. Keep a
+  format version and reject unknown versions on load.
 - `.github/workflows/ci.yml` is the clean Linux gate: install SDL dependencies,
   configure with Ninja, build Release, run all CTest targets, and verify the
   executable and reusable core library in the install tree. New tests must
