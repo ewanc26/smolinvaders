@@ -73,6 +73,9 @@
   `0x7000 + room`. HASTE changes `game_enemy_speed`, PIERCING bypasses shield
   collision for enemy shots, and VOLLEY changes the core AI fire threshold.
   Keep abilities in `Game`, save them as JSON, and test each bit across seeds.
+- Ability combinations have stable named profiles in `game_enemy_ability_description`
+  (ASSAULT, BREACHER, SIEGE, DREADNOUGHT); keep naming in the core so the UI
+  remains a read-only renderer.
 - Module offers use the same seed-hash contract at a room/reroll coordinate;
   held offers bypass generation, while `shop_rng` records the derived offer for
   replay diagnostics.

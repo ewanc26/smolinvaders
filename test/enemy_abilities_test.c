@@ -8,6 +8,10 @@ int main(void) {
   for (int i = 0; i < 64; ++i) game_random(&noisy);
   assert(stable.enemy_abilities == noisy.enemy_abilities);
   assert(stable.enemy_abilities == game_enemy_abilities(&stable));
+  stable.enemy_abilities = ENEMY_HASTE | ENEMY_VOLLEY;
+  assert(game_enemy_ability_description(&stable)[0] == 'T');
+  stable.enemy_abilities = ENEMY_HASTE | ENEMY_PIERCING | ENEMY_VOLLEY;
+  assert(game_enemy_ability_description(&stable)[0] == 'T');
 
   int saw_haste = 0, saw_piercing = 0, saw_volley = 0;
   for (uint32_t seed = 0; seed < 100; ++seed) {
