@@ -66,7 +66,8 @@
   Room entry resets stock, offer, and reroll count; failed transactions mutate
   nothing. Cover multi-purchase sessions and stock reset with headless tests.
 - `routes.c` owns the next-blind route choice. During a shop, keys 7/8/9 map
-  to Combat/Elite/Cache and update armor consistently; route choice never
+  to Combat/Elite/Cache and update armor consistently; Cache also grants one
+  EMP charge on entry up to the carry cap. Route choice never
   consumes RNG, money, or shop stock. Every third blind is a fixed boss and
   rejects route changes. Test route decisions across seeded non-boss blinds.
 - Projectiles store their own launch columns. Neither SDL nor subsequent

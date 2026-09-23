@@ -5,5 +5,7 @@ bool game_choose_route(Game *g, int room_type) {
       room_type < ROOM_COMBAT || room_type > ROOM_CACHE) return false;
   g->room_type = room_type;
   g->alien_hp = room_type == ROOM_ELITE ? 3 : 1;
+  if (room_type == ROOM_CACHE && g->emp_charges < EMP_CAPACITY)
+    ++g->emp_charges;
   return true;
 }

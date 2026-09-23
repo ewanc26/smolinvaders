@@ -26,7 +26,7 @@ skipping the shop with `0`.
 
 While the shop is open, the next non-boss blind can be routed deliberately:
 `7` selects Combat (baseline), `8` selects Elite (three armor and a relic),
-or `9` selects Cache (earlier saucer). Route selection is free, deterministic,
+or `9` selects Cache (earlier saucer and one EMP charge on entry). Route selection is free, deterministic,
 and remains locked on every third blind because that blind is always a boss.
 This adds replayable risk/reward path planning to the seeded run.
 
