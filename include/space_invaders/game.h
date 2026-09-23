@@ -94,6 +94,7 @@ void game_boss_prepare(Game *game);
 const char *game_boss_description(const Game *game);
 void game_module_offer(Game *game);
 void game_score_kill(Game *game, int base, bool saucer);
+int game_bonus_interval(const Game *game);
 const char *game_module_name(int module);
 const char *game_module_effect(int module);
 

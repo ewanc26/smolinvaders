@@ -107,7 +107,7 @@ static void step_alien(Game *g) {
 static void step_bonus(Game *g) {
   if (g->boss_rules & BOSS_BLACKOUT) return;
   if (!g->bonus_active) {
-    if (++g->bonus_timer >= (g->room_type == ROOM_CACHE ? 90 : 140)) {
+    if (++g->bonus_timer >= game_bonus_interval(g)) {
       g->bonus_active = true;
       g->bonus_timer = 0;
       g->bonus_x = g->bonus_direction > 0 ? -5 : GAME_WIDTH;

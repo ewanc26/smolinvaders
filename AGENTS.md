@@ -28,6 +28,9 @@
   clears movement momentum before the next blind begins.
 - Bonus entities must use the core's deterministic timer/RNG state and expose
   their collision behavior to headless tests before being rendered by SDL.
+- `bonus.c` derives each room's saucer interval from `game_seed_hash`; Cache
+  rooms use the earlier 90–109 tick band and other rooms use 140–169. Keep the
+  interval helper in core and do not hard-code it in the UI.
 - Roguelike state must be seedable through `game_init_seed`. Room transitions
   pause in the core and upgrades are selected through `game_choose_upgrade`; UI
   must never invent progression or mutate run state directly.

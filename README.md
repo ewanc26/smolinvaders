@@ -16,8 +16,10 @@ blinds; the player has three lives.
 Three destructible energy shields sit between the player and the invader. Both
 player and enemy shots damage them, so preserving cover is part of the strategy.
 
-An occasional gold signal saucer crosses the top of the arena. Shoot it for
-three points; missing it lets the opportunity pass.
+An occasional gold signal saucer crosses the top of the arena. Its arrival
+interval is seed-generated per room; Cache rooms keep an earlier 90–109 tick
+window while other rooms use 140–169 ticks. Shoot it for three points; missing
+it lets the opportunity pass.
 
 Runs are seeded (`0xC0FFEE` by default), including the first enemy position,
 and every room type, enemy placement, respawn placement, and boss rule is derived from a stable

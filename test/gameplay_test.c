@@ -4,6 +4,10 @@
 int main(void) {
   Game g;
   game_init_seed(&g, 42);
+  assert(game_bonus_interval(&g) >= 140 && game_bonus_interval(&g) < 170);
+  g.room_type = ROOM_CACHE;
+  assert(game_bonus_interval(&g) >= 90 && game_bonus_interval(&g) < 110);
+  g.room_type = ROOM_COMBAT;
   game_fire(&g);
   int lane = g.bullet_x;
   game_move(&g, 1);

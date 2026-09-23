@@ -31,6 +31,7 @@ add_library(space_invaders_core STATIC
   src/core/room.c
   src/core/modules.c
   src/core/boss.c
+  src/core/bonus.c
   src/core/game_step.c)
 target_include_directories(space_invaders_core PUBLIC include)
 if(NOT MSVC)
