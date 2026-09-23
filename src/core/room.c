@@ -11,8 +11,7 @@ void game_room_progress(Game *g) {
   }
 
   bool cache_clear = g->room_type == ROOM_CACHE;
-  int interest = g->credits / 5;
-  if (interest > 3) interest = 3;
+  int interest = game_interest(g);
   int combo_reward = g->combo / 4;
   if (combo_reward > 2) combo_reward = 2;
   g->credits += 2 + interest + combo_reward;

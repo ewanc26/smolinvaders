@@ -4,6 +4,10 @@
 int main(void) {
   Game g;
   game_init_seed(&g, 1);
+  g.credits = 24;
+  assert(game_interest(&g) == 3);
+  g.credits = 9;
+  assert(game_interest(&g) == 1);
   g.paused = g.upgrade_offer = true;
   g.credits = 0;
   game_choose_upgrade(&g, 1);

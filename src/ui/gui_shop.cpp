@@ -48,8 +48,7 @@ void gui_shop(const Gui *gui, const Game *g) {
   gui_text(gui, slots, 95, 405,
            game_module_slot_available(g) ? gold : muted);
   gui_text(gui, "0 LEAVE - keep unspent credits", 475, 389, white);
-  int interest = g->credits / 5;
-  if (interest > 3) interest = 3;
+  int interest = game_interest(g);
   char savings[72];
   std::snprintf(savings, sizeof savings, "SAVE %d -> +%d INTEREST NEXT BLIND",
                 g->credits, interest);

@@ -70,6 +70,8 @@
 - Credits and shop prices belong in the core. UI choices must call
   `game_choose_upgrade` and tolerate unaffordable purchases without mutating
   the economy directly.
+- `interest.c` owns the capped one-credit-per-five-saved payout; the UI must
+  call `game_interest` instead of reimplementing economy arithmetic.
 - Blind completion pays a base reward plus capped interest on credits held
   before the reward. Keep this calculation in `room.c` and test its boundary.
 - Blind completion also cashes out the current combo at one credit per four

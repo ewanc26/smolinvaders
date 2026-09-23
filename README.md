@@ -67,6 +67,8 @@ The HUD and shop also show clean-clear progress and banked free rerolls, so the
 streak reward is visible before choosing the next route.
 The shop previews the current interest payout (one credit per five saved,
 capped at three), making the save-versus-spend decision explicit.
+That payout is calculated by the deterministic C23 core and only rendered by
+the C++23 GUI.
 Buy several cards if you can afford them; repair, life, and jammer each have
 one unit per visit. Intact shields cannot be repaired for a wasted credit.
 Press `5` to reroll the module slot: two credits initially, rising by one per

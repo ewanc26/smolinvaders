@@ -20,6 +20,7 @@ add_library(space_invaders_core STATIC
   src/core/dash.c
   src/core/routes.c
   src/core/shop.c
+  src/core/interest.c
   src/core/shop_reroll.c
   src/core/shop_hold.c
   src/core/module_slots.c
