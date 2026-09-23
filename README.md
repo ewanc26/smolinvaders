@@ -103,6 +103,7 @@ Install SDL2, SDL2_ttf, CMake, and C23/C++23 compilers, then:
 cmake -S . -B build
 cmake --build build
 ctest --test-dir build --output-on-failure
+cmake --install build --prefix ./dist
 ./build/space-invaders
 ./build/space-invaders 42
 ```
