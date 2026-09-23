@@ -9,7 +9,8 @@ player's position, movement direction, shot state, remaining shield integrity,
 and EMP state. Its fixed weights react to play; it does not train online. The
 movement signal records accepted input only, so edge-blocked movement cannot
 make the invader anticipate a move that did not happen. EMP pressure suppresses
-enemy firing, while damaged cover changes its firing pressure. Kills advance
+enemy firing, and room transitions clear movement momentum. Damaged cover
+changes its firing pressure. Kills advance
 blinds; the player has three lives.
 
 Three destructible energy shields sit between the player and the invader. Both

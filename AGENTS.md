@@ -24,7 +24,8 @@
   only accepted movement, so the signal cannot anticipate an edge-blocked or
   paused input. UI may visualize mood, but must not
   use it to alter simulation decisions. EMP must suppress enemy firing. Jammer
-  levels deterministically reduce both steering and firing pressure.
+  levels deterministically reduce both steering and firing pressure. Room entry
+  clears movement momentum before the next blind begins.
 - Bonus entities must use the core's deterministic timer/RNG state and expose
   their collision behavior to headless tests before being rendered by SDL.
 - Roguelike state must be seedable through `game_init_seed`. Room transitions

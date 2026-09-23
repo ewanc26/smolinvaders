@@ -14,11 +14,13 @@ int main(void) {
   game_init_seed(&other_seed, 43);
   assert(first.alien == replay.alien && first.alien != other_seed.alien);
   first.score = replay.score = 4;
+  first.player_velocity = replay.player_velocity = 1;
   aim_at_alien(&first);
   aim_at_alien(&replay);
   game_step(&first);
   game_step(&replay);
   assert(first.room == 2 && first.upgrade_offer && first.paused);
+  assert(first.player_velocity == 0);
   assert(first.credits == 5);
   assert(first.room_type == replay.room_type && first.alien == replay.alien);
   assert(first.rng == replay.rng && first.blind_target == 10);
