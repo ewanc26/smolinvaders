@@ -41,6 +41,10 @@ build trade shop credits for faster interception rather than raw score.
 Scavenger restores one EMP charge when you shoot a signal saucer, up to the
 two-charge carry limit. It creates a defensive loop for players who can take
 the risk of hunting the bonus target.
+Build pairs have extra identities: Amplifier plus Cadence adds two points on
+every fourth kill, while Signal plus Scavenger pays one bonus credit whenever a
+saucer is destroyed. These synergies are deterministic and remain suppressed
+by the Static boss restriction.
 The HUD lists owned modules. Shops remain open until you press `0` to leave.
 Buy several cards if you can afford them; repair, life, and jammer each have
 one unit per visit. Intact shields cannot be repaired for a wasted credit.

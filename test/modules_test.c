@@ -52,11 +52,22 @@ int main(void) {
   g.bullet_x = g.alien + 1;
   g.bullet = g.alien_row + 1;
   game_step(&g);
-  assert(g.score == 14 && g.kills == 4 && g.room == 2);
+  assert(g.score == 16 && g.kills == 4 && g.room == 2);
   game_score_kill(&g, 1, false);
   game_score_kill(&g, 1, false);
   game_score_kill(&g, 1, false);
-  assert(g.combo == 4 && g.score == 24); /* four-kill combo reaches 2x */
+  assert(g.combo == 4 && g.score == 26); /* four-kill combo reaches 2x */
+  g.modules = MODULE_AMPLIFIER | MODULE_CADENCE;
+  g.kills = 3;
+  g.combo = g.combo_timer = 0;
+  int before = g.score;
+  game_score_kill(&g, 1, false);
+  assert(g.score == before + 4); /* amplifier + fourth-kill synergy */
+  g.modules = MODULE_SIGNAL | MODULE_SCAVENGER;
+  g.emp_charges = 0;
+  int credits = g.credits;
+  game_score_kill(&g, 1, true);
+  assert(g.credits == credits + 1 && g.emp_charges == 1);
   g.modules = MODULE_SCAVENGER;
   g.emp_charges = 0;
   game_score_kill(&g, 3, true);
