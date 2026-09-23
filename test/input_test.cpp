@@ -1,11 +1,13 @@
 #include "space_invaders/gui.h"
 #include <cassert>
 
-static void key(Uint32 type, SDL_Keycode code, bool repeat = false) {
+static void key(Uint32 type, SDL_Keycode code, bool repeat = false,
+                SDL_Keymod mod = KMOD_NONE) {
   SDL_Event event{};
   event.type = type;
   event.key.keysym.sym = code;
   event.key.repeat = repeat;
+  event.key.keysym.mod = mod;
   assert(SDL_PushEvent(&event) == 1);
 }
 
@@ -70,6 +72,10 @@ int main() {
   key(SDL_KEYDOWN, SDLK_4);
   assert(gui_input(&gui, &g));
   assert(g.modules && g.credits == 7 && g.upgrade_offer && g.paused);
+  g.modules = MODULE_AMPLIFIER;
+  key(SDL_KEYDOWN, SDLK_1, false, KMOD_SHIFT);
+  assert(gui_input(&gui, &g));
+  assert(!g.modules && g.credits == 9);
   key(SDL_KEYDOWN, SDLK_0);
   assert(gui_input(&gui, &g));
   assert(!g.paused && !g.upgrade_offer);
