@@ -67,4 +67,5 @@ void gui_shop(const Gui *gui, const Game *g) {
     gui_text(gui, "NEXT BLIND: 7 COMBAT   8 ELITE   9 CACHE", 475, 430, white);
   else
     gui_text(gui, "NEXT BLIND: BOSS (route locked)", 475, 430, gold);
+  gui_text(gui, game_room_tag_description(g), 95, 465, muted);
 }
