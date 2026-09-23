@@ -10,10 +10,16 @@ void game_module_offer(Game *g) {
 
 void game_score_kill(Game *g, int base, bool saucer) {
   ++g->kills;
+  if (g->combo_timer == 0) g->combo = 0;
+  if (g->combo < COMBO_CAP) ++g->combo;
+  g->combo_timer = COMBO_WINDOW;
   int active = g->boss_rules & BOSS_STATIC ? 0 : g->modules;
   if (active & MODULE_AMPLIFIER) ++base;
   if ((active & MODULE_CADENCE) && g->kills % 3 == 0) base += 2;
   if ((active & MODULE_SIGNAL) && saucer) base *= 2;
+  int multiplier = 1 + g->combo / 4;
+  if (multiplier > 3) multiplier = 3;
+  base *= multiplier;
   g->score += base;
   if (saucer && (active & MODULE_SCAVENGER) && g->emp_charges < EMP_CAPACITY)
     ++g->emp_charges;

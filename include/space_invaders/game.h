@@ -13,6 +13,7 @@ enum { PLAYER_SHOT_SPEED = 3 };
 enum { EMP_DURATION = 12, EMP_CAPACITY = 2 };
 enum { DASH_DISTANCE = 4, DASH_COOLDOWN = 18 };
 enum { DAMAGE_GRACE = 8 };
+enum { COMBO_WINDOW = 24, COMBO_CAP = 8 };
 enum { SHIELD_COUNT = 3, SHIELD_WIDTH = 6, SHIELD_ROW = 15 };
 enum { ROOM_COMBAT, ROOM_ELITE, ROOM_CACHE };
 enum { RUN_ANTES = 8, RUN_BLINDS = RUN_ANTES * 3 };
@@ -33,6 +34,7 @@ typedef struct {
   int emp_charges, emp_ticks;
   int dash_cooldown;
   int damage_grace;
+  int combo, combo_timer;
   int boss_rules;
   int room, best_room, room_type, upgrade_level, relics, relic_charges;
   int ante, blind_target, credits;

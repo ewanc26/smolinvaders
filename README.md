@@ -120,6 +120,9 @@ Use it to evade a firing lane or buy time while an EMP is unavailable.
 
 An enemy hit grants an 8-tick damage-grace window, preventing rapid shot chains
 while keeping the seeded simulation deterministic. The HUD shows when grace is active.
+Consecutive kills inside a 24-tick window build a combo up to eight; at four and
+eight kills, the next scoring event earns a 2x or 3x multiplier. Losing a life
+breaks the combo, so chasing saucers can be worth the danger.
 Losing window focus pauses combat and clears held keys; press `P` to resume.
 Player shots move three cells per tick, checking every cell for collisions;
 enemies and their shots move one. Cover still blocks your own shots.

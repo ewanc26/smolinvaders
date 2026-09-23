@@ -109,6 +109,8 @@
   while player movement and fire remain independent. Test core and SDL input.
 - Enemy hits grant an 8-tick damage-grace window; later shots during that window
   are harmless and the UI exposes the state.
+- Scoring kills build an eight-step combo while refreshed within 24 ticks. Combo
+  scores multiply at four and eight, and life loss clears the chain.
 - Scoring modules live in `modules.c`: additive bonuses precede multipliers,
   and only kills advance Cadence. Afterburner is a non-scoring module that
   increases player shot substeps by one. Shop offers use their own unsigned

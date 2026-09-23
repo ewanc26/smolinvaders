@@ -61,6 +61,7 @@ static void step_enemy_shot(Game *g) {
     } else {
       if (--g->lives == 0) g->over = true;
       g->damage_grace = DAMAGE_GRACE;
+      g->combo = g->combo_timer = 0;
     }
   }
   g->enemy_bullet = -1;
@@ -99,6 +100,7 @@ static void step_bonus(Game *g) {
 void game_step(Game *g) {
   if (g->over || g->won || g->paused) return;
   if (g->damage_grace > 0) --g->damage_grace;
+  if (g->combo_timer > 0 && --g->combo_timer == 0) g->combo = 0;
   for (int cell = 0; cell < game_player_shot_speed(g); ++cell) {
     step_player_shot(g);
     if (g->over || g->won || g->paused) return;

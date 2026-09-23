@@ -53,6 +53,10 @@ int main(void) {
   g.bullet = g.alien_row + 1;
   game_step(&g);
   assert(g.score == 14 && g.kills == 4 && g.room == 2);
+  game_score_kill(&g, 1, false);
+  game_score_kill(&g, 1, false);
+  game_score_kill(&g, 1, false);
+  assert(g.combo == 4 && g.score == 24); /* four-kill combo reaches 2x */
   g.modules = MODULE_SCAVENGER;
   g.emp_charges = 0;
   game_score_kill(&g, 3, true);
