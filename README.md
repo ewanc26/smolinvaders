@@ -68,6 +68,9 @@ commanders pay three. Shield repair costs one, an extra life costs three, and
 the neural jammer costs four; unaffordable choices do nothing.
 Clearing a blind pays two credits plus one interest credit per five saved,
 capped at three. Saving through a shop can fund stronger purchases later.
+The shop-opening payout also cashes out the current combat combo at one credit
+per four combo steps, capped at two; taking a life loss before the clear gives
+up that bonus.
 During the shop phase, labeled cards show those prices and dim when the run
 cannot afford them.
 

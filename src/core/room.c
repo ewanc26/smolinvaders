@@ -12,7 +12,9 @@ void game_room_progress(Game *g) {
 
   int interest = g->credits / 5;
   if (interest > 3) interest = 3;
-  g->credits += 2 + interest;
+  int combo_reward = g->combo / 4;
+  if (combo_reward > 2) combo_reward = 2;
+  g->credits += 2 + interest + combo_reward;
 
   ++g->room;
   if (g->room > g->best_room) g->best_room = g->room;

@@ -57,6 +57,8 @@
   the economy directly.
 - Blind completion pays a base reward plus capped interest on credits held
   before the reward. Keep this calculation in `room.c` and test its boundary.
+- Blind completion also cashes out the current combo at one credit per four
+  steps, capped at two; room entry resets the combo.
 - Shop cards use `game_upgrade_cost` and `game_upgrade_available`. Always let
   the player skip an unaffordable shop with `game_skip_upgrade`.
 - Shop transactions live in `shop.c`, rerolls in `shop_reroll.c`. Purchases

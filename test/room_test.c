@@ -22,6 +22,14 @@ int main(void) {
   assert(first.credits == 5);
   assert(first.room_type == replay.room_type && first.alien == replay.alien);
   assert(first.rng == replay.rng && first.blind_target == 10);
+  Game streak;
+  game_init_seed(&streak, 44);
+  streak.score = streak.blind_target - 1;
+  streak.combo = COMBO_CAP;
+  streak.combo_timer = COMBO_WINDOW;
+  aim_at_alien(&streak);
+  game_step(&streak);
+  assert(streak.upgrade_offer && streak.credits == 7 && streak.combo == 0);
   assert(game_choose_route(&first, ROOM_ELITE));
   assert(first.room_type == ROOM_ELITE && first.alien_hp == 3);
   assert(!game_choose_route(&first, ROOM_CACHE));
