@@ -87,6 +87,7 @@ void game_ai(Game *game);
 int game_ai_mood(const Game *game);
 bool game_shield_hit(Game *game, int x, int row);
 uint32_t game_random(Game *game);
+uint32_t game_seed_hash(uint32_t seed, uint32_t coordinate);
 void game_room_progress(Game *game);
 bool game_is_boss(const Game *game);
 void game_boss_prepare(Game *game);

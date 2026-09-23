@@ -9,7 +9,7 @@ void game_init_seed(Game *g, uint32_t seed) {
     .ante = 1, .blind_target = 5, .credits = 3, .emp_charges = 1, .bonus_x = -3,
     .bonus_direction = 1 };
   game_shields_init(g);
-  g->alien = game_random(g) % (GAME_WIDTH - 3);
+  g->alien = game_seed_hash(seed, 1) % (GAME_WIDTH - 3);
 }
 
 void game_init(Game *g) { game_init_seed(g, 0xC0FFEEu); }

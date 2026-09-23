@@ -20,7 +20,10 @@ An occasional gold signal saucer crosses the top of the arena. Shoot it for
 three points; missing it lets the opportunity pass.
 
 Runs are seeded (`0xC0FFEE` by default), including the first enemy position,
-and divide into eight antes of three blinds. Each blind needs `4 + ante` new points;
+and every room type, enemy placement, and boss rule is derived from a stable
+seed coordinate. Combat and shop RNG can advance independently without
+reshuffling already-generated rooms. Runs divide into eight antes of three
+blinds. Each blind needs `4 + ante` new points;
 surplus score stays in the run total but cannot pre-clear the next blind.
 Meeting the target opens a shop:
 `1` repairs every shield, `2` grants a life, and `3` weakens the neural

@@ -6,10 +6,7 @@ void game_boss_prepare(Game *g) {
   g->boss_rules = 0;
   if (!game_is_boss(g)) return;
   /* A separate seed-derived draw makes boss identity independent of combat. */
-  uint32_t draw = g->seed ^ ((uint32_t)g->ante * 0x9e3779b9u);
-  draw ^= draw >> 16;
-  draw *= 0x85ebca6bu;
-  draw ^= draw >> 13;
+  uint32_t draw = game_seed_hash(g->seed, (uint32_t)g->room * 3u + 2u);
   g->boss_rules = g->room == RUN_BLINDS ? 7 : 1 << (draw % 3);
   g->room_type = ROOM_ELITE;
   g->alien_hp = 2 + g->ante;

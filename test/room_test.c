@@ -23,6 +23,7 @@ int main(void) {
   assert(first.player_velocity == 0);
   assert(first.credits == 5);
   assert(first.room_type == replay.room_type && first.alien == replay.alien);
+  assert(first.rng == replay.rng);
   assert(first.rng == replay.rng && first.blind_target == 10);
   Game streak;
   game_init_seed(&streak, 44);
