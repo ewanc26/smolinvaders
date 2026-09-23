@@ -13,6 +13,7 @@ int main(void) {
       assert(a.module_offer == b.module_offer && a.module_offer);
       assert(!(a.modules & a.module_offer));
       a.upgrade_offer = a.paused = true;
+      a.module_slots = MODULE_MAX_SLOTS;
       a.credits = 4;
       game_choose_upgrade(&a, 4);
       assert(a.credits == 4 && a.upgrade_offer);

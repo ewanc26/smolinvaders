@@ -88,6 +88,7 @@ bool gui_input(Gui *gui, Game *g) {
       case SDLK_5: game_reroll_shop(g); break;
       case SDLK_6: game_choose_upgrade(g, 6); break;
       case SDLK_h: game_hold_module(g); break;
+      case SDLK_m: game_buy_module_slot(g); break;
       case SDLK_7: game_choose_route(g, ROOM_COMBAT); break;
       case SDLK_8: game_choose_route(g, ROOM_ELITE); break;
       case SDLK_9: game_choose_route(g, ROOM_CACHE); break;

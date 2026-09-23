@@ -22,6 +22,7 @@ add_library(space_invaders_core STATIC
   src/core/shop.c
   src/core/shop_reroll.c
   src/core/shop_hold.c
+  src/core/module_slots.c
   src/core/ai.c
   src/core/shields.c
   src/core/random.c

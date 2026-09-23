@@ -28,6 +28,12 @@ void gui_shop(const Gui *gui, const Game *g) {
   gui_text(gui, reroll, 95, 389, game_reroll_available(g) ? gold : muted);
   gui_text(gui, "H HOLD MODULE: 2 credits", 475, 405,
            game_hold_available(g) ? gold : muted);
+  char slots[64];
+  std::snprintf(slots, sizeof slots, "M MODULE SLOT: %d credits (%d/%d)",
+                MODULE_SLOT_COST, g->module_slots,
+                MODULE_MAX_SLOTS);
+  gui_text(gui, slots, 95, 405,
+           game_module_slot_available(g) ? gold : muted);
   gui_text(gui, "0 LEAVE - keep unspent credits", 475, 389, white);
   char emp[80];
   std::snprintf(emp, sizeof emp, "6 EMP: %d credits - clear shot + freeze enemies (carry %d)",

@@ -21,7 +21,8 @@ bool game_upgrade_available(const Game *g, int choice) {
          !(choice == 2 && g->lives >= 5) &&
          !(choice == 3 && g->upgrade_level >= 3) &&
          !(choice == 6 && g->emp_charges >= EMP_CAPACITY) &&
-         !(choice == 4 && (!g->module_offer || (g->modules & g->module_offer)));
+         !(choice == 4 && (!g->module_offer || (g->modules & g->module_offer) ||
+                            game_modules_full(g)));
 }
 
 void game_choose_upgrade(Game *g, int choice) {

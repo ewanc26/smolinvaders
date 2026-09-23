@@ -45,5 +45,10 @@ int main(void) {
   g.score = g.blind_target;
   game_room_progress(&g);
   assert(g.module_offer == MODULE_SIGNAL && g.held_module == 0);
+  g.credits = MODULE_SLOT_COST;
+  assert(game_module_slot_available(&g));
+  game_buy_module_slot(&g);
+  assert(g.module_slots == MODULE_START_SLOTS + 1 &&
+         g.credits == 0 && !game_module_slot_available(&g));
   return 0;
 }

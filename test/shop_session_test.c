@@ -8,6 +8,7 @@ int main(void) {
     g.score = g.blind_target;
     game_room_progress(&g);
     g.credits = 70;
+    g.module_slots = MODULE_MAX_SLOTS;
     replay = g;
     uint32_t combat_rng = g.rng;
     int first_offer = g.module_offer;

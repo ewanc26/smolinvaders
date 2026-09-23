@@ -5,6 +5,7 @@ void game_init_seed(Game *g, uint32_t seed) {
     .bullet = -1, .enemy_bullet = -1, .direction = 1, .lives = 3, .wave = 1,
     .rng = seed, .seed = seed, .shop_rng = seed ^ 0x9e3779b9u,
     .room = 1, .best_room = 1, .room_type = ROOM_COMBAT,
+    .module_slots = MODULE_START_SLOTS,
     .ante = 1, .blind_target = 5, .credits = 3, .emp_charges = 1, .bonus_x = -3,
     .bonus_direction = 1 };
   game_shields_init(g);
