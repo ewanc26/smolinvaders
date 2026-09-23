@@ -9,7 +9,9 @@ void game_module_offer(Game *g) {
   int pool[6], count = 0;
   for (int bit = 1; bit <= MODULE_BARRIER; bit <<= 1)
     if (!(g->modules & bit) && bit != g->module_offer) pool[count++] = bit;
-  g->shop_rng = g->shop_rng * 1664525u + 1013904223u;
+  g->shop_rng = game_seed_hash(g->seed,
+                               0x1000u + (uint32_t)g->room * 16u +
+                                   (uint32_t)g->shop_rerolls);
   g->module_offer = count ? pool[g->shop_rng % (unsigned)count] : 0;
 }
 

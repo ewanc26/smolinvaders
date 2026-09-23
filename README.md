@@ -81,7 +81,8 @@ reroll to a cap of ten. Rerolls use only the shop RNG, guarantee a different
 unowned module, and are disabled when no alternative exists. Buying a module
 empties its slot; a paid reroll can restock it. Stock and reroll prices reset
 at the next shop. Leaving preserves unspent credits for interest.
-Shop randomness is separate from combat randomness. A Cache clear's free reroll
+Module offers are derived from the run seed, room, and reroll index, separate
+from combat randomness. A Cache clear's free reroll
 is consumed before credits and still advances the seeded shop offer.
 Leaving an untouched shop with `0` grants one free skip-tag reroll for the next
 shop; any purchase, reroll, hold, or route choice forfeits that tag.
