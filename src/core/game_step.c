@@ -26,6 +26,7 @@ static void step_player_shot(Game *g) {
   if (game_is_boss(g)) {
     if (g->relics < 3) ++g->relics;
     if (g->module_slots < MODULE_MAX_SLOTS) ++g->module_slots;
+    if (g->emp_charges < EMP_CAPACITY) ++g->emp_charges;
     g->relic_charges = g->relics;
     g->credits += 3;
     game_score_kill(g, 4 + g->ante, false);
