@@ -64,8 +64,9 @@ by the Static boss restriction.
 Amplifier plus Signal adds one extra saucer point before Signal's multiplier,
 making bonus-target hunting a distinct scoring build.
 The HUD lists owned modules. Shops remain open until you press `0` to leave.
-The HUD and shop also show clean-clear progress and banked free rerolls, so the
-streak reward is visible before choosing the next route.
+The HUD and shop show the full clean-clear streak, its next two-clear milestone,
+and banked free rerolls, so the streak reward is visible before choosing the
+next route.
 The shop previews the current interest payout (one credit per five saved,
 capped at three), making the save-versus-spend decision explicit.
 That payout is calculated by the deterministic C23 core and only rendered by
