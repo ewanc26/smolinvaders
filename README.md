@@ -42,7 +42,8 @@ Scavenger restores one EMP charge when you shoot a signal saucer, up to the
 two-charge carry limit. It creates a defensive loop for players who can take
 the risk of hunting the bonus target.
 Barrier negates the first enemy shot that reaches a shield in each blind, then
-refreshes when the next blind begins. Static bosses suppress that protection.
+refreshes when the next blind begins. Static and Breach bosses suppress that
+protection; Breach shots bypass cover and cannot consume it.
 Build pairs have extra identities: Amplifier plus Cadence adds two points on
 every fourth kill, while Signal plus Scavenger pays one bonus credit whenever a
 saucer is destroyed. These synergies are deterministic and remain suppressed

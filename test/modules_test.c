@@ -85,5 +85,11 @@ int main(void) {
   g.enemy_bullet = SHIELD_ROW - 1;
   game_step(&g);
   assert(g.shields[0][0] == shield - 1);
+  g.barrier_used = false;
+  g.boss_rules = BOSS_BREACH;
+  g.enemy_bullet = SHIELD_ROW - 1;
+  shield = g.shields[0][0];
+  game_step(&g);
+  assert(!g.barrier_used && g.shields[0][0] == shield);
   return 0;
 }

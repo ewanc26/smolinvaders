@@ -128,7 +128,8 @@
   effects. It must not consume combat RNG or exceed the charge cap.
 - Barrier is a non-scoring module: it consumes once when an enemy shot reaches
   shield height, prevents that shield mutation, and refreshes at room entry.
-  Static suppresses it.
+  Static and Breach suppress it; Breach must not consume the charge because it
+  bypasses cover.
 - Blind targets are cumulative score plus four plus ante on room entry. Surplus points
   remain in total score, but never pre-clear later blinds. Shop rendering lives
   separately in `gui_shop.cpp`; core availability is authoritative.
