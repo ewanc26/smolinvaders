@@ -9,6 +9,10 @@ int main(void) {
   assert(g.player == noisy.player);
   assert(g.player == 12 + game_seed_hash(g.seed, 0x5000u) % (GAME_WIDTH - 3 - 24));
   assert(g.bonus_direction == (game_seed_hash(g.seed, 2) & 1 ? 1 : -1));
+  Game shield_replay;
+  game_init_seed(&shield_replay, 42);
+  assert(g.shields[0][0] == shield_replay.shields[0][0]);
+  assert(g.shields[0][1] == shield_replay.shields[0][1]);
   assert(game_bonus_interval(&g) >= 140 && game_bonus_interval(&g) < 170);
   g.room_type = ROOM_CACHE;
   assert(game_bonus_interval(&g) >= 90 && game_bonus_interval(&g) < 110);

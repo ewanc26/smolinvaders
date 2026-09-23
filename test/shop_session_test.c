@@ -19,7 +19,7 @@ int main(void) {
     assert(g.credits == 68 && game_reroll_cost(&g) == 3);
     assert(g.rng == combat_rng && g.paused && g.upgrade_offer);
 
-    assert(!game_upgrade_available(&g, 1)); /* Don't charge for intact cover. */
+    assert(game_upgrade_available(&g, 1)); /* Seeded notch is repairable. */
     g.shields[0][0] = 0;
     game_choose_upgrade(&g, 1);
     game_choose_upgrade(&g, 2);

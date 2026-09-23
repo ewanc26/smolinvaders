@@ -62,6 +62,10 @@
 - The initial player lane is derived from coordinate `0x5000`, within a
   central 12-cell safety band so deterministic EMP/movement behavior remains
   playable; it must not be restored as a fixed constant.
+- `shields.c` derives one two-strength notch per cover bank from coordinates
+  `0x6000 + shield`; `game_shields_init` must restore the seed's layout rather
+  than a fixed all-full rectangle. Keep shield-hit mapping and repair behavior
+  in the C core.
 - `room_tag.c` derives each blind's STANDARD/FRENZY/RICH tag from coordinate
   `0x4000 + room`. FRENZY changes core enemy speed and RICH changes core clear
   payout; keep both effects out of SDL and test noisy-RNG invariance.

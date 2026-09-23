@@ -25,6 +25,8 @@ Runs are seeded (`0xC0FFEE` by default), including the first enemy position,
 the central player starting lane, and every room type, enemy placement, respawn placement, and boss rule is derived from a stable
 seed coordinate. Combat and shop RNG can advance independently without
 reshuffling already-generated rooms. Each blind also receives a seed-derived
+shield layout: every cover bank keeps its first cell intact but has one
+deterministic two-strength notch, so repair restores that run's original cover.
 tag: FRENZY raises enemy pressure by one, RICH adds one credit to its clear
 payout, and STANDARD has neither modifier. The tag is shown in the HUD and is
 reproducible without consuming combat RNG. Runs divide into eight antes of three
