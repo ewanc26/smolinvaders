@@ -50,8 +50,8 @@ void gui_shop(const Gui *gui, const Game *g) {
   gui_text(gui, "0 LEAVE - keep unspent credits", 475, 389, white);
   int interest = game_interest(g);
   char savings[72];
-  std::snprintf(savings, sizeof savings, "SAVE %d -> +%d INTEREST NEXT BLIND",
-                g->credits, interest);
+  std::snprintf(savings, sizeof savings, "SAVE %d -> +%d INTEREST (CAP %d)",
+                g->credits, interest, game_interest_cap(g));
   gui_text(gui, savings, 475, 448, interest ? gold : muted);
   char emp[80];
   std::snprintf(emp, sizeof emp, "6 EMP: %d credits - clear shot + freeze enemies (carry %d)",

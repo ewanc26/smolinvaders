@@ -9,12 +9,15 @@ int main(void) {
   static_banker.boss_rules = BOSS_STATIC;
   normal.credits = banker.credits = static_banker.credits = 20;
   assert(game_interest(&normal) == 3);
+  assert(game_interest_cap(&normal) == 3);
   assert(game_interest(&banker) == 4);
+  assert(game_interest_cap(&banker) == 4);
   assert(game_interest(&static_banker) == 3);
   banker.credits = 100;
   assert(game_interest(&banker) == 4);
   banker.modules |= MODULE_BOUNTY;
   assert(game_interest(&banker) == 5);
+  assert(game_interest_cap(&banker) == 5);
   banker.boss_rules = BOSS_STATIC;
   assert(game_interest(&banker) == 3);
   return 0;

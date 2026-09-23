@@ -194,6 +194,8 @@
   arithmetic centralized and test the cap boundaries.
 - Banker plus Bounty raises the non-Static interest cap to five. Preserve this
   synergy in `interest.c` and test that Static suppresses the entire upgrade.
+- Expose the authoritative cap through `game_interest_cap`; the SDL shop may
+  display it but must not duplicate the Banker/Bounty/Static rules.
 - Scavenger is a non-scoring module: a saucer kill restores one EMP charge up
   to `EMP_CAPACITY`, and Static suppresses that refill with other module
   effects. It must not consume combat RNG or exceed the charge cap.
