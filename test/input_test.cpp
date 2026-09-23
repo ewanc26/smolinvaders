@@ -132,5 +132,11 @@ int main() {
   key(SDL_KEYDOWN, SDLK_LSHIFT);
   assert(gui_input(&gui, &g));
   assert(g.player == 14 && g.dash_cooldown == DASH_COOLDOWN);
+  g.player = 10;
+  g.dash_cooldown = 0;
+  g.relics = 2;
+  key(SDL_KEYDOWN, SDLK_LSHIFT);
+  assert(gui_input(&gui, &g));
+  assert(g.player == 14 && g.dash_cooldown == DASH_COOLDOWN - 4);
   SDL_Quit();
 }
