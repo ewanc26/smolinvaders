@@ -18,8 +18,9 @@ static void hud(const Gui *gui, const Game *g) {
                 g->lives, g->credits,
                 g->relics);
   gui_text(gui, line, GUI_LEFT, 80, white);
-  std::snprintf(line, sizeof line, "THREAT %dx   EMP %d/%d %s",
-                game_enemy_speed(g), g->emp_charges, EMP_CAPACITY,
+  std::snprintf(line, sizeof line, "THREAT %dx   DASH %s   EMP %d/%d %s",
+                game_enemy_speed(g), g->dash_cooldown ? "COOL" : "READY",
+                g->emp_charges, EMP_CAPACITY,
                 g->emp_ticks ? "ACTIVE" : "READY");
   gui_text(gui, line, GUI_LEFT + 430, 80, g->emp_ticks ? gold : muted);
   for (int i = 0; i < 4; ++i)

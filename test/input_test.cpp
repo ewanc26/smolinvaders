@@ -117,5 +117,11 @@ int main() {
   key(SDL_KEYDOWN, SDLK_7);
   assert(gui_input(&gui, &g));
   assert(g.room_type == ROOM_ELITE && g.alien_hp == 4);
+  g.upgrade_offer = false;
+  g.paused = false;
+  g.player = 10;
+  key(SDL_KEYDOWN, SDLK_LSHIFT);
+  assert(gui_input(&gui, &g));
+  assert(g.player == 14 && g.dash_cooldown == DASH_COOLDOWN);
   SDL_Quit();
 }

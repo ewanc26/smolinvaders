@@ -64,6 +64,10 @@ bool gui_input(Gui *gui, Game *g) {
       case SDLK_SPACE: gui->fire = !g->paused; break;
       case SDLK_p: game_toggle_pause(g); break;
       case SDLK_x: game_use_emp(g); break;
+      case SDLK_LSHIFT:
+        game_dash(g, gui->right ? 1 : gui->left ? -1 :
+                  g->player < GAME_WIDTH / 2 ? 1 : -1);
+        break;
       case SDLK_n:
         gui->seed_entry = true;
         gui->seed_length = 0;

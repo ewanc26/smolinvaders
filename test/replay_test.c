@@ -37,6 +37,7 @@ static void same_state(const Game *a, const Game *b) {
   SAME(shop_bought); SAME(shop_rerolls);
   SAME(route_chosen);
   SAME(emp_charges); SAME(emp_ticks);
+  SAME(dash_cooldown);
   SAME(upgrade_level); SAME(relics); SAME(relic_charges); SAME(ante);
   SAME(blind_target); SAME(credits); SAME(upgrade_offer);
   SAME(won); SAME(over); SAME(paused);

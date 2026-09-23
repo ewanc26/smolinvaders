@@ -114,6 +114,9 @@ with SDL's dummy video driver, so the test suite needs no display.
 
 Hold the arrow keys to move and Space to fire. Input is sampled once per
 simulation tick, independent of OS key-repeat settings. Opposite arrows cancel.
+Left Shift dashes four cells in the held/facing direction and starts an
+18-tick cooldown; dashes clamp at arena edges and do not change shot lanes.
+Use it to evade a firing lane or buy time while an EMP is unavailable.
 Losing window focus pauses combat and clears held keys; press `P` to resume.
 Player shots move three cells per tick, checking every cell for collisions;
 enemies and their shots move one. Cover still blocks your own shots.
@@ -123,7 +126,7 @@ the classic clear-the-field pacing described by [The
 Strong National Museum of Play](https://www.museumofplay.org/games/space-invaders/).
 
 Use `P` to pause, `R` to replay after
-game over or victory, `X` to use EMP, `1`/`2`/`3`/`4`/`6` to buy,
+game over or victory, `X` to use EMP, Left Shift to dash, `1`/`2`/`3`/`4`/`6` to buy,
 `5` to reroll, `0` to leave the shop,
 and Escape to quit. Each shot keeps its launch lane even if you move.
 Press `N` at any time to enter a new unsigned seed in the window. Backspace

@@ -102,6 +102,11 @@
   player movement and collision-checked shots continue. Pause preserves the
   countdown; room entry clears the effect but not unused charges. Boss rules
   do not disable consumables. Test timing and state boundaries headlessly.
+- Dash activation lives in `dash.c`: Left Shift moves four cells in a requested
+  direction, clamps to the arena, and starts an 18-tick cooldown. Reject it in
+  pause/shop/terminal states, at an edge, or while cooling down without
+  mutation. Cooldown decreases through `game_tick`, including during EMP,
+  while player movement and fire remain independent. Test core and SDL input.
 - Scoring modules live in `modules.c`: additive bonuses precede multipliers,
   and only kills advance Cadence. Afterburner is a non-scoring module that
   increases player shot substeps by one. Shop offers use their own unsigned
