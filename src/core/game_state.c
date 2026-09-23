@@ -21,6 +21,7 @@ void game_toggle_pause(Game *g) {
 }
 
 void game_move(Game *g, int d) {
+  g->player_velocity = d;
   if (!g->over && !g->won && !g->paused && g->player + d >= 0 &&
       g->player + d <= GAME_WIDTH - 3)
     g->player += d;

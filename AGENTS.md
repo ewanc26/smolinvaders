@@ -20,7 +20,7 @@
   cells and must not mutate them.
 - `ai_mood` is a presentation-safe diagnostic from the core policy. The fixed
   deterministic neural policy observes player/alien alignment, row, player
-  shot, shield integrity, and EMP state. UI may visualize mood, but must not
+  movement, player shot, shield integrity, and EMP state. UI may visualize mood, but must not
   use it to alter simulation decisions. EMP must suppress enemy firing. Jammer
   levels deterministically reduce both steering and firing pressure.
 - Bonus entities must use the core's deterministic timer/RNG state and expose

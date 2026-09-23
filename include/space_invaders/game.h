@@ -24,7 +24,7 @@ enum { MODULE_AMPLIFIER = 1, MODULE_SIGNAL = 2, MODULE_CADENCE = 4,
        MODULE_MASK = 63 };
 
 typedef struct {
-  int player, alien, alien_row, alien_hp, bullet, bullet_x;
+  int player, player_velocity, alien, alien_row, alien_hp, bullet, bullet_x;
   int enemy_bullet, enemy_bullet_x, direction;
   int score, ai_mood, lives, wave, bonus_x, bonus_timer, bonus_direction;
   uint32_t rng;
