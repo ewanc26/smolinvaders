@@ -46,12 +46,15 @@ slots; press `M` in a shop to buy one additional slot for six credits. Later
 slots cost eight and ten credits, up to six total.
 The shop shows occupied slots over total capacity and explains when the module
 card is blocked by a full build.
-Sell an owned module with `Shift+1` through `Shift+7` for two credits; selling is
+Sell an owned module with `Shift+1` through `Shift+8` for two credits; selling is
 available once per shop and does not consume any RNG.
 Modules last for the run,
 never appear twice once owned, and stack: Amplifier adds one point per kill,
 Cadence adds two on every third kill (including saucers), and Signal doubles
 saucer points after those additions. Armor damage does not count as a kill.
+Bounty pays one extra credit for each kill in an Elite or boss blind, but is
+suppressed by Static. It turns dangerous routes into an intentional investment
+and can finance later module slots or EMP charges.
 Afterburner adds one collision-checked substep to every player shot, letting a
 build trade shop credits for faster interception rather than raw score.
 Scavenger restores one EMP charge when you shoot a signal saucer, up to the

@@ -2,7 +2,7 @@
 
 int game_module_count(const Game *g) {
   int count = 0;
-  for (int bit = 1; bit <= MODULE_OVERCLOCK; bit <<= 1)
+  for (int bit = 1; bit <= MODULE_BOUNTY; bit <<= 1)
     if (g->modules & bit) ++count;
   return count;
 }

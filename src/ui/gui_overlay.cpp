@@ -29,7 +29,7 @@ static void hud(const Gui *gui, const Game *g) {
   if (g->modules & MODULE_BARRIER)
     gui_text(gui, g->barrier_used ? "BARRIER USED" : "BARRIER READY",
              GUI_LEFT + 430, 112, g->barrier_used ? muted : gold);
-  for (int i = 0; i < 7; ++i)
+  for (int i = 0; i < 8; ++i)
     if (g->modules & (1 << i))
       gui_text(gui, game_module_name(1 << i), GUI_LEFT + (i % 3) * 240,
                112 + (i / 3) * 22, gold);

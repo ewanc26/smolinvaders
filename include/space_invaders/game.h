@@ -21,7 +21,7 @@ enum { RUN_ANTES = 8, RUN_BLINDS = RUN_ANTES * 3 };
 enum { BOSS_STATIC = 1, BOSS_BREACH = 2, BOSS_BLACKOUT = 4 };
 enum { MODULE_AMPLIFIER = 1, MODULE_SIGNAL = 2, MODULE_CADENCE = 4,
        MODULE_AFTERBURNER = 8, MODULE_SCAVENGER = 16, MODULE_BARRIER = 32,
-       MODULE_OVERCLOCK = 64, MODULE_MASK = 127 };
+       MODULE_OVERCLOCK = 64, MODULE_BOUNTY = 128, MODULE_MASK = 255 };
 
 typedef struct {
   int player, player_velocity, alien, alien_row, alien_hp, bullet, bullet_x;
