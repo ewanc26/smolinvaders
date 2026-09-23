@@ -5,6 +5,10 @@
 
 static void pilot(Game *g) {
   if (g->upgrade_offer) {
+    if (!g->route_chosen && g->room % 3 != 0) {
+      game_choose_route(g, g->room % 2 ? ROOM_CACHE : ROOM_ELITE);
+      return;
+    }
     if (game_modules_full(g) && game_module_slot_available(g)) {
       game_buy_module_slot(g);
       return;
