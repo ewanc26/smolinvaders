@@ -49,7 +49,9 @@ static void step_player_shot(Game *g) {
   game_score_kill(g, 1, false);
   game_room_progress(g);
   if (!g->upgrade_offer) {
-    g->alien = game_random(g) % (GAME_WIDTH - 3);
+    g->alien = game_seed_hash(g->seed, 0x2000u +
+                              (uint32_t)g->room * 64u +
+                              (uint32_t)g->kills) % (GAME_WIDTH - 3);
     g->alien_row = 2;
     g->alien_hp = g->room_type == ROOM_ELITE ? 3 : 1;
   }
