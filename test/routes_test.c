@@ -43,5 +43,16 @@ int main(void) {
   int credits = cache_clear.credits;
   game_reroll_shop(&cache_clear);
   assert(cache_clear.free_rerolls == 0 && cache_clear.credits == credits);
+  Game skipped;
+  game_init_seed(&skipped, 78);
+  skipped.score = skipped.blind_target;
+  game_room_progress(&skipped);
+  game_skip_upgrade(&skipped);
+  assert(skipped.skip_rerolls == 1);
+  skipped.score = skipped.blind_target;
+  game_room_progress(&skipped);
+  credits = skipped.credits;
+  game_reroll_shop(&skipped);
+  assert(skipped.skip_rerolls == 0 && skipped.credits == credits);
   return 0;
 }

@@ -78,6 +78,8 @@
   decisions across seeded non-boss blinds.
 - Clearing a Cache room increments `free_rerolls`; the next shop consumes one
   free reroll before credits while still advancing the seeded module offer.
+- Leaving an untouched shop grants one `skip_rerolls` tag; any purchase or route
+  choice forfeits the tag, and the next shop consumes it before credits.
 - Projectiles store their own launch columns. Neither SDL nor subsequent
   shooter movement should change a shot's path.
 - `game_tick` applies normalized held movement and fire before simulation.

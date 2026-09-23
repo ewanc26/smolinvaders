@@ -34,7 +34,7 @@ typedef struct {
   int held_module;
   int shop_bought, shop_rerolls;
   bool route_chosen;
-  int emp_charges, emp_ticks, free_rerolls;
+  int emp_charges, emp_ticks, free_rerolls, skip_rerolls;
   int dash_cooldown;
   int damage_grace;
   int combo, combo_timer;

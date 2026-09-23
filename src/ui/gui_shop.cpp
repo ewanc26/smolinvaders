@@ -26,6 +26,8 @@ void gui_shop(const Gui *gui, const Game *g) {
   char reroll[48];
   if (g->free_rerolls)
     std::snprintf(reroll, sizeof reroll, "5 REROLL: FREE CACHE REWARD");
+  else if (g->skip_rerolls)
+    std::snprintf(reroll, sizeof reroll, "5 REROLL: FREE SKIP TAG");
   else
     std::snprintf(reroll, sizeof reroll, "5 REROLL: %d credits",
                   game_reroll_cost(g));
