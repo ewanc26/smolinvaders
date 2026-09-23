@@ -43,6 +43,10 @@ int main(void) {
   game_ai(&g);
   assert(g.enemy_bullet == -1);
   g.emp_ticks = 0;
+  g.upgrade_level = 3;
+  g.enemy_bullet = -1;
+  game_ai(&g);
+  assert(g.enemy_bullet == -1);
   int frozen = g.alien;
   game_step(&g);
   assert(g.alien == frozen);

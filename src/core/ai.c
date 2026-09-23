@@ -35,7 +35,8 @@ void game_ai(Game *g) {
   g->ai_mood = (int)(steer * 100);
   if (steer > .12f) g->direction = 1;
   if (steer < -.12f) g->direction = -1;
-  if (!g->emp_ticks && g->enemy_bullet < 0 && hidden[2] + hidden[3] > .2f) {
+  float fire_pressure = hidden[2] + hidden[3] - g->upgrade_level * .12f;
+  if (!g->emp_ticks && g->enemy_bullet < 0 && fire_pressure > .2f) {
     g->enemy_bullet = g->alien_row + 1;
     g->enemy_bullet_x = g->alien + 1;
   }

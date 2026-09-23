@@ -21,7 +21,7 @@ and divide into eight antes of three blinds. Each blind needs `4 + ante` new poi
 surplus score stays in the run total but cannot pre-clear the next blind.
 Meeting the target opens a shop:
 `1` repairs every shield, `2` grants a life, and `3` weakens the neural
-policy. The jammer stacks up to three times. You can keep your credits by
+policy's steering and firing pressure. The jammer stacks up to three times. You can keep your credits by
 skipping the shop with `0`.
 
 While the shop is open, the next non-boss blind can be routed deliberately:
