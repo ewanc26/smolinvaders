@@ -50,6 +50,8 @@ the risk of hunting the bonus target.
 Barrier negates the first enemy shot that reaches a shield in each blind, then
 refreshes when the next blind begins. Static and Breach bosses suppress that
 protection; Breach shots bypass cover and cannot consume it.
+Barrier plus Scavenger also restores one EMP charge when the barrier triggers,
+up to the normal carry cap.
 Build pairs have extra identities: Amplifier plus Cadence adds two points on
 every fourth kill, while Signal plus Scavenger pays one bonus credit whenever a
 saucer is destroyed. These synergies are deterministic and remain suppressed

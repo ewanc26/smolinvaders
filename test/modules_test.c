@@ -76,13 +76,14 @@ int main(void) {
   g.emp_charges = EMP_CAPACITY;
   game_score_kill(&g, 3, true);
   assert(g.emp_charges == EMP_CAPACITY);
-  g.modules = MODULE_BARRIER;
+  g.modules = MODULE_BARRIER | MODULE_SCAVENGER;
+  g.emp_charges = 0;
   g.barrier_used = false;
   g.enemy_bullet = SHIELD_ROW - 1;
   g.enemy_bullet_x = 1;
   int shield = g.shields[0][0];
   game_step(&g);
-  assert(g.barrier_used && g.shields[0][0] == shield);
+  assert(g.barrier_used && g.shields[0][0] == shield && g.emp_charges == 1);
   g.enemy_bullet = SHIELD_ROW - 1;
   game_step(&g);
   assert(g.shields[0][0] == shield - 1);

@@ -136,6 +136,8 @@
   shield height, prevents that shield mutation, and refreshes at room entry.
   Static and Breach suppress it; Breach must not consume the charge because it
   bypasses cover.
+- Barrier+Scavenger restores one EMP charge when Barrier successfully triggers,
+  capped at `EMP_CAPACITY`; failed or suppressed triggers restore nothing.
 - Blind targets are cumulative score plus four plus ante on room entry. Surplus points
   remain in total score, but never pre-clear later blinds. Shop rendering lives
   separately in `gui_shop.cpp`; core availability is authoritative.

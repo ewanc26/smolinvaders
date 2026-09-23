@@ -53,6 +53,8 @@ static void step_enemy_shot(Game *g) {
       !g->barrier_used && g->enemy_bullet >= SHIELD_ROW &&
       g->enemy_bullet < SHIELD_ROW + 3) {
     g->barrier_used = true;
+    if ((g->modules & MODULE_SCAVENGER) && g->emp_charges < EMP_CAPACITY)
+      ++g->emp_charges;
     g->enemy_bullet = -1;
     return;
   }
