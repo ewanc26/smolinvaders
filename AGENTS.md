@@ -61,6 +61,8 @@
   replay diagnostics.
 - Room tests must include a noisy-RNG twin to prove combat draw count cannot
   reshuffle coordinate-generated content.
+- Module tests must include the same noisy-RNG twin for shop offers and derived
+  `shop_rng` diagnostics.
 - Boss clears grant one permanent module slot up to `MODULE_MAX_SLOTS`, in
   addition to relic and credit rewards, plus one EMP charge up to capacity. A
   no-relic-hit boss clear adds one bonus credit.

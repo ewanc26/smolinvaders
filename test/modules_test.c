@@ -2,6 +2,15 @@
 #include <assert.h>
 
 int main(void) {
+  Game stable, noisy;
+  game_init_seed(&stable, 4242);
+  game_init_seed(&noisy, 4242);
+  for (int draw = 0; draw < 50; ++draw) game_random(&noisy);
+  game_module_offer(&stable);
+  game_module_offer(&noisy);
+  assert(stable.module_offer == noisy.module_offer &&
+         stable.shop_rng == noisy.shop_rng);
+
   for (uint32_t seed = 0; seed < 100; ++seed) {
     Game a, b;
     game_init_seed(&a, seed);
