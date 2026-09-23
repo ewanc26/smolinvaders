@@ -10,6 +10,7 @@ void gui_shop(const Gui *gui, const Game *g) {
   const char *names[] = {"REPAIR", "EXTRA LIFE", "JAMMER",
                          game_module_name(g->module_offer)};
   const char *effects[] = {"Restore shields", "+1 life (max 5)", "Weaken AI",
+                           game_modules_full(g) ? "FULL: buy M or sell" :
                            game_module_effect(g->module_offer)};
   for (int i = 0; i < 4; ++i) {
     bool available = game_upgrade_available(g, i + 1);

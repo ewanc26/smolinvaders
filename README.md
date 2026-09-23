@@ -36,7 +36,8 @@ This adds replayable risk/reward path planning to the seeded run.
 `4` buys the seeded scoring module for five credits. Runs begin with three module
 slots; press `M` in a shop to buy one additional slot for six credits. Later
 slots cost eight and ten credits, up to six total.
-The shop shows occupied slots over total capacity.
+The shop shows occupied slots over total capacity and explains when the module
+card is blocked by a full build.
 Sell an owned module with `Shift+1` through `Shift+6` for two credits; selling is
 available once per shop and does not consume any RNG.
 Modules last for the run,
