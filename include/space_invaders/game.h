@@ -43,6 +43,7 @@ void game_restart(Game *game);
 void game_toggle_pause(Game *game);
 void game_choose_upgrade(Game *game, int choice);
 void game_skip_upgrade(Game *game);
+bool game_choose_route(Game *game, int room_type);
 int game_upgrade_cost(int choice);
 bool game_upgrade_available(const Game *game, int choice);
 int game_reroll_cost(const Game *game);

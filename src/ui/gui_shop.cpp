@@ -31,4 +31,8 @@ void gui_shop(const Gui *gui, const Game *g) {
   std::snprintf(emp, sizeof emp, "6 EMP: %d credits - clear shot + freeze enemies (carry %d)",
                 game_upgrade_cost(6), EMP_CAPACITY);
   gui_text(gui, emp, 95, 430, game_upgrade_available(g, 6) ? gold : muted);
+  if (g->room % 3 != 0)
+    gui_text(gui, "NEXT BLIND: 7 COMBAT   8 ELITE   9 CACHE", 475, 430, white);
+  else
+    gui_text(gui, "NEXT BLIND: BOSS (route locked)", 475, 430, gold);
 }

@@ -21,7 +21,7 @@ static void hud(const Gui *gui, const Game *g) {
   for (int i = 0; i < 4; ++i)
     if (g->modules & (1 << i))
       gui_text(gui, game_module_name(1 << i), GUI_LEFT + i * 240, 112, gold);
-  gui_text(gui, "ARROWS move   SPACE fire   P pause   ESC quit",
+  gui_text(gui, "ARROWS move   SPACE fire   P pause   N seed   ESC quit",
            GUI_LEFT, 510, muted);
   std::snprintf(line, sizeof line, "X EMP %d/%d  %s   R replay after run",
                 g->emp_charges, EMP_CAPACITY,

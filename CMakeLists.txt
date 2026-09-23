@@ -16,6 +16,7 @@ add_library(space_invaders_core STATIC
   src/core/controls.c
   src/core/consumables.c
   src/core/shot_profile.c
+  src/core/routes.c
   src/core/shop.c
   src/core/shop_reroll.c
   src/core/ai.c
@@ -44,7 +45,7 @@ if(MSVC)
 else()
   set(TEST_ASSERT_FLAG -UNDEBUG)
 endif()
-foreach(test_name gameplay room shop shop_session modules boss replay consumables)
+foreach(test_name gameplay room shop shop_session modules boss replay consumables routes)
   add_executable(${test_name}-test test/${test_name}_test.c)
   target_link_libraries(${test_name}-test PRIVATE space_invaders_core)
   target_compile_options(${test_name}-test PRIVATE ${TEST_ASSERT_FLAG})
