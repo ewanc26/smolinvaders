@@ -141,3 +141,6 @@ The SDL input test injects key-up/down and focus-loss events without a window.
 
 See [AGENTS.md](AGENTS.md) for architecture, development rules, and the
 headless verification command.
+
+GitHub Actions repeats the Release build, headless suite, and install smoke
+check on every push and pull request.

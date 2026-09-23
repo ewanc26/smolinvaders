@@ -1,0 +1,26 @@
+name: build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes cmake ninja-build pkg-config libsdl2-dev libsdl2-ttf-dev
+      - name: Configure
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        run: cmake --build build --parallel
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+      - name: Install smoke check
+        run: |
+          cmake --install build --prefix "$RUNNER_TEMP/smolinvaders"
+          test -x "$RUNNER_TEMP/smolinvaders/bin/space-invaders"
+          test -f "$RUNNER_TEMP/smolinvaders/include/space_invaders/game.h"

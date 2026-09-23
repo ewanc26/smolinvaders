@@ -147,3 +147,6 @@ non-MSVC toolchains; keep new core code warning-clean.
 - CMake installs the GUI executable and public headers under the selected
   prefix. Keep install rules aligned with the modular target layout and verify
   them in a disposable prefix before publishing build changes.
+- `.github/workflows/ci.yml` is the clean Linux gate: install SDL dependencies,
+  configure with Ninja, build Release, run all CTest targets, and verify the
+  install tree. New tests must remain display-free under SDL's dummy driver.
