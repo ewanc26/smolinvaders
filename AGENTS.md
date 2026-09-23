@@ -176,6 +176,9 @@
 - `game_combo_window` derives the 24-tick combo baseline from relic tiers,
   extending it by two per tier up to 30; scoring must use the helper so combo
   timing remains deterministic and visible.
+- README/UI copy should present these three relic-derived benefits together;
+  Elite routing is intended to be a meaningful build decision, not a hidden
+  stat increase.
 
 ## Verification
 

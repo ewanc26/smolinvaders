@@ -118,6 +118,8 @@ Defeating an Elite grants a violet relic tier, capped at three. A no-relic-hit
 Elite clear also pays one bonus credit. Each tier
 absorbs one enemy hit per blind, so repeated Elite and boss victories improve
 future survivability. The HUD shows the permanent tier and current charges.
+Relics also improve the run rhythm: each tier shortens Dash cooldown, extends
+EMP duration, and widens the scoring-combo window.
 Two consecutive no-relic-hit Elite or boss clears also earn a free shop reroll;
 the streak resets when a relic is consumed, rewarding pressure without making
 flawless play an automatic win.
