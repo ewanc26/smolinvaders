@@ -5,6 +5,10 @@
 
 static void pilot(Game *g) {
   if (g->upgrade_offer) {
+    if (game_modules_full(g) && game_module_slot_available(g)) {
+      game_buy_module_slot(g);
+      return;
+    }
     int choice = g->lives < 3 && game_upgrade_available(g, 2) ? 2 : 4;
     if (choice == 4 && !g->emp_charges && game_upgrade_available(g, 6)) choice = 6;
     if (game_upgrade_available(g, choice)) game_choose_upgrade(g, choice);
