@@ -101,6 +101,9 @@ Use `P` to pause, `R` to replay after
 game over or victory, `X` to use EMP, `1`/`2`/`3`/`4`/`6` to buy,
 `5` to reroll, `0` to leave the shop,
 and Escape to quit. Each shot keeps its launch lane even if you move.
+Press `N` at any time to enter a new unsigned seed in the window. Backspace
+edits it, Enter starts the run, and Escape cancels. This resets the complete
+run state and updates the replay seed without restarting the process.
 
 `./build/replay-test` runs 32 deterministic input-only pilots and compares
 every core field on replay. It never places projectiles or grants resources.

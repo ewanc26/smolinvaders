@@ -32,7 +32,14 @@ static void hud(const Gui *gui, const Game *g) {
 
 void gui_overlay(const Gui *gui, const Game *g) {
   hud(gui, g);
-  if (g->upgrade_offer) gui_shop(gui, g);
+  if (gui->seed_entry) {
+    gui_box(gui, 270, 220, 420, 170, {22, 30, 56, 255});
+    gui_text(gui, "NEW SEEDED RUN", 380, 245, gold);
+    char line[64];
+    std::snprintf(line, sizeof line, "SEED %s", gui->seed_length ? gui->seed_text : "_");
+    gui_text(gui, line, 370, 285, white);
+    gui_text(gui, "type 0-4294967295   ENTER start   ESC cancel", 305, 330, muted);
+  } else if (g->upgrade_offer) gui_shop(gui, g);
   else if (g->won || g->over || g->paused) {
     gui_box(gui, 310, 250, 340, 120, {22, 30, 56, 255});
     gui_text(gui, g->won ? "RUN COMPLETE" : g->over ? "RUN ENDED" : "PAUSED",

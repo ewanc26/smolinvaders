@@ -33,6 +33,7 @@ int main(int argc, char **argv) {
   }
   Game game;
   game_init_seed(&game, seed);
+  gui.seed = seed;
   char title[64];
   SDL_snprintf(title, sizeof title, "Smol Invaders - seed %u", game.seed);
   SDL_SetWindowTitle(gui.window, title);

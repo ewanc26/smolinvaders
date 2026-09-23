@@ -12,6 +12,10 @@ struct Gui {
   SDL_Renderer *renderer{};
   TTF_Font *font{};
   bool left{}, right{}, fire{};
+  bool seed_entry{};
+  char seed_text[11]{};
+  int seed_length{};
+  uint32_t seed{};
 };
 
 bool gui_open(Gui *);

@@ -73,6 +73,10 @@
 - The arena is 48 by 20 cells at 16 pixels per cell and must fit inside the
   960 by 640 window. Keep labels legible and terminal screens restartable.
 - Keep files focused. Prefer a new small module over growing a catch-all file.
+- `N` opens UI-only seed entry. Digits and Backspace edit an unsigned 32-bit
+  decimal seed; Enter calls `game_init_seed`, Escape cancels. While editing,
+  gameplay and shop shortcuts are inert. The UI seed must be initialized from
+  the command-line seed and never use wall-clock or global randomness.
 - EMP activation lives in `consumables.c`: start with one charge, carry two,
   and buy one per shop for three credits. Reject activation during pause,
   shop, terminal state, or an existing pulse without spending a charge.
