@@ -65,6 +65,8 @@ making bonus-target hunting a distinct scoring build.
 The HUD lists owned modules. Shops remain open until you press `0` to leave.
 The HUD and shop also show clean-clear progress and banked free rerolls, so the
 streak reward is visible before choosing the next route.
+The shop previews the current interest payout (one credit per five saved,
+capped at three), making the save-versus-spend decision explicit.
 Buy several cards if you can afford them; repair, life, and jammer each have
 one unit per visit. Intact shields cannot be repaired for a wasted credit.
 Press `5` to reroll the module slot: two credits initially, rising by one per
