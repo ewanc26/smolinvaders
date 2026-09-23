@@ -6,8 +6,9 @@ and SDL2_ttf.
 
 The invader is driven by a tiny deterministic neural policy that reads the
 player's position, movement direction, shot state, remaining shield integrity,
-and EMP state. Its
-fixed weights react to play; it does not train online. EMP pressure suppresses
+and EMP state. Its fixed weights react to play; it does not train online. The
+movement signal records accepted input only, so edge-blocked movement cannot
+make the invader anticipate a move that did not happen. EMP pressure suppresses
 enemy firing, while damaged cover changes its firing pressure. Kills advance
 blinds; the player has three lives.
 

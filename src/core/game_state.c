@@ -21,10 +21,13 @@ void game_toggle_pause(Game *g) {
 }
 
 void game_move(Game *g, int d) {
+  if (!d || g->over || g->won || g->paused || g->player + d < 0 ||
+      g->player + d > GAME_WIDTH - 3) {
+    g->player_velocity = 0;
+    return;
+  }
   g->player_velocity = d;
-  if (!g->over && !g->won && !g->paused && g->player + d >= 0 &&
-      g->player + d <= GAME_WIDTH - 3)
-    g->player += d;
+  g->player += d;
 }
 
 void game_fire(Game *g) {
