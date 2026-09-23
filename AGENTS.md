@@ -50,6 +50,8 @@
   Static suppresses module effects without deleting inventory; Breach bypasses
   shields for enemy shots only; Blackout stops saucers. The final boss combines
   all three. Restrictions expire on room transition and are shown in the HUD.
+- Boss clears grant one permanent module slot up to `MODULE_MAX_SLOTS`, in
+  addition to relic and credit rewards.
 - Progression follows a Balatro-inspired run loop: rooms are blinds, every
   three blinds form an ante, and the upgrade offer is the shop phase. Keep
   `blind_target` and `ante` in core state so SDL stays presentational.
