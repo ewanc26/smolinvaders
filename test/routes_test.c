@@ -34,5 +34,14 @@ int main(void) {
   assert(boss.room_type == ROOM_ELITE && boss.alien_hp == 4);
   boss.upgrade_offer = false;
   assert(!game_choose_route(&boss, ROOM_CACHE));
+  Game cache_clear;
+  game_init_seed(&cache_clear, 77);
+  cache_clear.room_type = ROOM_CACHE;
+  cache_clear.score = cache_clear.blind_target;
+  game_room_progress(&cache_clear);
+  assert(cache_clear.free_rerolls == 1 && cache_clear.upgrade_offer);
+  int credits = cache_clear.credits;
+  game_reroll_shop(&cache_clear);
+  assert(cache_clear.free_rerolls == 0 && cache_clear.credits == credits);
   return 0;
 }

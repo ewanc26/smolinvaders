@@ -75,6 +75,8 @@
   shop so Cache rewards cannot be duplicated. Every third blind is a fixed boss and
   rejects route changes. UI must show the selected route as locked. Test route
   decisions across seeded non-boss blinds.
+- Clearing a Cache room increments `free_rerolls`; the next shop consumes one
+  free reroll before credits while still advancing the seeded module offer.
 - Projectiles store their own launch columns. Neither SDL nor subsequent
   shooter movement should change a shot's path.
 - `game_tick` applies normalized held movement and fire before simulation.

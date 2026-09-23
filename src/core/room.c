@@ -10,6 +10,7 @@ void game_room_progress(Game *g) {
     return;
   }
 
+  bool cache_clear = g->room_type == ROOM_CACHE;
   int interest = g->credits / 5;
   if (interest > 3) interest = 3;
   int combo_reward = g->combo / 4;
@@ -17,6 +18,7 @@ void game_room_progress(Game *g) {
   g->credits += 2 + interest + combo_reward;
 
   ++g->room;
+  if (cache_clear) ++g->free_rerolls;
   if (g->room > g->best_room) g->best_room = g->room;
   g->wave = g->room;
   g->ante = 1 + (g->room - 1) / 3;

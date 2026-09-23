@@ -26,7 +26,8 @@ skipping the shop with `0`.
 
 While the shop is open, the next non-boss blind can be routed deliberately:
 `7` selects Combat (baseline), `8` selects Elite (three armor and a relic),
-or `9` selects Cache (earlier saucer and one EMP charge on entry). Route selection is free, deterministic,
+or `9` selects Cache (earlier saucer, one EMP charge on entry, and one free
+reroll in the next shop). Route selection is free, deterministic,
 and remains locked on every third blind because that blind is always a boss.
 Only the first route key in a shop takes effect, so Cache rewards cannot be
 duplicated by changing your mind; the shop then displays the locked route.
@@ -64,7 +65,8 @@ reroll to a cap of ten. Rerolls use only the shop RNG, guarantee a different
 unowned module, and are disabled when no alternative exists. Buying a module
 empties its slot; a paid reroll can restock it. Stock and reroll prices reset
 at the next shop. Leaving preserves unspent credits for interest.
-Shop randomness is separate from combat randomness.
+Shop randomness is separate from combat randomness. A Cache clear's free reroll
+is consumed before credits and still advances the seeded shop offer.
 Press `H` to hold the current module offer for the next shop. Holding costs two
 credits and is available once per shop; the held offer bypasses the next module
 roll without consuming combat RNG.

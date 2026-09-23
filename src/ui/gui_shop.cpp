@@ -24,7 +24,11 @@ void gui_shop(const Gui *gui, const Game *g) {
     gui_text(gui, line, x + 8, 341, available ? gold : muted);
   }
   char reroll[48];
-  std::snprintf(reroll, sizeof reroll, "5 REROLL: %d credits", game_reroll_cost(g));
+  if (g->free_rerolls)
+    std::snprintf(reroll, sizeof reroll, "5 REROLL: FREE CACHE REWARD");
+  else
+    std::snprintf(reroll, sizeof reroll, "5 REROLL: %d credits",
+                  game_reroll_cost(g));
   gui_text(gui, reroll, 95, 389, game_reroll_available(g) ? gold : muted);
   gui_text(gui, "H HOLD MODULE: 2 credits", 475, 405,
            game_hold_available(g) ? gold : muted);

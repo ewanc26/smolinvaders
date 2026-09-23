@@ -41,7 +41,7 @@ static void same_state(const Game *a, const Game *b) {
   SAME(kills); SAME(module_slots); SAME(boss_rules); SAME(room); SAME(best_room); SAME(room_type);
   SAME(shop_bought); SAME(shop_rerolls);
   SAME(route_chosen);
-  SAME(emp_charges); SAME(emp_ticks);
+  SAME(emp_charges); SAME(emp_ticks); SAME(free_rerolls);
   SAME(dash_cooldown); SAME(damage_grace); SAME(combo); SAME(combo_timer);
   SAME(barrier_used);
   SAME(upgrade_level); SAME(relics); SAME(relic_charges); SAME(ante);
