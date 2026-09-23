@@ -54,6 +54,9 @@ unowned module, and are disabled when no alternative exists. Buying a module
 empties its slot; a paid reroll can restock it. Stock and reroll prices reset
 at the next shop. Leaving preserves unspent credits for interest.
 Shop randomness is separate from combat randomness.
+Press `H` to hold the current module offer for the next shop. Holding costs two
+credits and is available once per shop; the held offer bypasses the next module
+roll without consuming combat RNG.
 
 Each run starts with one EMP charge; carry up to two. Press `X` during combat
 to erase the incoming enemy shot and freeze enemy movement, neural firing,

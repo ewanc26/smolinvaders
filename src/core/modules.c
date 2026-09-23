@@ -1,6 +1,11 @@
 #include "space_invaders/game.h"
 
 void game_module_offer(Game *g) {
+  if (g->held_module) {
+    g->module_offer = g->held_module;
+    g->held_module = 0;
+    return;
+  }
   int pool[5], count = 0;
   for (int bit = 1; bit <= MODULE_SCAVENGER; bit <<= 1)
     if (!(g->modules & bit) && bit != g->module_offer) pool[count++] = bit;

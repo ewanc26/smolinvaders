@@ -26,6 +26,8 @@ void gui_shop(const Gui *gui, const Game *g) {
   char reroll[48];
   std::snprintf(reroll, sizeof reroll, "5 REROLL: %d credits", game_reroll_cost(g));
   gui_text(gui, reroll, 95, 389, game_reroll_available(g) ? gold : muted);
+  gui_text(gui, "H HOLD MODULE: 2 credits", 475, 405,
+           game_hold_available(g) ? gold : muted);
   gui_text(gui, "0 LEAVE - keep unspent credits", 475, 389, white);
   char emp[80];
   std::snprintf(emp, sizeof emp, "6 EMP: %d credits - clear shot + freeze enemies (carry %d)",

@@ -29,6 +29,7 @@ typedef struct {
   uint32_t seed;
   uint32_t shop_rng;
   int modules, module_offer, kills;
+  int held_module;
   int shop_bought, shop_rerolls;
   bool route_chosen;
   int emp_charges, emp_ticks;
@@ -56,6 +57,8 @@ bool game_upgrade_available(const Game *game, int choice);
 int game_reroll_cost(const Game *game);
 bool game_reroll_available(const Game *game);
 void game_reroll_shop(Game *game);
+bool game_hold_available(const Game *game);
+void game_hold_module(Game *game);
 void game_move(Game *game, int direction);
 void game_fire(Game *game);
 void game_step(Game *game);

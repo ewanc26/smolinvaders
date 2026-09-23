@@ -34,5 +34,16 @@ int main(void) {
   g.score = g.blind_target;
   game_room_progress(&g);
   assert(g.room == 2 && g.credits == 20);
+  game_init_seed(&g, 9);
+  g.upgrade_offer = g.paused = true;
+  g.module_offer = MODULE_SIGNAL;
+  g.credits = 2;
+  assert(game_hold_available(&g));
+  game_hold_module(&g);
+  assert(g.held_module == MODULE_SIGNAL && g.module_offer == 0 && g.credits == 0);
+  game_skip_upgrade(&g);
+  g.score = g.blind_target;
+  game_room_progress(&g);
+  assert(g.module_offer == MODULE_SIGNAL && g.held_module == 0);
   return 0;
 }

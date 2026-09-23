@@ -116,6 +116,8 @@
 - Module synergies live in `modules.c`: Amplifier+Cadence adds two points on
   fourth kills; Signal+Scavenger pays one credit per saucer. Boss Static
   suppresses both with other module effects.
+- `shop_hold.c` lets the player pay two credits once per shop to carry the
+  current module offer into the next shop; held offers bypass module RNG.
 - Scoring modules live in `modules.c`: additive bonuses precede multipliers,
   and only kills advance Cadence. Afterburner is a non-scoring module that
   increases player shot substeps by one. Shop offers use their own unsigned
