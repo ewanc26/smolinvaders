@@ -18,6 +18,11 @@ int main(void) {
   assert(g.shields[0][0] == 2);
 
   game_toggle_pause(&g);
+  g.emp_ticks = EMP_DURATION;
+  g.enemy_bullet = -1;
+  game_ai(&g);
+  assert(g.enemy_bullet == -1);
+  g.emp_ticks = 0;
   int frozen = g.alien;
   game_step(&g);
   assert(g.alien == frozen);

@@ -18,8 +18,10 @@
   SDL layer does not own game state transitions.
 - Shield geometry and damage belong in the core; the UI only visualizes shield
   cells and must not mutate them.
-- `ai_mood` is a presentation-safe diagnostic from the core policy. UI may
-  visualize it, but must not use it to alter simulation decisions.
+- `ai_mood` is a presentation-safe diagnostic from the core policy. The fixed
+  deterministic neural policy observes player/alien alignment, row, player
+  shot, shield integrity, and EMP state. UI may visualize mood, but must not
+  use it to alter simulation decisions. EMP must suppress enemy firing.
 - Bonus entities must use the core's deterministic timer/RNG state and expose
   their collision behavior to headless tests before being rendered by SDL.
 - Roguelike state must be seedable through `game_init_seed`. Room transitions

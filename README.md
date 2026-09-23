@@ -5,8 +5,10 @@ run-local relics. The simulation is C23; the windowed UI is C++23 with SDL2
 and SDL2_ttf.
 
 The invader is driven by a tiny deterministic neural policy that reads the
-player's position and shot state. Its fixed weights react to play; it does not
-train online. Kills advance blinds; the player has three lives.
+player's position, shot state, remaining shield integrity, and EMP state. Its
+fixed weights react to play; it does not train online. EMP pressure suppresses
+enemy firing, while damaged cover changes its firing pressure. Kills advance
+blinds; the player has three lives.
 
 Three destructible energy shields sit between the player and the invader. Both
 player and enemy shots damage them, so preserving cover is part of the strategy.
