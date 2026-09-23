@@ -59,6 +59,9 @@
 - `game_seed_hash` is the pure procedural-generation primitive. Use stable
   seed coordinates for room type, enemy placement, respawn placement, and boss rules; do not use
   mutable combat RNG for content that should remain fixed across replays.
+- The initial player lane is derived from coordinate `0x5000`, within a
+  central 12-cell safety band so deterministic EMP/movement behavior remains
+  playable; it must not be restored as a fixed constant.
 - `room_tag.c` derives each blind's STANDARD/FRENZY/RICH tag from coordinate
   `0x4000 + room`. FRENZY changes core enemy speed and RICH changes core clear
   payout; keep both effects out of SDL and test noisy-RNG invariance.

@@ -4,6 +4,7 @@
 static void timing(void) {
   Game g;
   game_init_seed(&g, 42);
+  int initial_player = g.player;
   g.relics = 3;
   assert(game_emp_duration(&g) == EMP_DURATION + 6);
   g.relics = 0;
@@ -24,7 +25,7 @@ static void timing(void) {
     assert(g.alien == alien && g.alien_row == row && g.enemy_bullet == -1);
     assert(g.bonus_timer == timer && g.rng == rng && g.lives == 3);
   }
-  assert(g.emp_ticks == 0 && g.player == 22 - EMP_DURATION);
+  assert(g.emp_ticks == 0 && g.player == initial_player - EMP_DURATION);
   game_step(&g);
   assert(g.alien != alien || g.alien_row != row);
   g.emp_ticks = 0;

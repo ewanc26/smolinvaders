@@ -4,6 +4,10 @@
 int main(void) {
   Game g;
   game_init_seed(&g, 42);
+  Game noisy = g;
+  for (int draw = 0; draw < 40; ++draw) game_random(&noisy);
+  assert(g.player == noisy.player);
+  assert(g.player == 12 + game_seed_hash(g.seed, 0x5000u) % (GAME_WIDTH - 3 - 24));
   assert(g.bonus_direction == (game_seed_hash(g.seed, 2) & 1 ? 1 : -1));
   assert(game_bonus_interval(&g) >= 140 && game_bonus_interval(&g) < 170);
   g.room_type = ROOM_CACHE;

@@ -22,7 +22,7 @@ earlier 90–109 tick window while other rooms use 140–169 ticks. Shoot it for
 three points; missing it lets the opportunity pass.
 
 Runs are seeded (`0xC0FFEE` by default), including the first enemy position,
-and every room type, enemy placement, respawn placement, and boss rule is derived from a stable
+the central player starting lane, and every room type, enemy placement, respawn placement, and boss rule is derived from a stable
 seed coordinate. Combat and shop RNG can advance independently without
 reshuffling already-generated rooms. Each blind also receives a seed-derived
 tag: FRENZY raises enemy pressure by one, RICH adds one credit to its clear
