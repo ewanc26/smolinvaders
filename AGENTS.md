@@ -176,7 +176,7 @@
   reject offers when the inventory is full. UI capacity is reported as
   occupied slots over total slots.
 - `module_sell.c` permits one deterministic two-credit sale per shop through
-  Shift+1..8, clearing the selected owned module without consuming RNG.
+  Shift+1..9, clearing the selected owned module without consuming RNG.
 - Scoring modules live in `modules.c`: additive bonuses precede multipliers,
   and only kills advance Cadence. Afterburner is a non-scoring module that
   increases player shot substeps by one. Shop offers use their own unsigned
@@ -189,6 +189,9 @@
 - Bounty is an economy module in `modules.c`: it adds one credit per Elite or
   boss kill before room rewards, and Static suppresses it with other module
   effects. Test its room classification and boss restriction headlessly.
+- Banker is an economy module in `interest.c`: it raises the interest cap from
+  three to four credits and Static suppresses that extra cap. Keep interest
+  arithmetic centralized and test the cap boundaries.
 - Scavenger is a non-scoring module: a saucer kill restores one EMP charge up
   to `EMP_CAPACITY`, and Static suppresses that refill with other module
   effects. It must not consume combat RNG or exceed the charge cap.

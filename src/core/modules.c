@@ -6,8 +6,8 @@ void game_module_offer(Game *g) {
     g->held_module = 0;
     return;
   }
-  int pool[8], count = 0;
-  for (int bit = 1; bit <= MODULE_BOUNTY; bit <<= 1)
+  int pool[9], count = 0;
+  for (int bit = 1; bit <= MODULE_BANKER; bit <<= 1)
     if (!(g->modules & bit) && bit != g->module_offer) pool[count++] = bit;
   g->shop_rng = game_seed_hash(g->seed,
                                0x1000u + (uint32_t)g->room * 16u +
@@ -61,6 +61,7 @@ const char *game_module_name(int module) {
     case MODULE_BARRIER: return "BARRIER";
     case MODULE_OVERCLOCK: return "OVERCLOCK";
     case MODULE_BOUNTY: return "BOUNTY";
+    case MODULE_BANKER: return "BANKER";
     default: return "SOLD OUT";
   }
 }
@@ -75,6 +76,7 @@ const char *game_module_effect(int module) {
     case MODULE_BARRIER: return "negate first shield hit";
     case MODULE_OVERCLOCK: return "+3 every 5 kills";
     case MODULE_BOUNTY: return "+1 credit elite/boss kill";
+    case MODULE_BANKER: return "+1 interest cap";
     default: return "All collected";
   }
 }

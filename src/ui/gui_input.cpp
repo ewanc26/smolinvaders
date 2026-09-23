@@ -28,7 +28,7 @@ bool gui_input(Gui *gui, Game *g) {
     }
     if (event.type != SDL_KEYDOWN || event.key.repeat) continue;
     if (event.key.keysym.mod & KMOD_SHIFT &&
-        event.key.keysym.sym >= SDLK_1 && event.key.keysym.sym <= SDLK_8) {
+        event.key.keysym.sym >= SDLK_1 && event.key.keysym.sym <= SDLK_9) {
       game_sell_module(g, 1 << (event.key.keysym.sym - SDLK_1));
       continue;
     }
