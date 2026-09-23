@@ -7,7 +7,7 @@ int game_reroll_cost(const Game *g) {
 bool game_reroll_available(const Game *g) {
   return g->upgrade_offer && !g->over && !g->won &&
          g->credits >= game_reroll_cost(g) &&
-         (7 & ~(g->modules | g->module_offer)) != 0;
+         (MODULE_MASK & ~(g->modules | g->module_offer)) != 0;
 }
 
 void game_reroll_shop(Game *g) {

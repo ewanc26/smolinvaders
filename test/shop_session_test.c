@@ -40,13 +40,18 @@ int main(void) {
     game_reroll_shop(&g);
     game_choose_upgrade(&g, 4);
     game_reroll_shop(&g);
-    assert(g.module_offer && !game_reroll_available(&g)); /* Last unowned. */
+    assert(g.module_offer && game_reroll_available(&g));
     int credits = g.credits;
-    uint32_t shop_rng = g.shop_rng;
+    int cost = game_reroll_cost(&g);
     game_reroll_shop(&g);
-    assert(g.credits == credits && g.shop_rng == shop_rng);
+    assert(g.credits == credits - cost);
     game_choose_upgrade(&g, 4);
-    assert(g.modules == 7 && !game_reroll_available(&g));
+    while (game_reroll_available(&g)) {
+      game_reroll_shop(&g);
+      game_choose_upgrade(&g, 4);
+    }
+    assert(g.modules == MODULE_MASK && !game_reroll_available(&g));
+    uint32_t shop_rng = g.shop_rng;
     game_skip_upgrade(&g);
     assert(!g.paused && !g.upgrade_offer);
     game_reroll_shop(&g);

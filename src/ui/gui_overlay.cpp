@@ -18,7 +18,7 @@ static void hud(const Gui *gui, const Game *g) {
                 g->lives, g->credits,
                 !g->relics ? "NONE" : g->relic_charges ? "READY" : "SPENT");
   gui_text(gui, line, GUI_LEFT, 80, white);
-  for (int i = 0; i < 3; ++i)
+  for (int i = 0; i < 4; ++i)
     if (g->modules & (1 << i))
       gui_text(gui, game_module_name(1 << i), GUI_LEFT + i * 240, 112, gold);
   gui_text(gui, "ARROWS move   SPACE fire   P pause   ESC quit",

@@ -85,8 +85,10 @@
   countdown; room entry clears the effect but not unused charges. Boss rules
   do not disable consumables. Test timing and state boundaries headlessly.
 - Scoring modules live in `modules.c`: additive bonuses precede multipliers,
-  and only kills advance Cadence. Shop offers use their own unsigned seeded
-  RNG, exclude owned modules, and reset on replay. Test through shot resolution.
+  and only kills advance Cadence. Afterburner is a non-scoring module that
+  increases player shot substeps by one. Shop offers use their own unsigned
+  seeded RNG, exclude owned modules, and reset on replay. Test through shot
+  resolution, not just field mutation.
 - Blind targets are cumulative score plus four plus ante on room entry. Surplus points
   remain in total score, but never pre-clear later blinds. Shop rendering lives
   separately in `gui_shop.cpp`; core availability is authoritative.

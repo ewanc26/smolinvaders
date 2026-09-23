@@ -15,7 +15,8 @@ enum { SHIELD_COUNT = 3, SHIELD_WIDTH = 6, SHIELD_ROW = 15 };
 enum { ROOM_COMBAT, ROOM_ELITE, ROOM_CACHE };
 enum { RUN_ANTES = 8, RUN_BLINDS = RUN_ANTES * 3 };
 enum { BOSS_STATIC = 1, BOSS_BREACH = 2, BOSS_BLACKOUT = 4 };
-enum { MODULE_AMPLIFIER = 1, MODULE_SIGNAL = 2, MODULE_CADENCE = 4 };
+enum { MODULE_AMPLIFIER = 1, MODULE_SIGNAL = 2, MODULE_CADENCE = 4,
+       MODULE_AFTERBURNER = 8, MODULE_MASK = 15 };
 
 typedef struct {
   int player, alien, alien_row, alien_hp, bullet, bullet_x;
@@ -51,6 +52,7 @@ void game_move(Game *game, int direction);
 void game_fire(Game *game);
 void game_step(Game *game);
 void game_tick(Game *game, int movement, bool fire);
+int game_player_shot_speed(const Game *game);
 bool game_use_emp(Game *game);
 void game_ai(Game *game);
 int game_ai_mood(const Game *game);

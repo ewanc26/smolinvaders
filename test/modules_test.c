@@ -7,7 +7,7 @@ int main(void) {
     game_init_seed(&a, seed);
     game_init_seed(&b, seed);
     uint32_t combat_rng = a.rng;
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < 4; ++i) {
       game_module_offer(&a);
       game_module_offer(&b);
       assert(a.module_offer == b.module_offer && a.module_offer);
@@ -22,7 +22,7 @@ int main(void) {
       b.modules = a.modules;
     }
     game_module_offer(&a);
-    assert(a.module_offer == 0 && a.modules == 7 && a.rng == combat_rng);
+    assert(a.module_offer == 0 && a.modules == MODULE_MASK && a.rng == combat_rng);
     a.upgrade_offer = true;
     a.credits = 100;
     assert(!game_upgrade_available(&a, 4));

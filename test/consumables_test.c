@@ -35,7 +35,7 @@ static void combat_and_shop(void) {
   assert(game_use_emp(&g));
   g.score = g.blind_target - 1;
   g.bullet_x = g.alien + 1;
-  g.bullet = g.alien_row + PLAYER_SHOT_SPEED;
+  g.bullet = g.alien_row + game_player_shot_speed(&g);
   game_step(&g);
   assert(g.room == 2 && g.upgrade_offer && g.emp_ticks == 0);
   assert(g.emp_charges == 0); /* Charges do not regenerate each blind. */

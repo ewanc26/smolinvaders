@@ -15,6 +15,7 @@ add_library(space_invaders_core STATIC
   src/core/game_state.c
   src/core/controls.c
   src/core/consumables.c
+  src/core/shot_profile.c
   src/core/shop.c
   src/core/shop_reroll.c
   src/core/ai.c

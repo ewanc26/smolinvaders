@@ -28,7 +28,7 @@ int main(void) {
   game_step(&g);
   assert(g.bullet == -1 && g.shields[0][0] == 2);
   game_init_seed(&g, 42);
-  g.bullet = g.alien_row + PLAYER_SHOT_SPEED;
+  g.bullet = g.alien_row + game_player_shot_speed(&g);
   g.bullet_x = g.alien + 1;
   game_step(&g);
   assert(g.score == 1 && g.bullet == -1);

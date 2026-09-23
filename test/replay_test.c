@@ -14,7 +14,8 @@ static void pilot(Game *g) {
   if (g->enemy_bullet >= SHIELD_ROW &&
       g->enemy_bullet_x >= g->player && g->enemy_bullet_x < g->player + 3)
     game_use_emp(g);
-  int travel = g->emp_ticks ? 0 : (GAME_HEIGHT - 2 - g->alien_row) / PLAYER_SHOT_SPEED;
+  int travel = g->emp_ticks ? 0 :
+      (GAME_HEIGHT - 2 - g->alien_row) / game_player_shot_speed(g);
   int target = g->alien + g->direction * travel;
   if (target < 0) target = 0;
   if (target > GAME_WIDTH - 3) target = GAME_WIDTH - 3;
