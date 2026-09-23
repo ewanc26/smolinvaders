@@ -201,4 +201,5 @@ non-MSVC toolchains; keep new core code warning-clean.
   them in a disposable prefix before publishing build changes.
 - `.github/workflows/ci.yml` is the clean Linux gate: install SDL dependencies,
   configure with Ninja, build Release, run all CTest targets, and verify the
-  install tree. New tests must remain display-free under SDL's dummy driver.
+  executable and reusable core library in the install tree. New tests must
+  remain display-free under SDL's dummy driver.

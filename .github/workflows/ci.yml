@@ -23,4 +23,5 @@ jobs:
         run: |
           cmake --install build --prefix "$RUNNER_TEMP/smolinvaders"
           test -x "$RUNNER_TEMP/smolinvaders/bin/space-invaders"
+          test -f "$RUNNER_TEMP/smolinvaders/lib/libspace_invaders_core.a"
           test -f "$RUNNER_TEMP/smolinvaders/include/space_invaders/game.h"
