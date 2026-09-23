@@ -172,6 +172,9 @@
   it by two per tier down to 12; UI must display the derived value.
 - `game_emp_duration` derives the 12-tick EMP baseline from relic tiers,
   extending it by two per tier up to 18; EMP remains charge-capped and seeded.
+- `game_combo_window` derives the 24-tick combo baseline from relic tiers,
+  extending it by two per tier up to 30; scoring must use the helper so combo
+  timing remains deterministic and visible.
 
 ## Verification
 

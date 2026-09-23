@@ -17,7 +17,7 @@ void game_score_kill(Game *g, int base, bool saucer) {
   ++g->kills;
   if (g->combo_timer == 0) g->combo = 0;
   if (g->combo < COMBO_CAP) ++g->combo;
-  g->combo_timer = COMBO_WINDOW;
+  g->combo_timer = game_combo_window(g);
   int active = g->boss_rules & BOSS_STATIC ? 0 : g->modules;
   if (active & MODULE_AMPLIFIER) ++base;
   if ((active & MODULE_CADENCE) && g->kills % 3 == 0) base += 2;
@@ -39,6 +39,11 @@ void game_score_kill(Game *g, int base, bool saucer) {
 int game_combo_multiplier(const Game *g) {
   int multiplier = 1 + g->combo / 4;
   return multiplier > 3 ? 3 : multiplier;
+}
+
+int game_combo_window(const Game *g) {
+  int window = COMBO_WINDOW + g->relics * 2;
+  return window > COMBO_WINDOW + 6 ? COMBO_WINDOW + 6 : window;
 }
 
 const char *game_module_name(int module) {
