@@ -192,8 +192,8 @@ changes, not human playability.
 Keep assertions enabled for all test targets, including Release builds.
 The C23 core and headless C tests build with `-Wall -Wextra -Wpedantic` on
 non-MSVC toolchains; keep new core code warning-clean.
-- CMake installs the GUI executable and public headers under the selected
-  prefix. Keep install rules aligned with the modular target layout and verify
+- CMake installs the GUI executable, reusable core library, and public headers
+  under the selected prefix. Keep install rules aligned with the modular target layout and verify
   them in a disposable prefix before publishing build changes.
 - `.github/workflows/ci.yml` is the clean Linux gate: install SDL dependencies,
   configure with Ninja, build Release, run all CTest targets, and verify the

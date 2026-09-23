@@ -48,7 +48,10 @@ add_executable(space-invaders
   )
 target_link_libraries(space-invaders PRIVATE space_invaders_core PkgConfig::SDL2 PkgConfig::SDL2_TTF)
 include(GNUInstallDirs)
-install(TARGETS space-invaders RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(TARGETS space-invaders space_invaders_core
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 enable_testing()
