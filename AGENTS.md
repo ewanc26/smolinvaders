@@ -51,7 +51,8 @@
   shields for enemy shots only; Blackout stops saucers. The final boss combines
   all three. Restrictions expire on room transition and are shown in the HUD.
 - Boss clears grant one permanent module slot up to `MODULE_MAX_SLOTS`, in
-  addition to relic and credit rewards, plus one EMP charge up to capacity.
+  addition to relic and credit rewards, plus one EMP charge up to capacity. A
+  no-relic-hit boss clear adds one bonus credit.
 - Progression follows a Balatro-inspired run loop: rooms are blinds, every
   three blinds form an ante, and the upgrade offer is the shop phase. Keep
   `blind_target` and `ante` in core state so SDL stays presentational.

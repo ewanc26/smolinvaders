@@ -24,11 +24,12 @@ static void step_player_shot(Game *g) {
   g->bullet = -1;
   if (--g->alien_hp > 0) return;
   if (game_is_boss(g)) {
+    bool flawless = g->relic_charges == g->relics;
     if (g->relics < 3) ++g->relics;
     if (g->module_slots < MODULE_MAX_SLOTS) ++g->module_slots;
     if (g->emp_charges < EMP_CAPACITY) ++g->emp_charges;
     g->relic_charges = g->relics;
-    g->credits += 3;
+    g->credits += 3 + (flawless ? 1 : 0);
     game_score_kill(g, 4 + g->ante, false);
     game_room_progress(g);
     return;

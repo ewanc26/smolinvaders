@@ -56,13 +56,15 @@ static void complete_run(uint32_t seed) {
       int credits = g.credits;
       int slots = g.module_slots;
       int emp = g.emp_charges;
+      int flawless_bonus = g.relic_charges == g.relics;
       while (g.room == room && g.alien_hp > 0) {
         g.bullet = g.alien_row + 1;
         g.bullet_x = g.alien + 1;
         game_step(&g);
       }
       assert(g.relics >= 1 && g.relics <= 3 &&
-             g.relic_charges == g.relics && g.credits >= credits + 3);
+             g.relic_charges == g.relics &&
+             g.credits >= credits + 3 + flawless_bonus);
       assert(g.module_slots == (slots < MODULE_MAX_SLOTS ? slots + 1 : slots));
       assert(g.emp_charges == (emp < EMP_CAPACITY ? emp + 1 : emp));
       if (room < RUN_BLINDS) {

@@ -117,7 +117,8 @@ so a low-scoring but skillful fight cannot soft-lock the run.
 Room 24 is the Eclipse commander, combining all three restrictions. Defeating
 it wins the run. Boss victories also grant one permanent module slot up to the
 six-slot cap, and one EMP charge up to the normal carry cap. Restrictions end
-when leaving their blind.
+when leaving their blind. A boss cleared without consuming a relic charge pays
+one additional credit.
 The window stays open after death
 or victory so `R` can
 replay the same seed.
