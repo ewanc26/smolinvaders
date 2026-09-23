@@ -54,5 +54,12 @@ int main(void) {
   credits = skipped.credits;
   game_reroll_shop(&skipped);
   assert(skipped.skip_rerolls == 0 && skipped.credits == credits);
+  Game rerolled;
+  game_init_seed(&rerolled, 79);
+  rerolled.score = rerolled.blind_target;
+  game_room_progress(&rerolled);
+  game_reroll_shop(&rerolled);
+  game_skip_upgrade(&rerolled);
+  assert(rerolled.skip_rerolls == 0);
   return 0;
 }

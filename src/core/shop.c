@@ -41,7 +41,8 @@ void game_choose_upgrade(Game *g, int choice) {
 
 void game_skip_upgrade(Game *g) {
   if (!g->upgrade_offer) return;
-  if (!g->shop_bought && !g->route_chosen && g->skip_rerolls < 1)
+  if (!g->shop_bought && !g->route_chosen && !g->shop_rerolls &&
+      g->skip_rerolls < 1)
     g->skip_rerolls = 1;
   g->upgrade_offer = false;
   g->paused = false;

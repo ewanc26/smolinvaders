@@ -68,7 +68,7 @@ at the next shop. Leaving preserves unspent credits for interest.
 Shop randomness is separate from combat randomness. A Cache clear's free reroll
 is consumed before credits and still advances the seeded shop offer.
 Leaving an untouched shop with `0` grants one free skip-tag reroll for the next
-shop; paid purchases or route choices forfeit that tag.
+shop; any purchase, reroll, hold, or route choice forfeits that tag.
 Press `H` to hold the current module offer for the next shop. Holding costs two
 credits and is available once per shop; the held offer bypasses the next module
 roll without consuming combat RNG.
