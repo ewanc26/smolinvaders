@@ -48,6 +48,13 @@ static void step_player_shot(Game *g) {
 static void step_enemy_shot(Game *g) {
   if (g->enemy_bullet < 0) return;
   ++g->enemy_bullet;
+  if (!(g->boss_rules & BOSS_STATIC) && (g->modules & MODULE_BARRIER) &&
+      !g->barrier_used && g->enemy_bullet >= SHIELD_ROW &&
+      g->enemy_bullet < SHIELD_ROW + 3) {
+    g->barrier_used = true;
+    g->enemy_bullet = -1;
+    return;
+  }
   if (!(g->boss_rules & BOSS_BREACH) &&
       game_shield_hit(g, g->enemy_bullet_x, g->enemy_bullet)) {
     g->enemy_bullet = -1;

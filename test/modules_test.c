@@ -7,7 +7,7 @@ int main(void) {
     game_init_seed(&a, seed);
     game_init_seed(&b, seed);
     uint32_t combat_rng = a.rng;
-    for (int i = 0; i < 5; ++i) {
+    for (int i = 0; i < 6; ++i) {
       game_module_offer(&a);
       game_module_offer(&b);
       assert(a.module_offer == b.module_offer && a.module_offer);
@@ -75,5 +75,15 @@ int main(void) {
   g.emp_charges = EMP_CAPACITY;
   game_score_kill(&g, 3, true);
   assert(g.emp_charges == EMP_CAPACITY);
+  g.modules = MODULE_BARRIER;
+  g.barrier_used = false;
+  g.enemy_bullet = SHIELD_ROW - 1;
+  g.enemy_bullet_x = 1;
+  int shield = g.shields[0][0];
+  game_step(&g);
+  assert(g.barrier_used && g.shields[0][0] == shield);
+  g.enemy_bullet = SHIELD_ROW - 1;
+  game_step(&g);
+  assert(g.shields[0][0] == shield - 1);
   return 0;
 }

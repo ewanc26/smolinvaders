@@ -46,6 +46,7 @@ int main(void) {
     game_reroll_shop(&g);
     assert(g.credits == credits - cost);
     game_choose_upgrade(&g, 4);
+    g.credits += 10; /* fund the sixth module introduced by Barrier */
     while (game_reroll_available(&g)) {
       game_reroll_shop(&g);
       game_choose_upgrade(&g, 4);

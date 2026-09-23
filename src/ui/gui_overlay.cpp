@@ -24,9 +24,10 @@ static void hud(const Gui *gui, const Game *g) {
                 g->emp_ticks ? "ACTIVE" : "READY",
                 g->damage_grace ? "ACTIVE" : "READY");
   gui_text(gui, line, GUI_LEFT + 430, 80, g->emp_ticks ? gold : muted);
-  for (int i = 0; i < 4; ++i)
+  for (int i = 0; i < 6; ++i)
     if (g->modules & (1 << i))
-      gui_text(gui, game_module_name(1 << i), GUI_LEFT + i * 240, 112, gold);
+      gui_text(gui, game_module_name(1 << i), GUI_LEFT + (i % 3) * 240,
+               112 + (i / 3) * 22, gold);
   gui_text(gui, "ARROWS move   SPACE fire   P pause   N seed   ESC quit",
            GUI_LEFT, 510, muted);
   std::snprintf(line, sizeof line, "X EMP %d/%d  %s   R replay after run",

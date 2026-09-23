@@ -19,7 +19,8 @@ enum { ROOM_COMBAT, ROOM_ELITE, ROOM_CACHE };
 enum { RUN_ANTES = 8, RUN_BLINDS = RUN_ANTES * 3 };
 enum { BOSS_STATIC = 1, BOSS_BREACH = 2, BOSS_BLACKOUT = 4 };
 enum { MODULE_AMPLIFIER = 1, MODULE_SIGNAL = 2, MODULE_CADENCE = 4,
-       MODULE_AFTERBURNER = 8, MODULE_SCAVENGER = 16, MODULE_MASK = 31 };
+       MODULE_AFTERBURNER = 8, MODULE_SCAVENGER = 16, MODULE_BARRIER = 32,
+       MODULE_MASK = 63 };
 
 typedef struct {
   int player, alien, alien_row, alien_hp, bullet, bullet_x;
@@ -40,6 +41,7 @@ typedef struct {
   int room, best_room, room_type, upgrade_level, relics, relic_charges;
   int ante, blind_target, credits;
   bool bonus_active, upgrade_offer, won;
+  bool barrier_used;
   uint8_t shields[SHIELD_COUNT][SHIELD_WIDTH];
   bool over, paused;
 } Game;
