@@ -76,6 +76,9 @@
 - Ability combinations have stable named profiles in `game_enemy_ability_description`
   (ASSAULT, BREACHER, SIEGE, DREADNOUGHT); keep naming in the core so the UI
   remains a read-only renderer.
+- Enemy ability markers in `gui_render.cpp` are presentation-only: amber is
+  HASTE, pink is PIERCING, and violet is VOLLEY. They must reflect the core
+  bitmask without changing simulation behavior.
 - Module offers use the same seed-hash contract at a room/reroll coordinate;
   held offers bypass generation, while `shop_rng` records the derived offer for
   replay diagnostics.

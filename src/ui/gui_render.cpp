@@ -31,6 +31,16 @@ void gui_render(const Gui *gui, const Game *g) {
   gui_box(gui, GUI_LEFT + g->alien * GUI_CELL,
           GUI_TOP + g->alien_row * GUI_CELL,
           GUI_CELL * 3 - 2, GUI_CELL - 2, enemy);
+  int enemy_x = GUI_LEFT + g->alien * GUI_CELL;
+  int enemy_y = GUI_TOP + g->alien_row * GUI_CELL;
+  if (g->enemy_abilities & ENEMY_HASTE)
+    gui_box(gui, enemy_x, enemy_y - 5, 8, 3, {255, 190, 70, 255});
+  if (g->enemy_abilities & ENEMY_PIERCING)
+    gui_box(gui, enemy_x + GUI_CELL + 4, enemy_y - 5, 8, 3,
+            {255, 90, 150, 255});
+  if (g->enemy_abilities & ENEMY_VOLLEY)
+    gui_box(gui, enemy_x + GUI_CELL * 2 + 4, enemy_y - 5, 8, 3,
+            {170, 120, 255, 255});
   for (int hp = 0; hp < g->alien_hp; ++hp)
     gui_box(gui, GUI_LEFT + g->alien * GUI_CELL + hp * 9,
             GUI_TOP + g->alien_row * GUI_CELL - 7, 6, 4,
