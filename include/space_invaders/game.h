@@ -67,6 +67,7 @@ void game_buy_module_slot(Game *game);
 bool game_modules_full(const Game *game);
 int game_module_count(const Game *game);
 int game_module_slot_cost(const Game *game);
+int game_combo_multiplier(const Game *game);
 bool game_sell_module_available(const Game *game, int module);
 void game_sell_module(Game *game, int module);
 void game_move(Game *game, int direction);

@@ -58,6 +58,7 @@ int main(void) {
   game_score_kill(&g, 1, false);
   game_score_kill(&g, 1, false);
   assert(g.combo == 4 && g.score == 27); /* four-kill combo reaches 2x */
+  assert(game_combo_multiplier(&g) == 2);
   g.modules = MODULE_AMPLIFIER | MODULE_CADENCE;
   g.kills = 3;
   g.combo = g.combo_timer = 0;
