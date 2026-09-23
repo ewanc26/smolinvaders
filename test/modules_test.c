@@ -8,6 +8,8 @@ int main(void) {
     game_init_seed(&b, seed);
     a.relics = 3;
     assert(game_combo_window(&a) == COMBO_WINDOW + 6);
+    game_score_kill(&a, 1, false);
+    assert(a.combo_timer == COMBO_WINDOW + 6);
     uint32_t combat_rng = a.rng;
     for (int i = 0; i < 6; ++i) {
       game_module_offer(&a);
