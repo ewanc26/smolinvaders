@@ -63,11 +63,13 @@ static void step_enemy_shot(Game *g) {
 
 static void step_alien(Game *g) {
   game_ai(g);
-  g->alien += g->direction;
-  if (g->alien < 0 || g->alien > GAME_WIDTH - 3) {
-    g->alien = g->alien < 0 ? 0 : GAME_WIDTH - 3;
-    g->direction = -g->direction;
-    ++g->alien_row;
+  for (int step = 0; step < game_enemy_speed(g); ++step) {
+    g->alien += g->direction;
+    if (g->alien < 0 || g->alien > GAME_WIDTH - 3) {
+      g->alien = g->alien < 0 ? 0 : GAME_WIDTH - 3;
+      g->direction = -g->direction;
+      ++g->alien_row;
+    }
   }
   if (g->alien_row >= GAME_HEIGHT - 1) g->over = true;
 }

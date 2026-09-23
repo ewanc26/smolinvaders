@@ -81,6 +81,9 @@
   pauses rather than letting a hidden run take damage.
 - Player shots use three collision-checked substeps per tick. Never jump over
   shield or enemy cells. Stop substeps immediately on a room transition.
+- Enemy movement is deterministic and ramps from one to three cells per tick
+  at eight-kill intervals, capped at three. Keep the ramp in `enemy_profile.c`
+  and test its thresholds independently of rendering.
 - The arena is 48 by 20 cells at 16 pixels per cell and must fit inside the
   960 by 640 window. Keep labels legible and terminal screens restartable.
 - `best_room` is core run state, initialized and restarted to one, and updated

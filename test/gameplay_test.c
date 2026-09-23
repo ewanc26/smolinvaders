@@ -16,6 +16,12 @@ int main(void) {
   g.alien = 30;
   game_step(&g);
   assert(g.shields[0][0] == 2);
+  g.kills = 0;
+  assert(game_enemy_speed(&g) == 1);
+  g.kills = 16;
+  assert(game_enemy_speed(&g) == 3);
+  g.kills = 1000;
+  assert(game_enemy_speed(&g) == 3);
 
   game_toggle_pause(&g);
   g.emp_ticks = EMP_DURATION;

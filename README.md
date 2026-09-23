@@ -116,6 +116,9 @@ simulation tick, independent of OS key-repeat settings. Opposite arrows cancel.
 Losing window focus pauses combat and clears held keys; press `P` to resume.
 Player shots move three cells per tick, checking every cell for collisions;
 enemies and their shots move one. Cover still blocks your own shots.
+Enemy movement accelerates from one to three cells per tick as the run’s kill
+count rises, echoing the classic clear-the-field pacing described by [The
+Strong National Museum of Play](https://www.museumofplay.org/games/space-invaders/).
 
 Use `P` to pause, `R` to replay after
 game over or victory, `X` to use EMP, `1`/`2`/`3`/`4`/`6` to buy,
