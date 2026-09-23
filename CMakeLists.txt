@@ -44,6 +44,7 @@ add_executable(space-invaders
   src/ui/gui_render.cpp
   src/ui/gui_overlay.cpp
   src/ui/gui_shop.cpp
+  src/ui/save.cpp
   src/ui/main.cpp
   )
 target_link_libraries(space-invaders PRIVATE space_invaders_core PkgConfig::SDL2 PkgConfig::SDL2_TTF)
@@ -78,3 +79,7 @@ target_link_libraries(input-test PRIVATE space_invaders_core PkgConfig::SDL2 Pkg
 add_test(NAME input COMMAND ${CMAKE_COMMAND} -E env SDL_VIDEODRIVER=dummy
   $<TARGET_FILE:input-test>)
 set_tests_properties(input PROPERTIES TIMEOUT 15)
+add_executable(save-test test/save_test.cpp src/ui/save.cpp)
+target_compile_options(save-test PRIVATE ${TEST_ASSERT_FLAG})
+target_link_libraries(save-test PRIVATE space_invaders_core)
+add_test(NAME save COMMAND save-test)

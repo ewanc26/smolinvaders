@@ -1,4 +1,5 @@
 #include "space_invaders/gui.h"
+#include "space_invaders/save.h"
 #include <cerrno>
 #include <cstdio>
 #include <cstdlib>
@@ -33,7 +34,9 @@ int main(int argc, char **argv) {
   }
   Game game;
   game_init_seed(&game, seed);
+  const bool resumed = !smoke && !seed_arg && game_load(&game);
   gui.seed = seed;
+  if (resumed) gui.seed = game.seed;
   char title[64];
   SDL_snprintf(title, sizeof title, "Smol Invaders - seed %u", game.seed);
   SDL_SetWindowTitle(gui.window, title);
@@ -57,11 +60,13 @@ int main(int argc, char **argv) {
     Uint32 now = SDL_GetTicks();
     if (now - last >= 70) {
       gui_tick(&gui, &game);
+      if (!smoke) game_save(&game);
       last = now;
     }
     gui_render(&gui, &game);
     SDL_Delay(smoke ? 0 : 8);
   }
+  if (!smoke) game_save(&game);
   gui_close(&gui);
   return 0;
 }

@@ -215,12 +215,16 @@ statistics diagnose changes, not human playability.
 `input-test` exercises real SDL event dispatch without creating a window.
 It also covers relic-scaled Dash cooldown and EMP duration through the UI action
 path.
+`save-test` round-trips the full JSON state under an isolated temporary HOME.
 Keep assertions enabled for all test targets, including Release builds.
 The C23 core and headless C tests build with `-Wall -Wextra -Wpedantic` on
 non-MSVC toolchains; keep new core code warning-clean.
 - CMake installs the GUI executable, reusable core library, and public headers
   under the selected prefix. Keep install rules aligned with the modular target layout and verify
   them in a disposable prefix before publishing build changes.
+- GUI persistence belongs in `src/ui/save.cpp`, not the C23 core. Saves are
+  generic JSON at `~/.ewanc26/smolinvaders/save/run.json`; explicit seeds take
+  precedence and smoke tests must never touch the user's save.
 - `.github/workflows/ci.yml` is the clean Linux gate: install SDL dependencies,
   configure with Ninja, build Release, run all CTest targets, and verify the
   executable and reusable core library in the install tree. New tests must

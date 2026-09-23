@@ -165,6 +165,10 @@ Installation includes the `space_invaders_core` static library and public C23
 headers, so another C23/C++23 front end can reuse the deterministic simulation
 without linking SDL.
 
+The GUI automatically resumes and updates the generic JSON save at
+`~/.ewanc26/smolinvaders/save/run.json`. Passing an explicit seed starts that
+seed instead of loading the saved run; `--smoke` never reads or writes saves.
+
 The GUI looks for a system TrueType font. Set `SMOLINVADERS_FONT` to a `.ttf`
 path if none of its default font locations exist. The `gui-smoke` test runs
 with SDL's dummy video driver, so the test suite needs no display.
