@@ -4,6 +4,9 @@
 static void timing(void) {
   Game g;
   game_init_seed(&g, 42);
+  g.relics = 3;
+  assert(game_emp_duration(&g) == EMP_DURATION + 6);
+  g.relics = 0;
   g.enemy_bullet = GAME_HEIGHT - 2;
   g.enemy_bullet_x = g.player + 1;
   g.emp_charges = 2;

@@ -81,6 +81,7 @@ int game_dash_cooldown(const Game *game);
 int game_player_shot_speed(const Game *game);
 int game_enemy_speed(const Game *game);
 bool game_use_emp(Game *game);
+int game_emp_duration(const Game *game);
 void game_ai(Game *game);
 int game_ai_mood(const Game *game);
 bool game_shield_hit(Game *game, int x, int row);

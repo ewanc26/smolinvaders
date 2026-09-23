@@ -170,6 +170,8 @@
 - Use C23 for the core and C++23 for the UI. Preserve the `extern "C"` API.
 - `game_dash_cooldown` derives the 18-tick baseline from relic tiers, reducing
   it by two per tier down to 12; UI must display the derived value.
+- `game_emp_duration` derives the 12-tick EMP baseline from relic tiers,
+  extending it by two per tier up to 18; EMP remains charge-capped and seeded.
 
 ## Verification
 

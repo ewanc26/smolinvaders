@@ -87,6 +87,7 @@ roll without consuming combat RNG.
 Each run starts with one EMP charge; carry up to two. Press `X` during combat
 to erase the incoming enemy shot and freeze enemy movement, neural firing,
 and saucer timers for 12 simulation ticks (about 0.84 seconds at normal speed).
+Each relic tier extends that freeze by two ticks, up to 18.
 You can still move and fire. Frozen enemies turn cyan and the HUD says ACTIVE.
 The EMP works against bosses too, but does not damage them or bypass armor.
 `6` buys one charge for three credits, once per shop. Unused charges carry
