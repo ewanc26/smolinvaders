@@ -56,6 +56,8 @@
 - `game_seed_hash` is the pure procedural-generation primitive. Use stable
   seed coordinates for room type, enemy placement, and boss rules; do not use
   mutable combat RNG for content that should remain fixed across replays.
+- Room tests must include a noisy-RNG twin to prove combat draw count cannot
+  reshuffle coordinate-generated content.
 - Boss clears grant one permanent module slot up to `MODULE_MAX_SLOTS`, in
   addition to relic and credit rewards, plus one EMP charge up to capacity. A
   no-relic-hit boss clear adds one bonus credit.

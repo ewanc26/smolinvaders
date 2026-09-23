@@ -25,6 +25,15 @@ int main(void) {
   assert(first.room_type == replay.room_type && first.alien == replay.alien);
   assert(first.rng == replay.rng);
   assert(first.rng == replay.rng && first.blind_target == 10);
+  for (int draw = 0; draw < 50; ++draw) game_random(&replay);
+  Game next = first;
+  Game noisy = replay;
+  next.score = noisy.score = next.blind_target;
+  next.alien_hp = noisy.alien_hp = 0;
+  game_room_progress(&next);
+  game_room_progress(&noisy);
+  assert(next.room_type == noisy.room_type && next.alien == noisy.alien &&
+         next.boss_rules == noisy.boss_rules);
   Game streak;
   game_init_seed(&streak, 44);
   streak.score = streak.blind_target - 1;
