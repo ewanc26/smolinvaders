@@ -22,5 +22,18 @@ int main(void) {
     saw_volley |= !!(g.enemy_abilities & ENEMY_VOLLEY);
   }
   assert(saw_haste && saw_piercing && saw_volley);
+
+  Game baseline, haste, piercing;
+  game_init_seed(&baseline, 5u);
+  haste = piercing = baseline;
+  baseline.enemy_abilities = 0;
+  haste.enemy_abilities = ENEMY_HASTE;
+  assert(game_enemy_speed(&haste) == game_enemy_speed(&baseline) + 1);
+  piercing.enemy_abilities = ENEMY_PIERCING;
+  piercing.enemy_bullet = SHIELD_ROW - 1;
+  piercing.enemy_bullet_x = 1;
+  int cover = piercing.shields[0][0];
+  game_step(&piercing);
+  assert(piercing.shields[0][0] == cover);
   return 0;
 }
