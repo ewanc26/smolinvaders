@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://github.com/ewanc26/smolinvaders/actions/workflows/ci.yml"><img src="https://github.com/ewanc26/smolinvaders/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/ewanc26/smolinvaders?label=licence" alt="Licence"></a>
+  <a href="https://github.com/sponsors/ewanc26"><img src="https://img.shields.io/github/sponsors/ewanc26?logo=githubsponsors&logoColor=white&label=sponsors" alt="Sponsor"></a>
+</p>
+
 # Smol Invaders
 
 An arcade shooter with seeded, Balatro-inspired blinds, shop choices, and
@@ -31,7 +37,8 @@ tag: FRENZY raises enemy pressure by one, RICH adds one credit to its clear
 payout, and STANDARD has neither modifier. The tag is shown in the HUD and is
 reproducible without consuming combat RNG. Runs divide into eight antes of three
 blinds. Each blind needs `4 + ante` new points;
-Enemies also receive a procedural ability set per blind: HASTE increases movement
+Enemies also receive a procedural abilit
+y set per blind: HASTE increases movement
 pressure, PIERCING bypasses shields, and VOLLEY makes the neural policy fire more
 readily. Abilities can stack into named threats such as Assault, Breacher, Siege,
 and Dreadnought; the profile is shown in the HUD and as colored markers on the
@@ -62,7 +69,8 @@ Modules last for the run,
 never appear twice once owned, and stack: Amplifier adds one point per kill,
 Cadence adds two on every third kill (including saucers), and Signal doubles
 saucer points after those additions. Armor damage does not count as a kill.
-Bounty pays one extra credit for each kill in an Elite or boss blind, but is
+Bounty pays one extra credit for each kill in an Elite or b
+oss blind, but is
 suppressed by Static. It turns dangerous routes into an intentional investment
 and can finance later module slots or EMP charges.
 Banker raises the normal three-credit interest cap to four while owned, rewarding
@@ -91,7 +99,8 @@ making bonus-target hunting a distinct scoring build.
 The HUD lists owned modules. Shops remain open until you press `0` to leave.
 The HUD and shop show the full clean-clear streak, its next two-clear milestone,
 and banked free rerolls, so the streak reward is visible before choosing the
-next route.
+next ro
+ute.
 The shop previews the current interest payout (one credit per five saved,
 capped at three), making the save-versus-spend decision explicit.
 That payout is calculated by the deterministic C23 core and only rendered by
@@ -122,7 +131,8 @@ The EMP works against bosses too, but does not damage them or bypass armor.
 between blinds; an active freeze ends when a new blind starts. You cannot
 stack active pulses or spend charges while paused, shopping, or after a run.
 
-These original shooter modifiers take inspiration from the shop-acquired,
+These original s
+hooter modifiers take inspiration from the shop-acquired,
 score-changing Jokers described in the [official Balatro FAQ](https://www.playbalatro.com/faq).
 The run follows the FAQ's eight-ante structure, with original shooter bosses.
 Credits are part of the run economy: signal saucers pay two credits and Elite
@@ -152,7 +162,8 @@ the streak resets when any damage is taken, rewarding pressure without making
 flawless play an automatic win.
 Every third blind is a boss with `2 + ante` armor. Its seed-derived restriction
 is announced beneath the arena and visible while shopping before that fight:
-Static suppresses scoring modules (you keep them), Breach makes enemy shots
+Static suppresses scoring modules (you keep them), Breach m
+akes enemy shots
 bypass shields, and Blackout prevents signal saucers. Boss identity depends
 only on seed and ante, not how many shots you fired. Killing the boss awards
 `4 + ante` base points, a relic charge, and three credits; reaching the score
@@ -197,7 +208,8 @@ The GUI looks for a system TrueType font. Set `SMOLINVADERS_FONT` to a `.ttf`
 path if none of its default font locations exist. The `gui-smoke` test runs
 with SDL's dummy video driver, so the test suite needs no display.
 
-Hold the arrow keys to move and Space to fire. Input is sampled once per
+Hold the arrow keys to move and Space to 
+fire. Input is sampled once per
 simulation tick, independent of OS key-repeat settings. Opposite arrows cancel.
 Left Shift dashes four cells in the held/facing direction and starts an
 18-tick cooldown. Each relic tier reduces that cooldown by two ticks, down to
@@ -228,7 +240,8 @@ run state and updates the replay seed without restarting the process.
 
 `./build/replay-test` runs 32 deterministic input-only pilots and compares
 every core field on replay, including movement input used by the neural policy
-and clean-clear streak state. It never places projectiles or grants resources.
+and clean-clear streak state. I
+t never places projectiles or grants resources.
 The pilot uses and restocks EMPs, and prints wins, losses, and the furthest blind;
 this is a regression/balance diagnostic, not proof of human difficulty balance.
 The SDL input test injects key-up/down and focus-loss events without a window.
@@ -238,3 +251,7 @@ headless verification command.
 
 GitHub Actions repeats the Release build, headless suite, and install smoke
 check on every push and pull request.
+
+## Licence
+
+See [LICENSE](LICENSE) for the licence terms.
