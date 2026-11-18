@@ -32,8 +32,7 @@ Guidance for AI coding agents working in **smolinvaders**.
   rooms use the earlier 90–109 tick band and other rooms use 140–169. Keep the
   interval and direction in core and do not hard-code them in the UI.
 - Roguelike state must be seedable through `game_init_seed`. Room transitions
-  pause in the core and upgrades are selected through `game
-_choose_upgrade`; UI
+  pause in the core and upgrades are selected through `game_choose_upgrade`; UI
   must never invent progression or mutate run state directly.
 - Room types are generated from the run RNG. Combat, Elite, and Cache behavior
   must differ in the core and remain reproducible for a given seed.
@@ -61,8 +60,7 @@ _choose_upgrade`; UI
   seed coordinates for room type, enemy placement, respawn placement, and boss rules; do not use
   mutable combat RNG for content that should remain fixed across replays.
 - The initial player lane is derived from coordinate `0x5000`, within a
-  central 12-cell safe
-ty band so deterministic EMP/movement behavior remains
+  central 12-cell safety band so deterministic EMP/movement behavior remains
   playable; it must not be restored as a fixed constant.
 - `shields.c` derives one two-strength notch per cover bank from coordinates
   `0x6000 + shield`; `game_shields_init` must restore the seed's layout rather
@@ -92,8 +90,7 @@ ty band so deterministic EMP/movement behavior remains
   direction as well.
 - Boss clears grant one permanent module slot up to `MODULE_MAX_SLOTS`, in
   addition to relic and credit rewards, plus one EMP charge up to capacity. A
-  no-relic-hit boss clear adds one bonus cr
-edit.
+  no-relic-hit boss clear adds one bonus credit.
 - A no-relic-hit Elite clear also adds one bonus credit to its normal relic and
   credit reward.
 - `flawless_streak` counts consecutive no-relic-hit Elite/boss clears. Every
@@ -122,8 +119,7 @@ edit.
   the player skip an unaffordable shop with `game_skip_upgrade`.
 - Shop transactions live in `shop.c`, rerolls in `shop_reroll.c`. Purchases
   never unpause combat; only leaving closes the shop. Services stock one unit
-  per visit; reject repairs of intact shields. Module purc
-hases empty the slot.
+  per visit; reject repairs of intact shields. Module purchases empty the slot.
 - Rerolls draw a different unowned module using shop RNG only, and are disabled
   without an alternative or enough credits. Costs rise from two to ten credits.
   Room entry resets stock, offer, and reroll count; failed transactions mutate
@@ -151,8 +147,7 @@ hases empty the slot.
 - Enemy movement is deterministic and ramps from one to three cells per tick
   at eight-kill intervals, capped at three. Keep the ramp in `enemy_profile.c`
   and test its thresholds independently of rendering. HUD may expose the
-  read-only multiplier but must not calculate or mutate i
-t.
+  read-only multiplier but must not calculate or mutate it.
 - The arena is 48 by 20 cells at 16 pixels per cell and must fit inside the
   960 by 640 window. Keep labels legible and terminal screens restartable.
 - `best_room` is core run state, initialized and restarted to one, and updated
@@ -179,8 +174,7 @@ t.
   are harmless and the UI exposes the state.
 - Scoring kills build an eight-step combo while refreshed within 24 ticks. Combo
   scores multiply at four and eight, and life loss clears the chain.
-- Module synergies live in `modules.c`: Amplifier+Cadence a
-dds two points on
+- Module synergies live in `modules.c`: Amplifier+Cadence adds two points on
   fourth kills; Signal+Scavenger pays one credit per saucer. Boss Static
   suppresses both with other module effects.
 - Amplifier+Signal adds one saucer point before Signal's multiplier; Static
@@ -209,8 +203,7 @@ dds two points on
   three to four credits and Static suppresses that extra cap. Keep interest
   arithmetic centralized and test the cap boundaries.
 - Banker plus Bounty raises the non-Static interest cap to five. Preserve this
-  synergy in `in
-terest.c` and test that Static suppresses the entire upgrade.
+  synergy in `interest.c` and test that Static suppresses the entire upgrade.
 - Expose the authoritative cap through `game_interest_cap`; the SDL shop may
   display it but must not duplicate the Banker/Bounty/Static rules.
 - Scavenger is a non-scoring module: a saucer kill restores one EMP charge up
@@ -246,8 +239,7 @@ ctest --test-dir build --output-on-failure
 ```
 
 The suite checks gameplay, rooms, shops, and a GUI render with SDL's dummy
-vi
-deo driver. Use focused tests for new mechanics rather than expanding one
+video driver. Use focused tests for new mechanics rather than expanding one
 large assertion chain.
 
 The boss suite checks 100 seeded, controlled-collision runs through all 24
@@ -277,22 +269,10 @@ non-MSVC toolchains; keep new core code warning-clean.
   format version and reject unknown versions on load.
 - `.github/workflows/ci.yml` is the clean Linux gate: install SDL dependencies,
   configure with Ninja, build Release, run all CTest targets, and verify the
-  executable and reusable
- core library in the install tree. New tests must
+  executable and reusable core library in the install tree. New tests must
   remain display-free under SDL's dummy driver.
 
 <!-- allowed-agents -->
-## Allowed agents
-
-Only **Claude** (Anthropic) and **Mistral** (Mistral AI) may be used as coding agents in this repository. This rule supersedes any earlier agent-attribution guidance in this file.
-
-- Agent-assisted commits must credit only one of those agents:
-  - `Co-Authored-By: Claude <noreply@anthropic.com>`
-  - `Co-Authored-By: Mistral Vibe <vibe@mistral.ai>`
-- Allowed agent footers are `🤖 Generated with [Claude Code](https://claude.com/claude-code)` and `🤖 Generated with [Mistral Vibe](https://mistral.ai)`.
-- Do not add `Co-Authored-By:` trailers, `Generated with` footers, author names, or committer identities for any other agent or AI tool.
-- Do not credit another agent in commit metadata.
-
 ## Allowed agents
 
 Only **Claude** (Anthropic) and **Mistral** (Mistral AI) may be used as coding agents in this repository. This rule supersedes any earlier agent-attribution guidance in this file.
