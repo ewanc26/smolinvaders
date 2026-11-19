@@ -2,6 +2,8 @@
 
 Guidance for AI coding agents working in **smolinvaders**.
 
+## Project shape
+
 - `src/core/` is the headless C23 game simulation. It must not include SDL.
 - `src/ui/` is the C++23 SDL2 presentation and input layer.
 - `include/space_invaders/` contains the small C ABI shared by both layers.
