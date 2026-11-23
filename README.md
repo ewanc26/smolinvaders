@@ -248,3 +248,5 @@ check on every push and pull request.
 ## Licence
 
 See [LICENSE](LICENSE) for the licence terms.
+
+Copyright (C) 2026 Ewan Croft (ewanc26).
